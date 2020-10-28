@@ -1,1 +1,3 @@
-# Inventory-Manager
+# Inventory Manager
+
+Work in progress...
