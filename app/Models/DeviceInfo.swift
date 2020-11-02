@@ -22,7 +22,7 @@ class DeviceInfo {
     
     // Singleton functions
     
-    func getInfo() -> [String: String] {
+    func getInfo() -> Data? {
         var info = [String: String]()
         
         info["Model Name"] = modelName
@@ -31,6 +31,11 @@ class DeviceInfo {
         info["Serial Number"] = serialNumber
         info["Hardware UUID"] = hardwareUUID
         
-        return info
+        do {
+            return try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)
+        } catch let err {
+            print(err.localizedDescription)
+            return nil
+        }
     }
 }

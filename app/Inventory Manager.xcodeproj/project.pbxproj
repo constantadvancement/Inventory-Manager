@@ -16,6 +16,8 @@
 		2D5AD1E6253F0FDA006125F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD1E5253F0FDA006125F7 /* HomeViewController.swift */; };
 		2D5AD1EB253F1A87006125F7 /* ProvisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD1E9253F1A87006125F7 /* ProvisionViewController.swift */; };
 		2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD1F1253F3F13006125F7 /* WindowController.swift */; };
+		2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC52254AF5F000FA5F8A /* HttpClient.swift */; };
+		2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5725506AAF00FA5F8A /* String.extensions.swift */; };
 		2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BBB932549C99300B521FA /* LocationInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		2D5AD1E5253F0FDA006125F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2D5AD1E9253F1A87006125F7 /* ProvisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionViewController.swift; sourceTree = "<group>"; };
 		2D5AD1F1253F3F13006125F7 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		2D69FC52254AF5F000FA5F8A /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpClient.swift; path = ../../app/Services/HttpClient.swift; sourceTree = "<group>"; };
+		2D69FC5725506AAF00FA5F8A /* String.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.extensions.swift; path = ../../app/Extensions/String.extensions.swift; sourceTree = "<group>"; };
 		2D8BBB932549C99300B521FA /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +62,8 @@
 		2D5AD1C1253F0DC3006125F7 = {
 			isa = PBXGroup;
 			children = (
+				2D69FC5625506A9A00FA5F8A /* Extensions */,
+				2D69FC51254AF5B500FA5F8A /* Services */,
 				2D2A11492549A72500E7F57D /* Models */,
 				2D5AD1CC253F0DC3006125F7 /* Inventory Tracker */,
 				2D5AD1CB253F0DC3006125F7 /* Products */,
@@ -87,6 +93,22 @@
 				2D5AD1D7253F0DC4006125F7 /* Inventory_Tracker.entitlements */,
 			);
 			path = "Inventory Tracker";
+			sourceTree = "<group>";
+		};
+		2D69FC51254AF5B500FA5F8A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2D69FC52254AF5F000FA5F8A /* HttpClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2D69FC5625506A9A00FA5F8A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2D69FC5725506AAF00FA5F8A /* String.extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +184,8 @@
 				2D151B4C2541B78E00F17A2A /* LocationViewController.swift in Sources */,
 				2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */,
 				2D5AD1E6253F0FDA006125F7 /* HomeViewController.swift in Sources */,
+				2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */,
+				2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */,
 				2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */,
 				2D5AD1CE253F0DC3006125F7 /* AppDelegate.swift in Sources */,
 				2D2A11472549A72000E7F57D /* DeviceInfo.swift in Sources */,

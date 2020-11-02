@@ -21,7 +21,7 @@ class LocationInfo {
     var zip: String?
     var country: String?
     
-    func getInfo() -> [String: String] {
+    func getInfo() -> Data? {
         var info = [String: String]()
         
         info["Timestamp"] = timestamp
@@ -31,6 +31,11 @@ class LocationInfo {
         info["Zip"] = zip
         info["Country"] = country
         
-        return info
+        do {
+            return try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)
+        } catch let err {
+            print(err.localizedDescription)
+            return nil
+        }
     }
 }
