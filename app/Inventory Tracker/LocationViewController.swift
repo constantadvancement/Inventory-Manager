@@ -36,6 +36,9 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         mapView.layer?.borderColor = NSColor.lightGray.cgColor
         mapView.layer?.borderWidth = 1.0
         
+        // Disables the continue button until the location is determined
+        continueButton.isEnabled = false
+        
         // Creates the location manager and requests the user's current location
         locationManager = CLLocationManager()
         locationManager?.delegate = self
@@ -48,17 +51,14 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         switch status {
         case .authorized:
             // Location services authorized (clicked OK to allow)
-            continueButton.isEnabled = true
             permissionsField.stringValue = "Once setup has been completed this device's last known location will be reported periodically."
             permissionsField.textColor = NSColor.white
         case .denied, .restricted:
             // Location services denied or restricted
-            continueButton.isEnabled = false
             permissionsField.stringValue = "You must enable location services for this application in order to continue!"
             permissionsField.textColor = NSColor.systemRed
         case .notDetermined:
             // Location services not determined
-            continueButton.isEnabled = false
             permissionsField.stringValue = "Click OK to enable location services for this applciation!"
             permissionsField.textColor = NSColor.white
         default:
@@ -112,6 +112,9 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         location.state = placemark.administrativeArea
         location.zip = placemark.postalCode
         location.country = placemark.isoCountryCode
+        
+        // Enables the continue button
+        continueButton.isEnabled = true
     }
     
     // Helpers

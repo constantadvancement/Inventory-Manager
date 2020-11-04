@@ -28,6 +28,7 @@ class HttpClient {
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("Server error!")
+                print(err?.localizedDescription)
                 callback(err, nil)
                 return
             }

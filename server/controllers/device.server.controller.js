@@ -3,18 +3,15 @@
 const deviceService = require('../services/device.server.service')
 
 /**
- * Returns the specified device's info: model name, model identifier, 
- * model number, serial number, and hardware UUID
+ * Registers a new device's system information
  */
-exports.getDeviceInfo = async function(req, res) {
-    const deviceId = req.params.deviceId
+exports.registerDeviceInfo = async function(req, res) {
     const body = req.body
-    console.log(body)
     const opts = {
-        deviceId: deviceId
+        info: body
     }
-    deviceService.getDeviceInfo(opts, (err, modelName) => {
+    deviceService.registerDeviceInfo(opts, (err, result) => {
         if(err) return res.status(500).send(err)
-        res.status(200).send(modelName)
+        res.status(200).send(result)
     })
 }

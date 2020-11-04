@@ -16,7 +16,7 @@ class ServerViewController: NSViewController {
 //        print(LocationInfo.shared.getInfo())
         
         let http = HttpClient()
-        http.POST(url: "http://localhost:3000/device/1/info", body: DeviceInfo.shared.getInfo()) { (err: Error?, data: Data?) in
+        http.POST(url: "http://localhost:3000/register/device/info", body: DeviceInfo.shared.getInfo()) { (err: Error?, data: Data?) in
             guard err == nil else {
                 print("Server or client error has occured!")
                 // Todo handle err?
@@ -24,10 +24,21 @@ class ServerViewController: NSViewController {
             }
             
             let result = String(data: data!, encoding: .utf8)
-            print("Result was: \(String((result?.toBool)!))")
+            print("Result was: \(String(describing: result?.toBool!))")
             return
         }
         
+        http.POST(url: "http://localhost:3000/register/device/location", body: LocationInfo.shared.getInfo()) { (err: Error?, data: Data?) in
+            guard err == nil else {
+                print("Server or client error has occured!")
+                // Todo handle err?
+                return
+            }
+            
+            let result = String(data: data!, encoding: .utf8)
+            print("Result was: \(String(describing: result?.toBool!))")
+            return
+        }
     }
     
     // Navigation button actions

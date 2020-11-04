@@ -13,6 +13,7 @@ module.exports = () => {
 
     // routes
     require('../routes/device.server.routes') (app)
+    require('../routes/location.server.routes') (app)
 
     return app
 }
