@@ -4,7 +4,6 @@
 //
 //  Created by Ryan Mackin on 10/22/20.
 //
-// This view controller is responsible for gathering all location data for this device. This includes its location and a corresponding timestamp.
 
 import Cocoa
 import CoreLocation
@@ -14,7 +13,9 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
     @IBOutlet var continueButton: NSButton!
     @IBOutlet var permissionsField: NSTextField!
     @IBOutlet var mapView: MKMapView!
+    
     var locationManager: CLLocationManager?
+    var locationService: LocationService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,85 +37,104 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         mapView.layer?.borderColor = NSColor.lightGray.cgColor
         mapView.layer?.borderWidth = 1.0
         
-        // Disables the continue button until the location is determined
+        // Disables the continue button (until the location and address are determined)
         continueButton.isEnabled = false
         
-        // Creates the location manager and requests the user's current location
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.startUpdatingLocation()
+        // Adds location service observers
+        let nc = NotificationCenter.default
+        // Location service status notifications
+        nc.addObserver(self, selector: #selector(authorizedStatus), name: .authorized, object: nil)
+        nc.addObserver(self, selector: #selector(deniedStatus), name: .denied, object: nil)
+        nc.addObserver(self, selector: #selector(notDeterminedStatus), name: .notDetermined, object: nil)
+        
+        // Location data notifications
+        nc.addObserver(self, selector: #selector(locationFound), name: .locationFound, object: nil)
+        nc.addObserver(self, selector: #selector(addressFound), name: .addressFound, object: nil)
+        
+        // Location error notification
+        nc.addObserver(self, selector: #selector(locationError), name: .error, object: nil)
+        
+        // Requests the user's current location
+        locationService = LocationService()
+        locationService?.startUpdatingLocation()
     }
     
-    // Location manager methods
+    // Location service notification handlers
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorized:
-            // Location services authorized (clicked OK to allow)
-            permissionsField.stringValue = "Once setup has been completed this device's last known location will be reported periodically."
-            permissionsField.textColor = NSColor.white
-        case .denied, .restricted:
-            // Location services denied or restricted
-            permissionsField.stringValue = "You must enable location services for this application in order to continue!"
-            permissionsField.textColor = NSColor.systemRed
-        case .notDetermined:
-            // Location services not determined
-            permissionsField.stringValue = "Click OK to enable location services for this applciation!"
-            permissionsField.textColor = NSColor.white
-        default:
-            // This case should never occur
-            break
-        }
+    @objc func authorizedStatus() {
+        print("Location service status: authorized")
+        
+        // Location services authorized (clicked OK to allow)
+        permissionsField.stringValue = "Once setup has been completed this device's last known location will be reported periodically."
+        permissionsField.textColor = NSColor.white
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // Error; coordinates and address not found
-        print("Location Manager Error: \(error) \nTrying again...")
+    @objc func deniedStatus() {
+        print("Location service status: denied or restricted")
+        
+        // Location services denied or restricted
+        permissionsField.stringValue = "You must enable location services for this application in order to continue!"
+        permissionsField.textColor = NSColor.systemRed
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // Determines the user's last reported location
-        let lastLocation = locations.last!
+    @objc func notDeterminedStatus() {
+        print("Location service status: not determined")
+        
+        // Location services not determined
+        permissionsField.stringValue = "Click OK to enable location services for this applciation!"
+        permissionsField.textColor = NSColor.white
+    }
+    
+    @objc func locationFound() {
+        print("Location was found!")
+        
+        let coordinate = LocationInfo.shared.coordinate!
         
         // Zoom to user location
-        let viewRegion = MKCoordinateRegion(center: lastLocation.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+        let viewRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
         mapView.setRegion(viewRegion, animated: true)
         
         // Adds current location annotation
-        addAnnotation(at: lastLocation.coordinate)
-        
-        // Use geocoder to determine address from location coordinates
-        let geocoder = CLGeocoder.init()
-        geocoder.reverseGeocodeLocation(lastLocation) { (placemarks: [CLPlacemark]?, error: Error?) in
-            if error == nil, let placemark = placemarks?[0] {
-                // Success; coordinates and address found
-                self.completionHandler(placemark, lastLocation.timestamp)
-            } else {
-                // Error; coordinates found but address not found
-                print("Geocoder Error: \(error!) \nTrying again...")
-            }
-        }
+        addAnnotation(at: coordinate)
     }
     
-    func completionHandler(_ placemark: CLPlacemark, _ timestamp: Date) {
-        print("Success: Found a location and address.")
-        // Stops calling for location updates (TODO .... handle recurring location pings)
-        locationManager?.stopUpdatingLocation()
-        
-        // Saves the location data to the LocationInfo model
-        let location = LocationInfo.shared
-        
-        let localDate = convertToLocalDate(timestamp)
-        location.timestamp = localDate
-    
-        location.street = placemark.name
-        location.city = placemark.locality
-        location.state = placemark.administrativeArea
-        location.zip = placemark.postalCode
-        location.country = placemark.isoCountryCode
+    @objc func addressFound() {
+        print("Address was found!")
         
         // Enables the continue button
         continueButton.isEnabled = true
+        
+        // Removes location service observers
+        let nc = NotificationCenter.default
+        // Location error notification
+        nc.removeObserver(self, name: .error, object: nil)
+        
+        // Location service status notifications
+        nc.removeObserver(self, name: .authorized, object: nil)
+        nc.removeObserver(self, name: .denied, object: nil)
+        nc.removeObserver(self, name: .notDetermined, object: nil)
+        
+        // Location data notifications
+        nc.removeObserver(self, name: .locationFound, object: nil)
+        nc.removeObserver(self, name: .addressFound, object: nil)
+    }
+    
+    @objc func locationError() {
+        print("Location error occured")
+        
+        // Removes location service observers
+        let nc = NotificationCenter.default
+        // Location error notification
+        nc.removeObserver(self, name: .error, object: nil)
+        
+        // Location service status notifications
+        nc.removeObserver(self, name: .authorized, object: nil)
+        nc.removeObserver(self, name: .denied, object: nil)
+        nc.removeObserver(self, name: .notDetermined, object: nil)
+        
+        // Location data notifications
+        nc.removeObserver(self, name: .locationFound, object: nil)
+        nc.removeObserver(self, name: .addressFound, object: nil)
     }
     
     // Helpers
@@ -133,15 +153,6 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         mapView.addAnnotation(annotation)
     }
     
-    // Returns the specified date using this device's current time zone
-    func convertToLocalDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.timeZone = .current
-        let localDate = dateFormatter.string(from: date)
-        return localDate
-    }
-    
     // Navigation button actions
     
     @IBAction func backButton(_ sender: Any) {
@@ -155,5 +166,4 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
             self.view.window?.contentViewController = controller
         }
     }
-    
 }

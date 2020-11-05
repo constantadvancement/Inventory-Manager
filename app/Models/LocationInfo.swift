@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 
 class LocationInfo {
     static let shared = LocationInfo()
@@ -13,6 +15,8 @@ class LocationInfo {
     private init() {}
     
     // Singleton data
+    
+    var coordinate: CLLocationCoordinate2D?
     
     var timestamp: String?
     var street: String?

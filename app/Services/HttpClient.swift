@@ -21,14 +21,13 @@ class HttpClient {
         let session = URLSession.shared
         session.dataTask(with: request) { (data: Data?, response: URLResponse?, err: Error?) in
             guard err == nil, data != nil else {
-                print("Client error!")
+                // Client error
                 callback(err, nil)
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("Server error!")
-                print(err?.localizedDescription)
+                // Server error
                 callback(err, nil)
                 return
             }

@@ -11,6 +11,8 @@ class HomeViewController: NSViewController {
     @IBOutlet var imageView: NSImageView!
     @IBOutlet var helpButton: NSButton!
     
+    var locationService: LocationService?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +40,11 @@ class HomeViewController: NSViewController {
         // Help button set up
         let recognizer = NSClickGestureRecognizer(target: self, action: #selector(helpButtonPopover))
         helpButton.addGestureRecognizer(recognizer)
+        
+        
+        // TODO testing
+//        locationService = LocationService()
+//        locationService?.startUpdatingLocation()
     }
     
     @objc func helpButtonPopover() {

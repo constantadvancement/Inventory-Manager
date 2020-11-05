@@ -4,7 +4,6 @@
 //
 //  Created by Ryan Mackin on 10/20/20.
 //
-// This view controller is responsible for gathering all provisioning data for this device. This includes the model name, model identifier, model number, serial number, and hardware UUID.
 
 import Cocoa
 

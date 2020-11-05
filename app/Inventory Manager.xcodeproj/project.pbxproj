@@ -18,6 +18,8 @@
 		2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AD1F1253F3F13006125F7 /* WindowController.swift */; };
 		2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC52254AF5F000FA5F8A /* HttpClient.swift */; };
 		2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5725506AAF00FA5F8A /* String.extensions.swift */; };
+		2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5A25543BF400FA5F8A /* LocationService.swift */; };
+		2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */; };
 		2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BBB932549C99300B521FA /* LocationInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		2D5AD1F1253F3F13006125F7 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		2D69FC52254AF5F000FA5F8A /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpClient.swift; path = ../../app/Services/HttpClient.swift; sourceTree = "<group>"; };
 		2D69FC5725506AAF00FA5F8A /* String.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.extensions.swift; path = ../../app/Extensions/String.extensions.swift; sourceTree = "<group>"; };
+		2D69FC5A25543BF400FA5F8A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = ../../app/Services/LocationService.swift; sourceTree = "<group>"; };
+		2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.extensions.swift; path = ../../app/Extensions/Notification.extensions.swift; sourceTree = "<group>"; };
 		2D8BBB932549C99300B521FA /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				2D69FC52254AF5F000FA5F8A /* HttpClient.swift */,
+				2D69FC5A25543BF400FA5F8A /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				2D69FC5725506AAF00FA5F8A /* String.extensions.swift */,
+				2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,8 +190,10 @@
 				2D151B4C2541B78E00F17A2A /* LocationViewController.swift in Sources */,
 				2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */,
 				2D5AD1E6253F0FDA006125F7 /* HomeViewController.swift in Sources */,
+				2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */,
 				2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */,
 				2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */,
+				2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */,
 				2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */,
 				2D5AD1CE253F0DC3006125F7 /* AppDelegate.swift in Sources */,
 				2D2A11472549A72000E7F57D /* DeviceInfo.swift in Sources */,
