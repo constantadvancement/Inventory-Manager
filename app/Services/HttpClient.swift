@@ -9,7 +9,7 @@ import Foundation
 
 class HttpClient {
     
-    init() {}
+    init() { }
     
     func POST(url: String, body: Data?, _ callback: @escaping (Error?, Data?) -> ()) {
         var request = URLRequest(url: URL(string: url)!)

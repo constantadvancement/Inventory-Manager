@@ -87,7 +87,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             } else {
                 guard let error = error as? CLError, error.code == .network else {
                     // Network connection error, bailing out
-                    locationManager?.stopUpdatingLocation()
                     notificationCenter?.post(name: .error, object: nil)
                     return
                 }
