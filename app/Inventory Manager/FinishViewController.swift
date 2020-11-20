@@ -15,6 +15,7 @@ class FinishViewController: NSViewController {
         // Applies basic view styles
         setStyles()
         
+        
         // HTTP requests to register this device
         let http = HttpClient()
 //        http.POST(url: "http://localhost:3000/register/device/info", body: DeviceInfo.shared.getInfo()) { (err: Error?, data: Data?) in
@@ -23,11 +24,11 @@ class FinishViewController: NSViewController {
 //                // Todo handle err?
 //                return
 //            }
-//            
+//
 //            let defaults = UserDefaults.standard
 //            if let result = String(data: data!, encoding: .utf8)?.toBool {
 //                defaults.setValue(result, forKey: "DeviceInfo")
-//                
+//
 //                print("Got result \(result) for device info")
 //            }
 //        }
@@ -37,11 +38,11 @@ class FinishViewController: NSViewController {
 //                // Todo handle err?
 //                return
 //            }
-//            
+//
 //            let defaults = UserDefaults.standard
 //            if let result = String(data: data!, encoding: .utf8)?.toBool {
 //                defaults.setValue(result, forKey: "LocationInfo")
-//                
+//
 //                print("Got result \(result) for location info")
 //            }
 //        }

@@ -22,7 +22,7 @@ if sudo -u "${username}" launchctl list | grep -q "$LABEL"; then
 fi
 
 # Checks if the /Library/LaunchAgents/com.CAInventoryManager.plist file exists;
-# removes the file if it exists
+# removes the plist file if it exists
 FILE=/Library/LaunchAgents/com.CAInventoryManager.plist
 if [ -f "$FILE" ]; then
         rm "$FILE"
@@ -30,7 +30,7 @@ if [ -f "$FILE" ]; then
 fi
 
 # Checks if the /Users/Shared/CA directory exists;
-# removes the directory if it exists
+# removes the directory and all contained app files if it exists
 DIRECTORY=/Users/Shared/CA
 if [ -d "$DIRECTORY" ]; then
         rm -rf "$DIRECTORY"

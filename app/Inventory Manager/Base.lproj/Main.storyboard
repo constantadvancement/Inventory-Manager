@@ -785,6 +785,15 @@
                                     <action selector="backButton:" target="otX-fS-PbR" id="Djp-F7-5i0"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRq-12-95H">
+                                <rect key="frame" x="28" y="386" width="175" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Wrapping Up" id="aaP-bU-xQ9">
+                                    <font key="font" metaFont="systemBold" size="28"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="wDD-3x-Y4y" firstAttribute="leading" secondItem="z0Z-gY-vbN" secondAttribute="leading" constant="30" id="Gne-AV-eLN"/>
@@ -827,9 +836,9 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqP-B5-NS4">
-                                <rect key="frame" x="28" y="386" width="160" height="33"/>
+                                <rect key="frame" x="28" y="386" width="125" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Create User" id="Hw0-Ka-VUp">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Add User" id="Hw0-Ka-VUp">
                                     <font key="font" metaFont="systemBold" size="28"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -34,4 +34,4 @@ Note: the uninstaller must be executed using sudo in order to work.
 
 Helper script used by the Launcher app in order to run the CA Inventory Manager app as an administrator.
 
-This script will not work if it is called from outside of the Launcher app.
+This script should not be executed from outside of the Launcher app.
