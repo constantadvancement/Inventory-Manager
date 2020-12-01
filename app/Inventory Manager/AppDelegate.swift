@@ -13,29 +13,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var locationService: LocationService?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let defaults = UserDefaults.standard
-    
-        // TODO get user defaults value (setupFinished -- a boolean value... something like that)
-//        let mode = defaults.object(forKey: "mode") as? String
-//
-//        switch mode {
-//        case nil:
-//            print("run app as sudo")
-//            let commandLine = CommandLineService()
-//            let result = commandLine.executeAsRootNoCredentials(command: "sudo \(Bundle.main.bundlePath)/Contents/MacOS/InventoryManager")
-//
-//            print(result)
-//
-//            NSApp.terminate(self)
-//        case "foreground":
-//            print("run in foreground")
-//        case "background":
-//            print("run in background")
-//        default:
-//            print("This case should never occur")
-//        }
+        let mode = CommandLine.arguments.last!
         
-        if true {
+        // Determines the current launch mode
+        switch mode {
+        case "setup":
+            // Application launched in setup mode
+            print("Application launched in setup mode.")
+            
             // Show setup window; application runs in foreground
             let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: Bundle.main)
             let window = storyboard.instantiateController(withIdentifier: "MainWindow") as! NSWindowController
@@ -43,12 +28,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             window.contentViewController = controller
             window.showWindow(self)
-        } else {
+        default:
+            // Application launched in background mode (setup should be complete)
+            print("Application launched in background mode.")
+            
             // No window; application runs in background
-            let timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(pingLocation), userInfo: nil, repeats: true)
+            
+            // TODO change timer interval
+            let timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(pingLocation), userInfo: nil, repeats: true)
             timer.tolerance = 2.0
         }
     }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        print("CA Inventory Manager has been terminated!")
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
+    // Background location update methods
     
     @objc func pingLocation() {
         print("\nPinging location...")
@@ -117,7 +117,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // TODO -- POST to server new address data
         let http = HttpClient()
-        http.POST(url: "http://localhost:3000/register/device/location", body: LocationInfo.shared.getInfo()) { (err: Error?, data: Data?) in
+        http.POST(url: "http://localhost:3000/register/device/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
             guard err == nil else {
                 print("Server or client error has occured!")
                 // Todo handle err?
@@ -151,14 +151,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         nc.removeObserver(self, name: .addressFound, object: nil)
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-        print("I terminated.")
-    }
-    
 }
-

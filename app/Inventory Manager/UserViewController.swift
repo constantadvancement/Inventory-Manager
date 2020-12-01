@@ -7,8 +7,12 @@
 
 import Cocoa
 
-class UserViewController: NSViewController {
-    @IBOutlet var label: NSTextField!
+class UserViewController: NSViewController, NSTextFieldDelegate {
+    @IBOutlet var continueButton: NSButton!
+    @IBOutlet var fullNameField: NSTextField!
+    @IBOutlet var passwordField: NSTextField!
+    
+    let defaultPassword = "constantadvancement!"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,105 +20,84 @@ class UserViewController: NSViewController {
         // Applies basic view styles
         setStyles()
         
-        // Writes launchd plist to /Library/LaunchAgents
-        if writeLaunchdPlist() {
-            print("SUCCESS - wrote plist file")
+        // Prevents text fields from being auto focused when the view first loads
+        fullNameField.refusesFirstResponder = true
+        passwordField.refusesFirstResponder = true
+        
+        let user = User.shared
+        
+        // Full name
+        if let fullName = user.fullName {
+            fullNameField.stringValue = fullName
+        }
+        
+        // Password
+        if let password = user.password {
+            passwordField.stringValue = password
         } else {
-            // TODO -- handle error
-            print("FAILURE - did not write plist file")
+            passwordField.stringValue = defaultPassword
+            user.password = defaultPassword
         }
         
-        // Writes the application bundle to /Users/Shared/CA
-        if writeAppBundle() {
-            print("SUCCESS - wrote app bundle")
+        // Unique ID
+        if user.uniqueID == nil {
+            user.uniqueID = getUniqueID()
+        }
+        
+        // Enables/disables the continue button depending on the state of the User model
+        if let fullName = user.fullName, !fullName.isEmpty, let password = user.password, !password.isEmpty {
+            continueButton.isEnabled = true
         } else {
-            // TODO -- handle error
-            print("FAILURE - did not write app bundle")
+            continueButton.isEnabled = false
         }
     }
     
+    func getUniqueID() -> Int {
+        let lastID = execute(command: "dscl . -list /Users UniqueID | awk '{print $2}' | sort -n | tail -1")
+        return (lastID as NSString).integerValue + 1
+    }
     
+    // Text field delegate methods
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // Task 1A - writes the launchd plist to /Library/LaunchAgents
-    func writeLaunchdPlist() -> Bool {
-        // Reads launchd plist from app bundle
-        guard let url = Bundle.main.url(
-            forResource: "com.CAInventoryManager",
-            withExtension: "plist"
-        ) else {
-            print("Error: no such file")
-            // TODO handle err
-            return false
-        }
-    
-        do {
-            // Converts plist file to data
-            let data = try Data(contentsOf: url)
-            
-            // Creates path to /Library/LaunchAgents
-            let launchAgentsDirectory = try! FileManager.default.url(for: .libraryDirectory, in: .localDomainMask, appropriateFor: nil, create: true).appendingPathComponent("LaunchAgents").appendingPathComponent("com.CAInventoryManager").appendingPathExtension("plist")
-
-            do {
-                // Writes the plist file to /Library/LaunchAgents
-                try data.write(to: launchAgentsDirectory)
-                return true
-            } catch let error as NSError {
-                print(error)
-                return false
-            }
-        } catch {
-            print("Error: could not read file")
-            // TODO handle err
-            return false
+    func controlTextDidChange(_ obj: Notification) {
+        // Gets the value of each text field
+        let fullName = fullNameField.stringValue
+        let password = passwordField.stringValue
+        
+        // Saves user data to the User model
+        let user = User.shared
+        user.fullName = fullName
+        user.username = fullName.lowercased().filter { !$0.isWhitespace }
+        user.password = password
+        
+        // Enables/disables the continue button depending on the state of each text field
+        if !fullName.isEmpty && !password.isEmpty {
+            continueButton.isEnabled = true
+        } else {
+            continueButton.isEnabled = false
         }
     }
     
+    // Helper function
     
-    // Task 1B - writes the app bundle to /Users/Shared/CA
-    func writeAppBundle() -> Bool {
-        let commandLine = CommandLineService()
-        
-        // Creates a CA directory at /Users/Shared
-        guard commandLine.execute(command: "mkdir /Users/Shared/CA").isEmpty else {
-            return false
-        }
-        
-        // Writes the app bundle to /Users/Shared/CA
-        guard commandLine.execute(command: "cp -r \(Bundle.main.bundlePath) /Users/Shared/CA/").isEmpty else {
-            return false
-        }
-        
-        return true
+    func execute(command: String) -> String {
+        var arguments:[String] = []
+        arguments.append("-c")
+        arguments.append(command)
+
+        let task = Process()
+        task.launchPath = "/bin/sh"
+        task.arguments = arguments
+
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.launch()
+        task.waitUntilExit()
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+
+        return String(data: data, encoding: .utf8)!
     }
-    
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     // Navigation button actions
     
@@ -144,5 +127,8 @@ class UserViewController: NSViewController {
         
         layer.addSublayer(borderLayer)
         view.layer?.addSublayer(layer)
+        
+        fullNameField.backgroundColor = NSColor.darkGray
+        passwordField.backgroundColor = NSColor.darkGray
     }
 }

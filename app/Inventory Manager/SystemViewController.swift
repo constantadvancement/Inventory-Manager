@@ -7,7 +7,8 @@
 
 import Cocoa
 
-class SystemViewController: NSViewController {
+class SystemViewController: NSViewController, NSTextFieldDelegate {
+    @IBOutlet var continueButton: NSButton!
     @IBOutlet var modelNameField: NSTextField!
     @IBOutlet var modelIdentifierField: NSTextField!
     @IBOutlet var modelNumberField: NSTextField!
@@ -20,47 +21,86 @@ class SystemViewController: NSViewController {
         // Applies basic view styles
         setStyles()
         
-        // Prevents these text fields from being auto focused when the view first loads
+        // Prevents text fields from being auto focused when the view first loads
         modelNameField.refusesFirstResponder = true
         modelIdentifierField.refusesFirstResponder = true
         modelNumberField.refusesFirstResponder = true
         serialNumberField.refusesFirstResponder = true
         hardwareUUIDField.refusesFirstResponder = true
+
+        let device = Device.shared
         
-        // Sets text field values
         // Model name
-        if let modelName = getModelName() {
+        if let modelName = device.modelName {
             modelNameField.stringValue = modelName
+        } else if let modelName = getModelName() {
+            modelNameField.stringValue = modelName
+            device.modelName = modelName
         }
-        // Model identifier & model number
-        if let modelIdentifier = getModelIdentifier() {
+        
+        // Model identifier
+        if let modelIdentifier = device.modelIdentifier {
             modelIdentifierField.stringValue = modelIdentifier
-            
-            if let modelNumber = getModelNumber(for: modelIdentifier) {
-                modelNumberField.stringValue = modelNumber
-            }
+        } else if let modelIdentifier = getModelIdentifier() {
+            modelIdentifierField.stringValue = modelIdentifier
+            device.modelIdentifier = modelIdentifier
         }
+        
+        // Model number
+        if let modelNumber = device.modelNumber {
+            modelNumberField.stringValue = modelNumber
+        } else if let modelNumber = getModelNumber(for: device.modelIdentifier!) {
+            modelNumberField.stringValue = modelNumber
+            device.modelNumber = modelNumber
+        }
+        
         // Serial number
-        if let serialNumber = getSerialNumber() {
+        if let serialNumber = device.serialNumber {
             serialNumberField.stringValue = serialNumber
+        } else if let serialNumber = getSerialNumber() {
+            serialNumberField.stringValue = serialNumber
+            device.serialNumber = serialNumber
         }
+        
         // Hardware UUID
-        if let hardwareUUID = getHardwareUUID() {
+        if let hardwareUUID = device.hardwareUUID {
             hardwareUUIDField.stringValue = hardwareUUID
+        } else if let hardwareUUID = getHardwareUUID() {
+            hardwareUUIDField.stringValue = hardwareUUID
+            device.hardwareUUID = hardwareUUID
+        }
+        
+        // Enables/disables the continue button depending on the state of the Device model
+        if let modelName = device.modelName, !modelName.isEmpty, let modelIdentifier = device.modelIdentifier, !modelIdentifier.isEmpty, let modelNumber = device.modelNumber, !modelNumber.isEmpty, let serialNumber = device.serialNumber, !serialNumber.isEmpty, let hardwareUUID = device.hardwareUUID, !hardwareUUID.isEmpty {
+            continueButton.isEnabled = true
+        } else {
+            continueButton.isEnabled = false
         }
     }
     
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        
-        // Saves the provisioning data to the DeviceInfo model
-        let device = DeviceInfo.shared
-        device.modelName = modelNameField.stringValue
-        device.modelIdentifier = modelIdentifierField.stringValue
-        device.modelNumber = modelNumberField.stringValue
-        device.serialNumber = serialNumberField.stringValue
-        device.hardwareUUID = hardwareUUIDField.stringValue
-    }
+//    TODO
+//    func resetDeviceInfo() {
+//        // Model name
+//        if let modelName = getModelName() {
+//            modelNameField.stringValue = modelName
+//        }
+//        // Model identifier & model number
+//        if let modelIdentifier = getModelIdentifier() {
+//            modelIdentifierField.stringValue = modelIdentifier
+//
+//            if let modelNumber = getModelNumber(for: modelIdentifier) {
+//                modelNumberField.stringValue = modelNumber
+//            }
+//        }
+//        // Serial number
+//        if let serialNumber = getSerialNumber() {
+//            serialNumberField.stringValue = serialNumber
+//        }
+//        // Hardware UUID
+//        if let hardwareUUID = getHardwareUUID() {
+//            hardwareUUIDField.stringValue = hardwareUUID
+//        }
+//    }
     
     // Returns this device's serial number
     func getSerialNumber() -> String? {
@@ -143,6 +183,32 @@ class SystemViewController: NSViewController {
         case "MacBook10,1": return "A1534"
         
         default: return nil
+        }
+    }
+    
+    // Text field delegate methods
+    
+    func controlTextDidChange(_ obj: Notification) {
+        // Gets the value of each text field
+        let modelName = modelNameField.stringValue
+        let modelIdentifier = modelIdentifierField.stringValue
+        let modelNumber = modelNumberField.stringValue
+        let serialNumber = serialNumberField.stringValue
+        let hardwareUUID = hardwareUUIDField.stringValue
+        
+        // Saves device data to the Device model
+        let device = Device.shared
+        device.modelName = modelName
+        device.modelIdentifier = modelIdentifier
+        device.modelNumber = modelNumber
+        device.serialNumber = serialNumber
+        device.hardwareUUID = hardwareUUID
+        
+        // Enables/disables the continue button depending on the state of each text field
+        if !modelName.isEmpty && !modelIdentifier.isEmpty && !modelNumber.isEmpty && !serialNumber.isEmpty && !hardwareUUID.isEmpty {
+            continueButton.isEnabled = true
+        } else {
+            continueButton.isEnabled = false
         }
     }
     

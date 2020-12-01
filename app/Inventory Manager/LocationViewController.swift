@@ -23,26 +23,41 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         // Applies basic view styles
         setStyles()
         
-        // Disables the continue button (until the location and address are determined)
-        continueButton.isEnabled = false
-        
-        // Adds location service observers
-        let nc = NotificationCenter.default
-        // Location service status notifications
-        nc.addObserver(self, selector: #selector(authorizedStatus), name: .authorized, object: nil)
-        nc.addObserver(self, selector: #selector(deniedStatus), name: .denied, object: nil)
-        nc.addObserver(self, selector: #selector(notDeterminedStatus), name: .notDetermined, object: nil)
-        
-        // Location data notifications
-        nc.addObserver(self, selector: #selector(locationFound), name: .locationFound, object: nil)
-        nc.addObserver(self, selector: #selector(addressFound), name: .addressFound, object: nil)
-        
-        // Location error notification
-        nc.addObserver(self, selector: #selector(locationServiceError), name: .error, object: nil)
-        
-        // Requests the user's current location
-        locationService = LocationService()
-        locationService?.startUpdatingLocation()
+        if let coordinate = Location.shared.coordinate {
+            // Location known; using known location data (back button was pressed)
+            
+            // Zoom to user location
+            let viewRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
+            mapView.setRegion(viewRegion, animated: true)
+            
+            // Adds current location pin annotation
+            addAnnotation(at: coordinate)
+            
+            permissionLabel.stringValue = "Once setup has been completed this device's last known location will be reported periodically along with any changes to its location service permission status."
+        } else {
+            // Location unknown; using location service to find location data
+            
+            // Disables the continue button (until the location and address are determined)
+            continueButton.isEnabled = false
+            
+            // Adds location service observers
+            let nc = NotificationCenter.default
+            // Location service status notifications
+            nc.addObserver(self, selector: #selector(authorizedStatus), name: .authorized, object: nil)
+            nc.addObserver(self, selector: #selector(deniedStatus), name: .denied, object: nil)
+            nc.addObserver(self, selector: #selector(notDeterminedStatus), name: .notDetermined, object: nil)
+            
+            // Location data notifications
+            nc.addObserver(self, selector: #selector(locationFound), name: .locationFound, object: nil)
+            nc.addObserver(self, selector: #selector(addressFound), name: .addressFound, object: nil)
+            
+            // Location error notification
+            nc.addObserver(self, selector: #selector(locationServiceError), name: .error, object: nil)
+            
+            // Requests the user's current location
+            locationService = LocationService()
+            locationService?.startUpdatingLocation()
+        }
     }
     
     // Location service notification handlers
@@ -51,7 +66,7 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
         print("Location service status: authorized")
         
         // Location services authorized (clicked OK to allow)
-        permissionLabel.stringValue = "Once setup has been completed this device's last known location will be reported periodically."
+        permissionLabel.stringValue = "Once setup has been completed this device's last known location will be reported periodically along with any changes to its location service permission status."
         permissionLabel.textColor = NSColor.white
     }
     
@@ -74,7 +89,7 @@ class LocationViewController: NSViewController, CLLocationManagerDelegate {
     @objc func locationFound() {
         print("Location was found!")
         
-        let coordinate = LocationInfo.shared.coordinate!
+        let coordinate = Location.shared.coordinate!
         
         // Zoom to user location
         let viewRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 400, longitudinalMeters: 400)

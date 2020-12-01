@@ -9,8 +9,8 @@ import Foundation
 import CoreLocation
 
 
-class LocationInfo {
-    static let shared = LocationInfo()
+class Location {
+    static let shared = Location()
     
     private init() {}
     

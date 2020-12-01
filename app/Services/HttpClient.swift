@@ -22,18 +22,15 @@ class HttpClient {
         session.dataTask(with: request) { (data: Data?, response: URLResponse?, err: Error?) in
             guard err == nil, data != nil else {
                 // Client error
-                callback(err, nil)
-                return
+                return callback(err, nil)
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 // Server error
-                callback(err, nil)
-                return
+                return callback(err, nil)
             }
 
-            callback(nil, data)
-            return
+            return callback(nil, data)
         }.resume()
     }
     

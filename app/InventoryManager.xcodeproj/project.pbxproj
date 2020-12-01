@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D151B4C2541B78E00F17A2A /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D151B4B2541B78E00F17A2A /* LocationViewController.swift */; };
-		2D2A11472549A72000E7F57D /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A11462549A72000E7F57D /* DeviceInfo.swift */; };
+		2D2A11472549A72000E7F57D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A11462549A72000E7F57D /* Device.swift */; };
 		2D2A114D2549B78C00E7F57D /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A112B254852A100E7F57D /* FinishViewController.swift */; };
 		2D338E722559C00100FD5E1E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D338E712559C00100FD5E1E /* UserViewController.swift */; };
 		2D56C47F256702F800EBFFC4 /* com.CAInventoryManager.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D56C47E256702F800EBFFC4 /* com.CAInventoryManager.plist */; };
@@ -22,8 +22,8 @@
 		2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5725506AAF00FA5F8A /* String.extensions.swift */; };
 		2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5A25543BF400FA5F8A /* LocationService.swift */; };
 		2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */; };
-		2D8A73BC255DA54700A333C4 /* CommandLineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A73BB255DA54700A333C4 /* CommandLineService.swift */; };
-		2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BBB932549C99300B521FA /* LocationInfo.swift */; };
+		2D8BBB942549C99300B521FA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BBB932549C99300B521FA /* Location.swift */; };
+		2DFAC206256C2085005BCB24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFAC205256C2085005BCB24 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +42,7 @@
 /* Begin PBXFileReference section */
 		2D151B4B2541B78E00F17A2A /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2D2A112B254852A100E7F57D /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
-		2D2A11462549A72000E7F57D /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		2D2A11462549A72000E7F57D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D338E712559C00100FD5E1E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2D56C47E256702F800EBFFC4 /* com.CAInventoryManager.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.CAInventoryManager.plist; sourceTree = "<group>"; };
 		2D5AD1CA253F0DC3006125F7 /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +58,8 @@
 		2D69FC5725506AAF00FA5F8A /* String.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.extensions.swift; path = ../../app/Extensions/String.extensions.swift; sourceTree = "<group>"; };
 		2D69FC5A25543BF400FA5F8A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = ../../app/Services/LocationService.swift; sourceTree = "<group>"; };
 		2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.extensions.swift; path = ../../app/Extensions/Notification.extensions.swift; sourceTree = "<group>"; };
-		2D8A73BB255DA54700A333C4 /* CommandLineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineService.swift; sourceTree = "<group>"; };
-		2D8BBB932549C99300B521FA /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		2D8BBB932549C99300B521FA /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2DFAC205256C2085005BCB24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +76,9 @@
 		2D2A11492549A72500E7F57D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2D2A11462549A72000E7F57D /* DeviceInfo.swift */,
-				2D8BBB932549C99300B521FA /* LocationInfo.swift */,
+				2D2A11462549A72000E7F57D /* Device.swift */,
+				2D8BBB932549C99300B521FA /* Location.swift */,
+				2DFAC205256C2085005BCB24 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,7 +126,6 @@
 			children = (
 				2D69FC52254AF5F000FA5F8A /* HttpClient.swift */,
 				2D69FC5A25543BF400FA5F8A /* LocationService.swift */,
-				2D8A73BB255DA54700A333C4 /* CommandLineService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,17 +221,17 @@
 				2D2A114D2549B78C00E7F57D /* FinishViewController.swift in Sources */,
 				2D151B4C2541B78E00F17A2A /* LocationViewController.swift in Sources */,
 				2D338E722559C00100FD5E1E /* UserViewController.swift in Sources */,
-				2D8BBB942549C99300B521FA /* LocationInfo.swift in Sources */,
+				2D8BBB942549C99300B521FA /* Location.swift in Sources */,
 				2D5AD1E6253F0FDA006125F7 /* HomeViewController.swift in Sources */,
 				2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */,
 				2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */,
 				2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */,
+				2DFAC206256C2085005BCB24 /* User.swift in Sources */,
 				2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */,
 				2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */,
 				2D5AD1CE253F0DC3006125F7 /* AppDelegate.swift in Sources */,
-				2D2A11472549A72000E7F57D /* DeviceInfo.swift in Sources */,
+				2D2A11472549A72000E7F57D /* Device.swift in Sources */,
 				2D5AD1EB253F1A87006125F7 /* SystemViewController.swift in Sources */,
-				2D8A73BC255DA54700A333C4 /* CommandLineService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

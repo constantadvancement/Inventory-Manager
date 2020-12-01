@@ -71,7 +71,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let lastLocation = locations.last!
         
         // Saves the location data to the LocationInfo model
-        let location = LocationInfo.shared
+        let location = Location.shared
         location.coordinate = lastLocation.coordinate
         location.timestamp = convertToLocalDate(lastLocation.timestamp)
         
@@ -98,7 +98,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     func completionHandler(_ placemark: CLPlacemark) {
         // Saves the address data to the LocationInfo model
-        let location = LocationInfo.shared
+        let location = Location.shared
         location.street = placemark.name
         location.city = placemark.locality
         location.state = placemark.administrativeArea

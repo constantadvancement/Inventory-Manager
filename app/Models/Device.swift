@@ -7,8 +7,8 @@
 
 import Cocoa
 
-class DeviceInfo {
-    static let shared = DeviceInfo()
+class Device {
+    static let shared = Device()
     
     private init() {}
     
@@ -19,8 +19,6 @@ class DeviceInfo {
     var modelNumber: String?
     var serialNumber: String?
     var hardwareUUID: String?
-    
-    // Singleton functions
     
     func getInfo() -> Data? {
         var info = [String: String]()

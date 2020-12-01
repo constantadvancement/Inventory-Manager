@@ -1,0 +1,5 @@
+# Exclude node modules
+server/node_modules/*
+
+# Exclude personal developer information
+server/config/config.developer.js

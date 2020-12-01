@@ -30,8 +30,12 @@ The uninstaller will perform the following two tasks:
 
 Note: the uninstaller must be executed using sudo in order to work.
 
+### createUser.bash 
+
+TODO
+
 ### launcher.bash
 
 Helper script used by the Launcher app in order to run the CA Inventory Manager app as an administrator.
 
-This script should not be executed from outside of the Launcher app.
+This script should never be executed manually.
