@@ -3,14 +3,19 @@
 const deviceService = require('../services/device.server.service')
 
 /**
- * Registers a new device's system information
+ * Registers a new CA device. Saving this device's system information, location information, 
+ * and "holder" (the owner) to the database.
+ * 
+ * Devices are uniquely identified by their serial number. 
+ * 
+ * Returns true on success; otherwise status 500 along with the error is returned on any failure.
  */
-exports.registerDeviceInfo = async function(req, res) {
-    const body = req.body
+exports.registerDevice = async function(req, res) {
+    const info = req.body
     const opts = {
-        info: body
+        info: info
     }
-    deviceService.registerDeviceInfo(opts, (err, result) => {
+    deviceService.registerDevice(opts, (err, result) => {
         if(err) return res.status(500).send(err)
         res.status(200).send(result)
     })

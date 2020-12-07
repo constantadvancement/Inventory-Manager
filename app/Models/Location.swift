@@ -16,9 +16,12 @@ class Location {
     
     // Singleton data
     
+    var timestamp: String?
+    
     var coordinate: CLLocationCoordinate2D?
     
-    var timestamp: String?
+    var status: String?
+
     var street: String?
     var city: String?
     var state: String?
@@ -28,12 +31,17 @@ class Location {
     func getInfo() -> Data? {
         var info = [String: String]()
         
-        info["Timestamp"] = timestamp
-        info["Street"] = street
-        info["City"] = city
-        info["State"] = state
-        info["Zip"] = zip
-        info["Country"] = country
+        info["timestamp"] = timestamp
+        info["street"] = street
+        info["city"] = city
+        info["state"] = state
+        info["zip"] = zip
+        info["country"] = country
+        if let coordinate = coordinate {
+            info["latitude"] = String(coordinate.latitude)
+            info["longitude"] = String(coordinate.longitude)
+        }
+        info["status"] = status
         
         do {
             return try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)
@@ -41,5 +49,16 @@ class Location {
             print(err.localizedDescription)
             return nil
         }
+    }
+    
+    func clear() {
+        timestamp = nil
+        coordinate = nil
+        status = nil
+        street = nil
+        city = nil
+        state = nil
+        zip = nil
+        country = nil
     }
 }

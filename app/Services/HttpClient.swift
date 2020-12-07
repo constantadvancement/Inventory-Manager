@@ -27,7 +27,7 @@ class HttpClient {
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 // Server error
-                return callback(err, nil)
+                return callback(nil, nil)
             }
 
             return callback(nil, data)

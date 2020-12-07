@@ -11,8 +11,26 @@ module.exports = (sequelize, DataTypes) => {
         createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
         updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
     }, {
-        tableName: 'devices'
+        tableName: 'Devices'
     })
+
+    Device.associate = function(models) {
+        // Each device has one holder (owner)
+        models.Device.hasOne(models.Holder, {
+            foreignKey: {
+                name: 'deviceSerialNumber',
+                allowNull: false
+            }
+        })
+
+        // Each device has many location snapshots
+        models.Device.hasMany(models.Location, {
+            foreignKey: {
+                name: 'deviceSerialNumber',
+                allowNull: false
+            }
+        })
+    }
 
     return Device
 };

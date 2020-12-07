@@ -24,21 +24,33 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func startUpdatingLocation() {
+        // Clears any existing location data
+        Location.shared.clear()
+        
+        // Determines new location data
         locationManager?.startUpdatingLocation()
     }
     
     // Location manager delegate methods
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        let location = Location.shared
+        
         switch status {
         case .authorized:
             // Location services authorized
+            location.status = "authorized"
+            
             notificationCenter?.post(name: .authorized, object: nil)
         case .denied, .restricted:
             // Location services denied or restricted
+            location.status = "deniedOrRestricted"
+            
             notificationCenter?.post(name: .denied, object: nil)
         case .notDetermined:
             // Location services not determined
+            location.status = "notDetermined"
+            
             notificationCenter?.post(name: .notDetermined, object: nil)
         default:
             // This case should never occur
@@ -70,10 +82,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         // Determines the user's last reported location
         let lastLocation = locations.last!
         
-        // Saves the location data to the LocationInfo model
+        // Saves the location data to the Location model
         let location = Location.shared
         location.coordinate = lastLocation.coordinate
-        location.timestamp = convertToLocalDate(lastLocation.timestamp)
+        location.timestamp = dateToString(lastLocation.timestamp)
         
         // Location found notification
         notificationCenter?.post(name: .locationFound, object: nil)
@@ -97,7 +109,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func completionHandler(_ placemark: CLPlacemark) {
-        // Saves the address data to the LocationInfo model
+        // Saves the address data to the Location model
         let location = Location.shared
         location.street = placemark.name
         location.city = placemark.locality
@@ -111,12 +123,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     // Helpers
     
-    // Returns the specified date using this device's current time zone
-    func convertToLocalDate(_ date: Date) -> String {
+    // Returns the specified date as a string
+    func dateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.timeZone = .current
-        let localDate = dateFormatter.string(from: date)
-        return localDate
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        return dateFormatter.string(from: date)  
     }
 }

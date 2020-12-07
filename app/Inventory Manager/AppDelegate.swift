@@ -48,13 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    // Background location update methods
+    // Background location update functions
     
     @objc func pingLocation() {
         print("\nPinging location...")
         
         // Adds location service observers
         let nc = NotificationCenter.default
+        
         // Location service status notifications
         nc.addObserver(self, selector: #selector(authorizedStatus), name: .authorized, object: nil)
         nc.addObserver(self, selector: #selector(deniedStatus), name: .denied, object: nil)
@@ -75,69 +76,82 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Location service notification handlers
     
     @objc func authorizedStatus() {
-        print("Location service status authorized.")
-        
-        // TODO -- POST to server this device's location service status
+        print("Location service status authorized... Finding location...")
     }
     
     @objc func deniedStatus() {
         print("Location service status denied or restricted.")
-        
-        // TODO -- POST to server this device's location service status
+        removeObservers()
+        updateLocation()
     }
     
     @objc func notDeterminedStatus() {
         print("Location service status not determined.")
-        
-        // TODO -- POST to server this device's location service status
+        removeObservers()
+        updateLocation()
     }
     
     @objc func locationFound() {
-        print("Location was found!")
-        
-        // TODO -- POST to server new location data ... if this is being tracked
+        print("Location was found... Finding address...")
     }
     
     @objc func addressFound() {
         print("Address was found!")
-        
-        // Removes location service observers
-        let nc = NotificationCenter.default
-        // Location service error notification
-        nc.removeObserver(self, name: .error, object: nil)
-        
-        // Location service status notifications
-        nc.removeObserver(self, name: .authorized, object: nil)
-        nc.removeObserver(self, name: .denied, object: nil)
-        nc.removeObserver(self, name: .notDetermined, object: nil)
-        
-        // Location data notifications
-        nc.removeObserver(self, name: .locationFound, object: nil)
-        nc.removeObserver(self, name: .addressFound, object: nil)
-        
-        // TODO -- POST to server new address data
-        let http = HttpClient()
-        http.POST(url: "http://localhost:3000/register/device/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
-            guard err == nil else {
-                print("Server or client error has occured!")
-                // Todo handle err?
-                return
-            }
-            
-//            let defaults = UserDefaults.standard
-//            if let result = String(data: data!, encoding: .utf8)?.toBool {
-//                defaults.setValue(result, forKey: "LocationInfo")
-//                
-//                print("Got result \(result) for location info")
-//            }
-        }
+        removeObservers()
+        updateLocation()
     }
     
     @objc func locationServiceError() {
-        print("Location service error occured")
-        
-        // Removes location service observers
+        print("Location service error occured.")
+        removeObservers()
+    }
+    
+    // Helper function
+    
+    // POSTs a location update to the CA Inventory Manager web server for this device
+    func updateLocation() {
+        if let serialNumber = getSerialNumber() {
+            let http = HttpClient()
+            http.POST(url: "http://localhost:3000/update/\(serialNumber)/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
+                guard data != nil else {
+                    // Failure; a server or client error occurred
+                    print("Server or client error has occurred!")
+                    return
+                }
+                
+                if let result = String(data: data!, encoding: .utf8)?.toBool {
+                    if result {
+                        // Success; server returned true
+                        print("Success! Location was updated.")
+                        return
+                    } else {
+                        // Failure; server returned false
+                        print("Failure! Location was not updated.")
+                        return
+                    }
+                } else {
+                    // Failure; server returned any unexpected value
+                    print("Failure! Location was not updated.")
+                    return
+                }
+            }
+        }
+    }
+    
+    // Returns this device's serial number
+    func getSerialNumber() -> String? {
+        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+        guard let serialNumber = IORegistryEntryCreateCFProperty(platformExpert, "IOPlatformSerialNumber" as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? String else {
+            return nil
+        }
+        IOObjectRelease(platformExpert)
+        return serialNumber
+    }
+    
+    // Removes all location service observers
+    func removeObservers() {
         let nc = NotificationCenter.default
+        
         // Location service error notification
         nc.removeObserver(self, name: .error, object: nil)
         
