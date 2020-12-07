@@ -21,31 +21,88 @@ class FinishViewController: NSViewController {
         statusField.stringValue = "Starting setup..."
         finishButton.isEnabled = false
         
-        // Executes setup events
+        // Executes each setup event synchronously
         DispatchQueue.global(qos: .userInitiated).async { [self] in
-            appSetup() { (result) in
+            
+            // Task 1A
+            DispatchQueue.main.async { [self] in
+                statusField.stringValue = "Writing launchd plist to /Library/LaunchAgents/..."
+            }
+            writeLaunchdPlist() { (result) in
                 if result {
-                    serverSetup() { (result) in
+                    
+                    print("write plist success")
+                    
+                    // Task 1B
+                    DispatchQueue.main.async { [self] in
+                        statusField.stringValue = "Writing application bundle to /Users/Shared/CA/..."
+                    }
+                    writeApplicationBundle() { (result) in
                         if result {
+                            
+                            print("write app bundle success")
+                            
+                            // Task 2
                             DispatchQueue.main.async { [self] in
-                                statusField.stringValue = "Setup successfully completed!"
-                                alertField.stringValue = "Restart this device to start the CA Inventory Manager!"
-                                alertField.textColor = NSColor.systemRed
-                                finishButton.isEnabled = true
+                                statusField.stringValue = "Creating new admin user..."
+                            }
+                            createUser() { (result) in
+                                if result {
+                                    
+                                    print("create user success")
+                                    
+                                    // Task 3
+                                    DispatchQueue.main.async { [self] in
+                                        statusField.stringValue = "Registering device to server..."
+                                    }
+                                    registerDevice() { (result) in
+                                        if result {
+                                            
+                                            print("register device success")
+                                            
+                                            
+                                            // Success; setup is complete!
+                                            DispatchQueue.main.async { [self] in
+                                                statusField.stringValue = "Setup successfully completed!"
+                                                alertField.stringValue = "Restart this device to start the CA Inventory Manager!"
+                                                alertField.textColor = NSColor.systemRed
+                                                finishButton.isEnabled = true
+                                            }
+                                        } else {
+                                            // Failure; task 3 error
+                                            DispatchQueue.main.async { [self] in
+                                                statusField.stringValue = "Setup failed!"
+                                                alertField.stringValue = "An error occurred while attempting to register this device with the CA Inventory Manager web server. Please exit and try again!"
+                                                alertField.textColor = NSColor.systemRed
+                                                finishButton.isEnabled = true
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    // Failure; task 2 error
+                                    DispatchQueue.main.async { [self] in
+                                        statusField.stringValue = "Setup failed!"
+                                        alertField.stringValue = "An error occurred while attempting to create the new admin user. Please exit and try again!"
+                                        alertField.textColor = NSColor.systemRed
+                                        finishButton.isEnabled = true
+                                    }
+                                }
                             }
                         } else {
+                            // Failure; task 1B error
                             DispatchQueue.main.async { [self] in
-                                statusField.stringValue = "Setup failure!"
-                                alertField.stringValue = "An error occurred while attempting to register this device with the CA Inventory Manager web server. Please try again!"
+                                statusField.stringValue = "Setup failed!"
+                                alertField.stringValue = "An error occurred while attempting to write the application bundle files. Please exit and try again!"
                                 alertField.textColor = NSColor.systemRed
                                 finishButton.isEnabled = true
                             }
                         }
                     }
                 } else {
+                    // Failure; task 1A error
                     DispatchQueue.main.async { [self] in
-                        statusField.stringValue = "Setup failure!"
-                        alertField.stringValue = "An error occurred while attempting to write launchd files and/or creating the new admin user. Please try again!"
+                        statusField.stringValue = "Setup failed!"
+                        alertField.stringValue = "An error occurred while attempting to write the launchd files. Please exit and try again!"
                         alertField.textColor = NSColor.systemRed
                         finishButton.isEnabled = true
                     }
@@ -54,60 +111,19 @@ class FinishViewController: NSViewController {
         }
     }
     
-    // Task setup handlers
-    
-    func appSetup(completion: @escaping (Bool) -> ()) {
-        // Writes launchd plist to /Library/LaunchAgents/
-        DispatchQueue.main.async { [self] in
-            statusField.stringValue = "Writing launchd plist to /Library/LaunchAgents/..."
-        }
-        guard writeLaunchdPlist() else {
-            print("FAILURE - did not write plist file")
-            return completion(false)
-        }
-
-        // Writes the application bundle to /Users/Shared/CA/
-        DispatchQueue.main.async { [self] in
-            statusField.stringValue = "Writing application bundle to /Users/Shared/CA/..."
-        }
-        guard writeApplicationBundle() else {
-            print("FAILURE - did not write application bundle")
-            return completion(false)
-        }
-        
-        // Creates the new admin user
-        DispatchQueue.main.async { [self] in
-            statusField.stringValue = "Creating new admin user..."
-        }
-        guard createUser() else {
-            print("FAILURE -- did not create new user")
-            return completion(false)
-        }
-        
-        return completion(true)
-    }
-    
-    func serverSetup(completion: @escaping (Bool) -> ()) {
-        // POSTs device and location information to the server
-        DispatchQueue.main.async { [self] in
-            statusField.stringValue = "POSTing device and location information to server..."
-        }
-        POSTInformation() { (result) in
-            return completion(result)
-        }
-    }
+    // Setup Events 1A, 1B, 2, and 3...
     
     // Task 1 - Launchd setup
     
     // Task 1A - writes the launchd plist to /Library/LaunchAgents
-    func writeLaunchdPlist() -> Bool {
+    func writeLaunchdPlist(completionHandler: @escaping (Bool) -> ()) {
         // Reads launchd plist from app bundle
         guard let url = Bundle.main.url(
             forResource: "com.CAInventoryManager",
             withExtension: "plist"
         ) else {
             print("Error: no such file")
-            return false
+            return completionHandler(false)
         }
     
         do {
@@ -120,126 +136,102 @@ class FinishViewController: NSViewController {
             do {
                 // Writes the plist file to /Library/LaunchAgents
                 try data.write(to: launchAgentsDirectory)
-                return true
+                return completionHandler(true)
             } catch let error as NSError {
                 print("Error: \(error)")
-                return false
+                return completionHandler(false)
             }
         } catch let error as NSError {
             print("Error: \(error)")
-            return false
+            return completionHandler(false)
         }
     }
     
     // Task 1B - writes the application bundle to /Users/Shared/CA
-    func writeApplicationBundle() -> Bool {
+    func writeApplicationBundle(completionHandler: @escaping (Bool) -> ()) {
         // Creates a CA directory at /Users/Shared (if it does not already exist)
         let result = execute(command: "mkdir /Users/Shared/CA")
         if !result.isEmpty && !result.contains("File exists") {
             print("Error: creating /Users/Shared/CA directory")
-            return false
+            return completionHandler(false)
         }
         // Writes the application bundle to /Users/Shared/CA
         if !execute(command: "cp -r \(Bundle.main.bundlePath) /Users/Shared/CA/").isEmpty {
             print("Error: writing application bundle to /Users/Shared/CA")
-            return false
+            return completionHandler(false)
         }
-        return true
+        return completionHandler(true)
     }
     
     // Task 2 - Creating the new admin user
     
-    func createUser() -> Bool {
+    func createUser(completionHandler: @escaping (Bool) -> ()) {
         let user = User.shared
         
         // Reads user information
         let primaryGroupID = user.primaryGroupID
         guard let fullname = user.fullName, let username = user.username, let password = user.password, let uniqueID = user.uniqueID else {
-            return false
+            return completionHandler(false)
         }
         
         // Creates the new user
         if !execute(command: "dscl . -create /Users/\(username)").isEmpty {
-            print("Error: step 1")
-            return false
+            return completionHandler(false)
         }
         // Sets the new user's full name
         if !execute(command: "dscl . -create /Users/\(username) RealName \"\(fullname)\"").isEmpty {
-            print("Error: step 2")
-            return false
+            return completionHandler(false)
         }
         // Sets the new user's password
         if !execute(command: "dscl . -passwd /Users/\(username) \(password)").isEmpty {
-            print("Error: step 3")
-            return false
+            return completionHandler(false)
         }
         // Sets the new user's default shell (TODO)
         if !execute(command: "dscl . -create /Users/\(username) UserShell /bin/bash").isEmpty {
-            print("Error: step 4")
-            return false
+            return completionHandler(false)
         }
         if !execute(command: "dscl . -create /Users/\(username) UniqueID \(uniqueID)").isEmpty {
-            print("Error: step 5")
-            return false
+            return completionHandler(false)
         }
         if !execute(command: "dscl . -create /Users/\(username) PrimaryGroupID \(primaryGroupID)").isEmpty {
-            print("Error: step 6")
-            return false
+            return completionHandler(false)
         }
         if !execute(command: "dscl . -create /Users/\(username) NFSHomeDirectory /Users/\(username)").isEmpty {
-            print("Error: step 7")
-            return false
+            return completionHandler(false)
         }
-        
-        return true
+        return completionHandler(true)
     }
     
-    // Task 3 - POST device and location information to server (synchronously)
+    // Task 3 - Register this device with the CA Inventory Manager web server
     
-    func POSTInformation(completion: @escaping (Bool) -> ()) {
+    func registerDevice(completionHandler: @escaping (Bool) -> ()) {
         let http = HttpClient()
-        
-        // Device information
-        http.POST(url: "http://localhost:3000/register/device/info", body: Device.shared.getInfo()) { (err: Error?, data: Data?) in
-            guard err == nil else {
+        http.POST(url: "http://localhost:3000/register/device", body: info()) { (err: Error?, data: Data?) in
+            guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
-                return completion(false)
+                return completionHandler(false)
             }
-
-            // TODO result from registering device info might instead be its registration ID so that the location POST can use this value to correlate both POSTs to the same device
+            
             if let result = String(data: data!, encoding: .utf8)?.toBool {
-                print("Got result \(result) when POSTing device information")
-                
                 if result {
-                    // Location information
-                    http.POST(url: "http://localhost:3000/register/device/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
-                        guard err == nil else {
-                            // Failure; a server or client error occurred
-                            print("Server or client error has occurred!")
-                            return completion(false)
-                        }
-
-                        if let result = String(data: data!, encoding: .utf8)?.toBool {
-                            print("Got result \(result) when POSTing location information")
-                            
-                            if result {
-                                return completion(true)
-                            } else {
-                                // Failure; server returned false (or a non-boolean value)
-                                return completion(false)
-                            }
-                        }
-                    }
+                    // Success; server returned true
+                    print("Success! Device was registered.")
+                    return completionHandler(true)
                 } else {
-                    // Failure; server returned false (or a non-boolean value)
-                    return completion(false)
+                    // Failure; server returned false
+                    print("Failure! Device was not registered.")
+                    return completionHandler(false)
                 }
+            } else {
+                // Failure; server returned any unexpected value
+                print("Failure! Device was not registered.")
+                return completionHandler(false)
             }
         }
     }
-    
-    // Helper function
+        
+    // Helper functions
     
     func execute(command: String) -> String {
         var arguments:[String] = []
@@ -260,13 +252,46 @@ class FinishViewController: NSViewController {
         return String(data: data, encoding: .utf8)!
     }
     
-    // Navigation button actions
-    
-    @IBAction func backButton(_ sender: Any) {
-        if let controller = self.storyboard?.instantiateController(withIdentifier: "UserViewController") as? UserViewController {
-            self.view.window?.contentViewController = controller
+    func info() -> Data? {
+        // Data models
+        let device = Device.shared
+        let location = Location.shared
+        let user = User.shared
+        
+        var info = [String: String]()
+        
+        // Device info
+        info["modelName"] = device.modelName
+        info["modelIdentifier"] = device.modelIdentifier
+        info["modelNumber"] = device.modelNumber
+        info["serialNumber"] = device.serialNumber
+        info["hardwareUUID"] = device.hardwareUUID
+        
+        // Location info
+        info["timestamp"] = location.timestamp
+        info["street"] = location.street
+        info["city"] = location.city
+        info["state"] = location.state
+        info["zip"] = location.zip
+        info["country"] = location.country
+        if let coordinate = location.coordinate {
+            info["latitude"] = String(coordinate.latitude)
+            info["longitude"] = String(coordinate.longitude)
+        }
+        info["status"] = location.status
+        
+        // User info
+        info["name"] = user.fullName
+        
+        do {
+            return try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)
+        } catch let err {
+            print(err.localizedDescription)
+            return nil
         }
     }
+    
+    // Navigation button actions
     
     @IBAction func finishButton(_ sender: Any) {
         // Terminates the application

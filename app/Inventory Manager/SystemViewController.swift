@@ -78,30 +78,6 @@ class SystemViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-//    TODO
-//    func resetDeviceInfo() {
-//        // Model name
-//        if let modelName = getModelName() {
-//            modelNameField.stringValue = modelName
-//        }
-//        // Model identifier & model number
-//        if let modelIdentifier = getModelIdentifier() {
-//            modelIdentifierField.stringValue = modelIdentifier
-//
-//            if let modelNumber = getModelNumber(for: modelIdentifier) {
-//                modelNumberField.stringValue = modelNumber
-//            }
-//        }
-//        // Serial number
-//        if let serialNumber = getSerialNumber() {
-//            serialNumberField.stringValue = serialNumber
-//        }
-//        // Hardware UUID
-//        if let hardwareUUID = getHardwareUUID() {
-//            hardwareUUIDField.stringValue = hardwareUUID
-//        }
-//    }
-    
     // Returns this device's serial number
     func getSerialNumber() -> String? {
         let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice"))

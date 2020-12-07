@@ -3,14 +3,19 @@
 const locationService = require('../services/location.server.service')
 
 /**
- * Registers a new device's current location at the time of setup
+ * Updates the specified device's location. This includes its address, coordinates, 
+ * location permission status, and a timestamp. 
+ * 
+ * Returns true on success; otherwise status 500 along with the error is returned on any failure.
  */
-exports.registerLocationInfo = async function(req, res) {
-    const body = req.body
+exports.updateLocation = async function(req, res) {
+    const serialNumber = req.params.serialNumber
+    const info = req.body
     const opts = {
-        info: body
+        serialNumber: serialNumber,
+        info: info
     }
-    locationService.registerLocationInfo(opts, (err, result) => {
+    locationService.updateLocation(opts, (err, result) => {
         if(err) return res.status(500).send(err)
         res.status(200).send(result)
     })

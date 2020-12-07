@@ -23,11 +23,11 @@ class Device {
     func getInfo() -> Data? {
         var info = [String: String]()
         
-        info["Model Name"] = modelName
-        info["Model Identifier"] = modelIdentifier
-        info["Model Number"] = modelNumber
-        info["Serial Number"] = serialNumber
-        info["Hardware UUID"] = hardwareUUID
+        info["modelName"] = modelName
+        info["modelIdentifier"] = modelIdentifier
+        info["modelNumber"] = modelNumber
+        info["serialNumber"] = serialNumber
+        info["hardwareUUID"] = hardwareUUID
         
         do {
             return try JSONSerialization.data(withJSONObject: info, options: .prettyPrinted)

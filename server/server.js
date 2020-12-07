@@ -1,6 +1,6 @@
 'use strict'
 
-const config = require('./config/config')
+const config = require('./config/config.developer')
 const port = config.port
 
 const express = require('./config/express')
