@@ -1,5 +1,9 @@
 require('dotenv').config()
 
+/**
+ * Database migrations configuration file
+ */
+
 module.exports = {
   development: {
     username: process.env.DB_USER,

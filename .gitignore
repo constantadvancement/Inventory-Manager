@@ -1,4 +1,3 @@
 server/node_modules/*
 
-server/config/config.developer.js
 .env
