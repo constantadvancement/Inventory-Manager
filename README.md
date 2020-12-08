@@ -6,7 +6,7 @@ Last updated on 12/08/20
 
 The main CA Inventory Manager app. The app can launch in one of two modes, "setup" mode or "background" mode. 
 
-In "setup" mode the user will be presented with a user interface which will be used to complete three initial setup tasks. These tasks appear in the following order: provisioning device system information, granting location service authorization, and finally creating a new admin user. Once each task is complete all relevant information will be submitted to the CA Inventory Manager web server. At this point, setup has been completed and the device should be restarted in order for the CA Inventory Tracker to automatically begin in "background" mode.
+In "setup" mode the user will be presented with a user interface which will be used to complete three initial setup tasks. These tasks appear in the following order: provisioning device system information, granting location service authorization, and finally creating a new admin user. Once each task is complete all relevant information will be submitted to the CA Inventory Manager web server. At this point, setup is complete and the device should be restarted in order for the CA Inventory Tracker to automatically begin in "background" mode.
 
 In "background" mode the app will have no user interface components and instead serves only to update this devices location on the CA Inventory Manager web server within a scheduled time interval. If the location service authorization status changes at any pont this will be reported to the CA Inventory Manager web server. 
 
