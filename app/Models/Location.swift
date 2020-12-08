@@ -28,6 +28,8 @@ class Location {
     var zip: String?
     var country: String?
     
+    // Singleton functions
+    
     func getInfo() -> Data? {
         var info = [String: String]()
         

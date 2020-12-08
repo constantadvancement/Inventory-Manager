@@ -2,6 +2,14 @@
 
 Last updated on 12/08/20
 
+## Getting Started
+
+To setup a device within the CA Inventory Management System perform the following three steps.
+
+First, download this entire project directory. Then, execute the Launcher app. Finally, follow and complete all of the setup instructions. Done.
+
+Optionally, after setup has been completed you may choose to delete this downloaded project directory as it is no longer needed.
+
 ## InventoryManager.app
 
 The main CA Inventory Manager app. The app can launch in one of two modes, "setup" mode or "background" mode. 

@@ -3,15 +3,16 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 
-// server configuration
+// Server Configuration
 module.exports = () => {
     const app = express()
 
-    // parses requests and puts them into a nice object
+    // Helps parse requests
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended: true}))
 
-    // routes
+    // Routes
+    require('../routes/status.server.routes') (app)
     require('../routes/device.server.routes') (app)
     require('../routes/location.server.routes') (app)
 

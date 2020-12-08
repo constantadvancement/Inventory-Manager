@@ -20,6 +20,8 @@ class Device {
     var serialNumber: String?
     var hardwareUUID: String?
     
+    // Singleton functions
+    
     func getInfo() -> Data? {
         var info = [String: String]()
         

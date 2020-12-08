@@ -112,7 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateLocation() {
         if let serialNumber = getSerialNumber() {
             let http = HttpClient()
-            http.POST(url: "http://localhost:3000/update/\(serialNumber)/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
+            http.POST(url: "\(Endpoints.production)/update/\(serialNumber)/location", body: Location.shared.getInfo()) { (err: Error?, data: Data?) in
                 guard data != nil else {
                     // Failure; a server or client error occurred
                     print("Server or client error has occurred!")

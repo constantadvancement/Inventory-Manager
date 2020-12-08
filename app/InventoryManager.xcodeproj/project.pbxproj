@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D151B4C2541B78E00F17A2A /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D151B4B2541B78E00F17A2A /* LocationViewController.swift */; };
+		2D1FF0D7257FE37500C1112B /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1FF0D6257FE37500C1112B /* Endpoints.swift */; };
 		2D2A11472549A72000E7F57D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A11462549A72000E7F57D /* Device.swift */; };
 		2D2A114D2549B78C00E7F57D /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2A112B254852A100E7F57D /* FinishViewController.swift */; };
 		2D338E722559C00100FD5E1E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D338E712559C00100FD5E1E /* UserViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		2D151B4B2541B78E00F17A2A /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		2D1FF0D6257FE37500C1112B /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		2D2A112B254852A100E7F57D /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		2D2A11462549A72000E7F57D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D338E712559C00100FD5E1E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D1FF0D5257FE36600C1112B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FF0D6257FE37500C1112B /* Endpoints.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2D2A11492549A72500E7F57D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		2D5AD1C1253F0DC3006125F7 = {
 			isa = PBXGroup;
 			children = (
+				2D1FF0D5257FE36600C1112B /* Constants */,
 				2D69FC5625506A9A00FA5F8A /* Extensions */,
 				2D69FC51254AF5B500FA5F8A /* Services */,
 				2D2A11492549A72500E7F57D /* Models */,
@@ -226,6 +237,7 @@
 				2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */,
 				2D69FC53254AF5F000FA5F8A /* HttpClient.swift in Sources */,
 				2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */,
+				2D1FF0D7257FE37500C1112B /* Endpoints.swift in Sources */,
 				2DFAC206256C2085005BCB24 /* User.swift in Sources */,
 				2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */,
 				2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */,

@@ -31,16 +31,12 @@ class FinishViewController: NSViewController {
             writeLaunchdPlist() { (result) in
                 if result {
                     
-                    print("write plist success")
-                    
                     // Task 1B
                     DispatchQueue.main.async { [self] in
                         statusField.stringValue = "Writing application bundle to /Users/Shared/CA/..."
                     }
                     writeApplicationBundle() { (result) in
                         if result {
-                            
-                            print("write app bundle success")
                             
                             // Task 2
                             DispatchQueue.main.async { [self] in
@@ -49,17 +45,12 @@ class FinishViewController: NSViewController {
                             createUser() { (result) in
                                 if result {
                                     
-                                    print("create user success")
-                                    
                                     // Task 3
                                     DispatchQueue.main.async { [self] in
                                         statusField.stringValue = "Registering device to server..."
                                     }
                                     registerDevice() { (result) in
                                         if result {
-                                            
-                                            print("register device success")
-                                            
                                             
                                             // Success; setup is complete!
                                             DispatchQueue.main.async { [self] in
@@ -111,7 +102,7 @@ class FinishViewController: NSViewController {
         }
     }
     
-    // Setup Events 1A, 1B, 2, and 3...
+    // Setup Events
     
     // Task 1 - Launchd setup
     
@@ -178,15 +169,12 @@ class FinishViewController: NSViewController {
         if !execute(command: "dscl . -create /Users/\(username)").isEmpty {
             return completionHandler(false)
         }
-        // Sets the new user's full name
         if !execute(command: "dscl . -create /Users/\(username) RealName \"\(fullname)\"").isEmpty {
             return completionHandler(false)
         }
-        // Sets the new user's password
         if !execute(command: "dscl . -passwd /Users/\(username) \(password)").isEmpty {
             return completionHandler(false)
         }
-        // Sets the new user's default shell (TODO)
         if !execute(command: "dscl . -create /Users/\(username) UserShell /bin/bash").isEmpty {
             return completionHandler(false)
         }
@@ -206,7 +194,7 @@ class FinishViewController: NSViewController {
     
     func registerDevice(completionHandler: @escaping (Bool) -> ()) {
         let http = HttpClient()
-        http.POST(url: "http://localhost:3000/register/device", body: info()) { (err: Error?, data: Data?) in
+        http.POST(url: "\(Endpoints.production)/register/device", body: info()) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
