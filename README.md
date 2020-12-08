@@ -32,7 +32,7 @@ The uninstaller will perform the following two tasks:
 1. Removes the CA Inventory Manager launchd job and all of its supporting files/directories that enable it. This launchd job allows the CA Inventory Manager app to periodically ping this device for its location. Once removed this will no longer occur.
 2. Permanently deletes the specified user. This should be the user created by the CA Inventory Manager app. Be careful not to delete the wrong user. This step can also be performed manually by navigating to System Preferences > Users & Groups.
 
-Note: the uninstaller must be executed using sudo in order to work.
+Note: the uninstaller must be executed using `sudo` in order to work.
 
 ### createUser.bash 
 
