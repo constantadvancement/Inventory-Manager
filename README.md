@@ -22,9 +22,13 @@ In "background" mode the app will have no user interface components and instead 
 
 Automator app used to launch the CA Inventory Manager app as an administrator during the initial setup process.
 
-## App
+## app-iOS 
 
-Contains all files for the CA Inventory Manager app.
+Contains all files for the iOS CA Inventory Manager interface app.
+
+## app-macOS
+
+Contains all files for the macOS CA Inventory Manager setup/background app.
 
 ## Server
 

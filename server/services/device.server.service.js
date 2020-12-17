@@ -23,8 +23,8 @@ exports.registerDevice = async function(opts, callback) {
     }
 
     const locationData = {
-        status: opts.info.status,
         timestamp: opts.info.timestamp,
+        status: opts.info.status,
         street: opts.info.street,
         city: opts.info.city,
         state: opts.info.state,
@@ -35,7 +35,9 @@ exports.registerDevice = async function(opts, callback) {
     }
 
     const holderData = {
-        name: opts.info.name
+        name: opts.info.name,
+        email: opts.info.email,
+        phone: opts.info.phone
     }
 
     try {
@@ -63,4 +65,55 @@ exports.registerDevice = async function(opts, callback) {
     }
 }
 
+/**
+ * Gets all registered inventory. Each inventory record will be the combined reference between
+ * the Device, Location, and Holder models. 
+ * 
+ * Note: only the most recent location will be reported for each device (not its entire location history)
+ * 
+ * Returns a list of each registered inventory record on success.
+ */
+exports.getInventory = async function(opts, callback) {
+    console.log("Getting inventory...")
 
+    try {
+        let inventoryList = []
+
+        // Gets a list of all registered devices
+        const devices = await models.Device.findAll({ 
+            attributes: { exclude: ['createdAt', 'updatedAt'] },
+            nest: true, raw: true 
+        })
+
+        for(const device of devices) {
+            // Gets this device's holder
+            const holder = await models.Holder.findOne({
+                where: { deviceSerialNumber: device.serialNumber },
+                attributes: { exclude: ['id', 'deviceSerialNumber', 'createdAt', 'updatedAt'] },
+                nest: true, raw: true
+            })
+
+            // Gets this device's (most recent) location
+            const location = await models.Location.findAll({
+                limit: 1,
+                order: [[ 'timestamp', 'DESC' ]],
+                where: { deviceSerialNumber: device.serialNumber },
+                attributes: { exclude: ['id', 'deviceSerialNumber', 'createdAt', 'updatedAt'] },
+                nest: true, raw: true
+            })
+
+            // Adds this device's information to the inventory list
+            inventoryList.push({
+                device: device,
+                holder: holder,
+                location: location[0]
+            })
+        }
+
+        console.log(inventoryList)
+
+        callback(null, inventoryList)
+    } catch (error) {
+        callback(error, null)
+    }
+}

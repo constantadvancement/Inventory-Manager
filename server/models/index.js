@@ -9,6 +9,9 @@ const basename = path.basename(__filename)
 const config = require('../config/config.server')
 const db = {}
 
+// TODO -- remove (for testing)
+// 'CAInventoryManager', 'root', 'bracara12', { host: 'localhost', dialect: 'mysql', logging: false, }
+
 const sequelize = new Sequelize(
     config.mysqlInfo.database, 
     config.mysqlInfo.username, 

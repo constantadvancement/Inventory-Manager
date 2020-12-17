@@ -20,3 +20,19 @@ exports.registerDevice = async function(req, res) {
         res.status(200).send(result)
     })
 }
+
+/**
+ * Gets all registered inventory. Each inventory record will be the combined reference between
+ * the Device, Location, and Holder models. 
+ * 
+ * Note: only the most recent location will be reported for each device (not its entire location history)
+ * 
+ * Returns a list of each registered inventory record on success; otherwise status 500 allong with the
+ * error is returned on any failure.
+ */
+exports.getInventory = async function(req, res) {
+    deviceService.getInventory(null, (err, inventory) => {
+        if(err) return res.status(500).send(err)
+        res.status(200).send(inventory)
+    })
+}

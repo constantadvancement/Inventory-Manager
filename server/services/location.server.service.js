@@ -1,7 +1,5 @@
 'use strict'
 
-const moment = require('moment')
-
 // Models
 const models = require('../models')
 
@@ -18,8 +16,8 @@ exports.updateLocation = async function(opts, callback) {
     console.log("Updating location...")
 
     const locationData = {
-        status: opts.info.status,
         timestamp: opts.info.timestamp,
+        status: opts.info.status,
         street: opts.info.street,
         city: opts.info.city,
         state: opts.info.state,
