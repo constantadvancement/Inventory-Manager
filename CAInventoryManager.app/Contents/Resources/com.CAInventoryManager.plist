@@ -5,7 +5,7 @@
 	<key>Label</key>
 	<string>com.CAInventoryManager.plist</string>
 	<key>Program</key>
-	<string>/Users/Shared/CA/InventoryManager.app/Contents/MacOS/InventoryManager</string>
+	<string>/Users/Shared/CA/CAInventoryManager.app/Contents/MacOS/CAInventoryManager</string>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>KeepAlive</key>

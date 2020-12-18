@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Devices', {
-      serialNumber: { type: Sequelize.STRING, primaryKey: true, allowNull: false },
+      serialNumber: { type: Sequelize.STRING(32), primaryKey: true, allowNull: false },
 
       modelName: { type: Sequelize.STRING, allowNull: false },
       modelIdentifier: { type: Sequelize.STRING, allowNull: false },

@@ -352,8 +352,6 @@ echo $?</string>
 				</array>
 				<key>arguments</key>
 				<dict/>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -367,19 +365,19 @@ echo $?</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>2F4895A0-5BB2-48F8-9766-0E4B156456E4</key>
-		<dict>
-			<key>from</key>
-			<string>4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4 - 4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4</string>
-			<key>to</key>
-			<string>FAE3BDAC-0003-449A-B408-6DD985C94C82 - FAE3BDAC-0003-449A-B408-6DD985C94C82</string>
-		</dict>
-		<key>4D85E2A1-7983-4BED-81C9-5C317D39C7B4</key>
+		<key>CC885173-11FF-4B08-BB88-066C673AAC80</key>
 		<dict>
 			<key>from</key>
 			<string>3E4ED27F-945F-4818-8A3E-0C9074C05454 - 3E4ED27F-945F-4818-8A3E-0C9074C05454</string>
 			<key>to</key>
 			<string>4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4 - 4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4</string>
+		</dict>
+		<key>EC8CAEC8-7A80-44B4-99E3-3619F37004B5</key>
+		<dict>
+			<key>from</key>
+			<string>4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4 - 4312A66A-35B4-45AC-BB3A-AB8D5BE2A6A4</string>
+			<key>to</key>
+			<string>FAE3BDAC-0003-449A-B408-6DD985C94C82 - FAE3BDAC-0003-449A-B408-6DD985C94C82</string>
 		</dict>
 	</dict>
 	<key>workflowMetaData</key>

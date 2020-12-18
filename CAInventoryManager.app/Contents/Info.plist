@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>InventoryManager</string>
+	<string>CAInventoryManager</string>
 	<key>CFBundleIdentifier</key>
 	<string>Ryan-Mackin.Inventory-Manager</string>
 	<key>CFBundleInfoDictionaryVersion</key>

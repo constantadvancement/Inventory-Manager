@@ -351,7 +351,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="InventoryManager" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CAInventoryManager" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -360,7 +360,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="MainWindow" id="B8D-0N-5wS" customClass="WindowController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MainWindow" id="B8D-0N-5wS" customClass="WindowController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="CA InventoryManager Setup" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -383,7 +383,7 @@
         <!--Home View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="XfG-lQ-9wD" customClass="HomeViewController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="XfG-lQ-9wD" customClass="HomeViewController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="650" height="449"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -490,7 +490,7 @@
         <!--System View Controller-->
         <scene sceneID="Uee-9x-R7c">
             <objects>
-                <viewController storyboardIdentifier="SystemViewController" id="mPh-iq-Suv" customClass="SystemViewController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SystemViewController" id="mPh-iq-Suv" customClass="SystemViewController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q0w-Re-BsD">
                         <rect key="frame" x="0.0" y="0.0" width="650" height="449"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -683,7 +683,7 @@
         <!--Location View Controller-->
         <scene sceneID="WiF-MD-C1Y">
             <objects>
-                <viewController storyboardIdentifier="LocationViewController" id="OpR-mq-HIg" customClass="LocationViewController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationViewController" id="OpR-mq-HIg" customClass="LocationViewController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Vg1-sX-aND">
                         <rect key="frame" x="0.0" y="0.0" width="650" height="449"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -771,7 +771,7 @@
         <!--Finish View Controller-->
         <scene sceneID="XqY-IP-JhA">
             <objects>
-                <viewController storyboardIdentifier="FinishViewController" id="otX-fS-PbR" customClass="FinishViewController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinishViewController" id="otX-fS-PbR" customClass="FinishViewController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="z0Z-gY-vbN">
                         <rect key="frame" x="0.0" y="0.0" width="650" height="449"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -852,15 +852,15 @@
         <!--User View Controller-->
         <scene sceneID="Lr0-00-bf5">
             <objects>
-                <viewController storyboardIdentifier="UserViewController" id="7xF-2Z-dCy" customClass="UserViewController" customModule="InventoryManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserViewController" id="7xF-2Z-dCy" customClass="UserViewController" customModule="CAInventoryManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qfV-Og-DZs">
                         <rect key="frame" x="0.0" y="0.0" width="650" height="449"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6y-fm-ZKI">
-                                <rect key="frame" x="24" y="4" width="95" height="32"/>
+                                <rect key="frame" x="24" y="20" width="95" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="eCu-yz-1E7"/>
+                                    <constraint firstAttribute="width" constant="83" id="IdB-ry-i02"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="B6S-0c-rhX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -871,9 +871,9 @@
                                 </connections>
                             </button>
                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qWA-No-VCg" userLabel="Finish">
-                                <rect key="frame" x="531" y="4" width="95" height="32"/>
+                                <rect key="frame" x="531" y="20" width="95" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="Jum-Fr-ChD"/>
+                                    <constraint firstAttribute="width" constant="83" id="E2u-AJ-gcn"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Finish" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="V4A-Zy-xyp" userLabel="Finish">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -960,7 +960,7 @@
                             <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpo-CS-8Ol">
                                 <rect key="frame" x="28" y="134" width="97" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="27N-vb-IAE"/>
+                                    <constraint firstAttribute="width" constant="93" id="sw2-fv-NQw"/>
                                 </constraints>
                                 <buttonCell key="cell" type="check" title="Create User" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="vIr-Jo-voS">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -991,37 +991,37 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="4b9-kK-oF2" firstAttribute="leading" secondItem="O54-ZQ-C4v" secondAttribute="leading" id="0qH-V5-2lc"/>
-                            <constraint firstItem="L6y-fm-ZKI" firstAttribute="baseline" secondItem="qWA-No-VCg" secondAttribute="baseline" id="5rc-u9-GsD"/>
-                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="top" secondItem="4b9-kK-oF2" secondAttribute="bottom" constant="25" id="6p3-B1-3kc"/>
-                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="top" secondItem="qfV-Og-DZs" secondAttribute="top" constant="30" id="7Hg-NB-GPT"/>
-                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="leading" secondItem="L6y-fm-ZKI" secondAttribute="leading" id="8LU-yW-JCs"/>
-                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="trailing" secondItem="1YA-mm-Nwh" secondAttribute="trailing" id="8l9-Oc-LZq"/>
-                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="top" secondItem="vpo-CS-8Ol" secondAttribute="bottom" constant="10" id="B5z-BP-fnA"/>
-                            <constraint firstItem="Zwm-h0-3gI" firstAttribute="bottom" secondItem="1YA-mm-Nwh" secondAttribute="bottom" id="BJ9-bR-HnB"/>
-                            <constraint firstItem="Sjr-sw-YTD" firstAttribute="leading" secondItem="Zwm-h0-3gI" secondAttribute="leading" id="BYa-lI-HGg"/>
-                            <constraint firstItem="YoX-IZ-cXN" firstAttribute="bottom" secondItem="4b9-kK-oF2" secondAttribute="bottom" id="FHG-hk-94X"/>
-                            <constraint firstItem="Sjr-sw-YTD" firstAttribute="bottom" secondItem="O54-ZQ-C4v" secondAttribute="bottom" id="JHP-DJ-4mp"/>
-                            <constraint firstItem="4b9-kK-oF2" firstAttribute="trailing" secondItem="O54-ZQ-C4v" secondAttribute="trailing" id="KAY-k9-frQ"/>
-                            <constraint firstItem="FB7-a7-ofu" firstAttribute="trailing" secondItem="4b9-kK-oF2" secondAttribute="trailing" id="NZq-MV-8fh"/>
-                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="trailing" secondItem="7QL-sa-73Z" secondAttribute="trailing" id="P5z-1J-Lq6"/>
-                            <constraint firstItem="vpo-CS-8Ol" firstAttribute="top" secondItem="Zwm-h0-3gI" secondAttribute="bottom" constant="25" id="PaT-g4-IZf"/>
-                            <constraint firstItem="vpo-CS-8Ol" firstAttribute="leading" secondItem="Ea7-xd-OGS" secondAttribute="leading" id="TNp-Mr-Iyj"/>
-                            <constraint firstItem="FB7-a7-ofu" firstAttribute="top" secondItem="ZqP-B5-NS4" secondAttribute="bottom" constant="25" id="Tlm-ku-mSd"/>
-                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="leading" secondItem="qfV-Og-DZs" secondAttribute="leading" constant="30" id="Uzh-V3-IbP"/>
-                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="bottom" secondItem="7QL-sa-73Z" secondAttribute="bottom" id="Wa4-9U-rnP"/>
-                            <constraint firstItem="L6y-fm-ZKI" firstAttribute="top" secondItem="Ea7-xd-OGS" secondAttribute="bottom" constant="78" id="ZN8-lw-7PF"/>
-                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="leading" secondItem="Zwm-h0-3gI" secondAttribute="trailing" constant="14" id="ZjZ-EV-06O"/>
-                            <constraint firstItem="Zwm-h0-3gI" firstAttribute="leading" secondItem="vpo-CS-8Ol" secondAttribute="leading" id="bqc-VN-qex"/>
-                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="top" secondItem="O54-ZQ-C4v" secondAttribute="bottom" constant="25" id="eRb-b3-KFO"/>
-                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="leading" secondItem="1YA-mm-Nwh" secondAttribute="leading" id="gAo-D0-tVm"/>
-                            <constraint firstItem="FB7-a7-ofu" firstAttribute="leading" secondItem="YoX-IZ-cXN" secondAttribute="leading" id="gGV-1F-dSX"/>
-                            <constraint firstItem="FB7-a7-ofu" firstAttribute="centerX" secondItem="qfV-Og-DZs" secondAttribute="centerX" id="jQu-bC-ylc"/>
-                            <constraint firstItem="YoX-IZ-cXN" firstAttribute="leading" secondItem="Sjr-sw-YTD" secondAttribute="leading" id="kIb-5W-K6g"/>
-                            <constraint firstItem="4b9-kK-oF2" firstAttribute="top" secondItem="FB7-a7-ofu" secondAttribute="bottom" constant="25" id="oyo-JD-nyc"/>
-                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="leading" secondItem="FB7-a7-ofu" secondAttribute="leading" id="rWd-P4-s2r"/>
-                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="leading" secondItem="7QL-sa-73Z" secondAttribute="leading" id="ukc-fY-vNo"/>
-                            <constraint firstItem="7QL-sa-73Z" firstAttribute="trailing" secondItem="qWA-No-VCg" secondAttribute="trailing" id="z1w-jr-ezi"/>
+                            <constraint firstItem="L6y-fm-ZKI" firstAttribute="baseline" secondItem="qWA-No-VCg" secondAttribute="baseline" id="1OS-U3-aSg"/>
+                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="top" secondItem="qfV-Og-DZs" secondAttribute="top" constant="30" id="4Ix-g4-phW"/>
+                            <constraint firstItem="7QL-sa-73Z" firstAttribute="trailing" secondItem="qWA-No-VCg" secondAttribute="trailing" id="4nW-wh-U6d"/>
+                            <constraint firstItem="YoX-IZ-cXN" firstAttribute="bottom" secondItem="4b9-kK-oF2" secondAttribute="bottom" id="6M4-Ti-HAR"/>
+                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="leading" secondItem="1YA-mm-Nwh" secondAttribute="leading" id="6lN-os-xyl"/>
+                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="leading" secondItem="Zwm-h0-3gI" secondAttribute="trailing" constant="14" id="8JA-mA-MYR"/>
+                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="trailing" secondItem="7QL-sa-73Z" secondAttribute="trailing" id="8YG-sa-KCF"/>
+                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="trailing" secondItem="1YA-mm-Nwh" secondAttribute="trailing" id="EfW-8L-qYO"/>
+                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="bottom" secondItem="7QL-sa-73Z" secondAttribute="bottom" id="Fbn-Qd-mLB"/>
+                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="top" secondItem="vpo-CS-8Ol" secondAttribute="bottom" constant="10" id="JAa-gj-KZk"/>
+                            <constraint firstItem="FB7-a7-ofu" firstAttribute="leading" secondItem="YoX-IZ-cXN" secondAttribute="leading" id="JJP-2J-OTo"/>
+                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="leading" secondItem="FB7-a7-ofu" secondAttribute="leading" id="JPE-HK-TcR"/>
+                            <constraint firstItem="L6y-fm-ZKI" firstAttribute="top" secondItem="Ea7-xd-OGS" secondAttribute="bottom" constant="62" id="Nnw-Al-ieF"/>
+                            <constraint firstItem="FB7-a7-ofu" firstAttribute="centerX" secondItem="qfV-Og-DZs" secondAttribute="centerX" id="P8W-Hc-juX"/>
+                            <constraint firstItem="YoX-IZ-cXN" firstAttribute="leading" secondItem="Sjr-sw-YTD" secondAttribute="leading" id="Pfe-Lu-PgK"/>
+                            <constraint firstItem="4b9-kK-oF2" firstAttribute="trailing" secondItem="O54-ZQ-C4v" secondAttribute="trailing" id="RGp-cQ-AfY"/>
+                            <constraint firstItem="Sjr-sw-YTD" firstAttribute="leading" secondItem="Zwm-h0-3gI" secondAttribute="leading" id="UZR-az-BH7"/>
+                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="top" secondItem="O54-ZQ-C4v" secondAttribute="bottom" constant="25" id="ZyC-qQ-O0x"/>
+                            <constraint firstItem="FB7-a7-ofu" firstAttribute="top" secondItem="ZqP-B5-NS4" secondAttribute="bottom" constant="25" id="b1D-wx-Xkw"/>
+                            <constraint firstItem="vpo-CS-8Ol" firstAttribute="top" secondItem="Zwm-h0-3gI" secondAttribute="bottom" constant="25" id="dtf-ZP-8dt"/>
+                            <constraint firstItem="Sjr-sw-YTD" firstAttribute="bottom" secondItem="O54-ZQ-C4v" secondAttribute="bottom" id="fRj-Gm-v4h"/>
+                            <constraint firstItem="FB7-a7-ofu" firstAttribute="trailing" secondItem="4b9-kK-oF2" secondAttribute="trailing" id="fnK-HY-sb4"/>
+                            <constraint firstItem="Zwm-h0-3gI" firstAttribute="bottom" secondItem="1YA-mm-Nwh" secondAttribute="bottom" id="hYu-uR-SWg"/>
+                            <constraint firstItem="Ea7-xd-OGS" firstAttribute="leading" secondItem="L6y-fm-ZKI" secondAttribute="leading" id="jH7-f1-5DJ"/>
+                            <constraint firstItem="vpo-CS-8Ol" firstAttribute="leading" secondItem="Ea7-xd-OGS" secondAttribute="leading" id="jZ2-ax-ufk"/>
+                            <constraint firstItem="O54-ZQ-C4v" firstAttribute="top" secondItem="4b9-kK-oF2" secondAttribute="bottom" constant="25" id="kSC-IM-JQk"/>
+                            <constraint firstItem="Zwm-h0-3gI" firstAttribute="leading" secondItem="vpo-CS-8Ol" secondAttribute="leading" id="mwT-8W-OsT"/>
+                            <constraint firstItem="4b9-kK-oF2" firstAttribute="top" secondItem="FB7-a7-ofu" secondAttribute="bottom" constant="25" id="omy-dm-0ka"/>
+                            <constraint firstItem="1YA-mm-Nwh" firstAttribute="leading" secondItem="7QL-sa-73Z" secondAttribute="leading" id="qaW-Ct-Vhi"/>
+                            <constraint firstItem="ZqP-B5-NS4" firstAttribute="leading" secondItem="qfV-Og-DZs" secondAttribute="leading" constant="30" id="t2S-9S-7Pw"/>
+                            <constraint firstItem="4b9-kK-oF2" firstAttribute="leading" secondItem="O54-ZQ-C4v" secondAttribute="leading" id="yt8-Mi-2IT"/>
                         </constraints>
                     </view>
                     <connections>

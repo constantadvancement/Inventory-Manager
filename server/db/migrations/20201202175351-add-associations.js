@@ -7,7 +7,7 @@ module.exports = {
       'Holders',
       'deviceSerialNumber',
       {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(32),
         references: {
           model: 'Devices',
           key: 'serialNumber',
@@ -23,7 +23,7 @@ module.exports = {
       'Locations',
       'deviceSerialNumber',
       {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(32),
         references: {
           model: 'Devices',
           key: 'serialNumber',

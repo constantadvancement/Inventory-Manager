@@ -13,7 +13,7 @@ if [ -z "$password" ]; then
 fi
 
 # Runs the Inventory Manager app with root access
-result="$(echo "$password" | sudo -S ${path}/InventoryManager.app/Contents/MacOS/InventoryManager setup)"
+result="$(echo "$password" | sudo -S ${path}/CAInventoryManager.app/Contents/MacOS/CAInventoryManager setup)"
 
 # Exits with the error code from the previous command
 retVal=$?

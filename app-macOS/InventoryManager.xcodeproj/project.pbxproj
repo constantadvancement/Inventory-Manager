@@ -47,7 +47,7 @@
 		2D2A11462549A72000E7F57D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D338E712559C00100FD5E1E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2D56C47E256702F800EBFFC4 /* com.CAInventoryManager.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.CAInventoryManager.plist; sourceTree = "<group>"; };
-		2D5AD1CA253F0DC3006125F7 /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5AD1CA253F0DC3006125F7 /* CAInventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAInventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5AD1CD253F0DC3006125F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D5AD1D1253F0DC4006125F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D5AD1D4253F0DC4006125F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		2D5AD1CB253F0DC3006125F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D5AD1CA253F0DC3006125F7 /* InventoryManager.app */,
+				2D5AD1CA253F0DC3006125F7 /* CAInventoryManager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 			);
 			name = InventoryManager;
 			productName = "Inventory Tracker";
-			productReference = 2D5AD1CA253F0DC3006125F7 /* InventoryManager.app */;
+			productReference = 2D5AD1CA253F0DC3006125F7 /* CAInventoryManager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -392,7 +392,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Mackin.Inventory-Manager";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CAInventoryManager;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -413,7 +413,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Mackin.Inventory-Manager";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CAInventoryManager;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
