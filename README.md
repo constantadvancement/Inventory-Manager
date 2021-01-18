@@ -10,7 +10,7 @@ First, download this entire project directory. Then, execute the Launcher app. F
 
 Optionally, after setup has been completed you may choose to delete this downloaded project directory as it is no longer needed.
 
-## InventoryManager.app
+## CAInventoryManager.app
 
 The main CA Inventory Manager app. The app can launch in one of two modes, "setup" mode or "background" mode. 
 

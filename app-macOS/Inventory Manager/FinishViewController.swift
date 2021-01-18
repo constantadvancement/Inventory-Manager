@@ -153,7 +153,7 @@ class FinishViewController: NSViewController {
     
     func registerDevice(completionHandler: @escaping (Bool) -> ()) {
         let http = HttpClient()
-        http.POST(url: "\(Endpoints.production)/register/device", body: deviceRegistration()) { (err: Error?, data: Data?) in
+        http.POST(url: "\(Endpoints.development)/register/device", body: deviceRegistration()) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")

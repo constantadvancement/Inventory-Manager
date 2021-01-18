@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var user: User
+    
     var body: some View {
-        InventoryList()
+        ZStack {
+            if(user.isLoggedIn) {
+                DashboardView()
+            } else {
+                LandingView()
+            }
+        }
     }
 }
 

@@ -9,4 +9,6 @@ import Foundation
 
 struct Holder: Codable {
     var name: String
+    var email: String
+    var phone: String
 }
