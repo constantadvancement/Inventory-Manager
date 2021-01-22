@@ -8,15 +8,30 @@ const inventoryService = require('../services/inventory.server.service')
  * Gets all registered inventory. Each inventory record will be the combined reference between
  * the Device, Location, and Holder models. 
  * 
- * Note: only the most recent location will be reported for each device (not its entire location history)
- * 
- * Returns a list of each registered inventory record on success; otherwise status 500 allong with the
- * error is returned on any failure.
+ * Returns a list of each registered inventory record on success; otherwise status 500 along 
+ * with the error is returned on any failure.
  */
 exports.getInventory = async function(req, res) {
     inventoryService.getInventory(null, (err, inventory) => {
         if(err) return res.status(500).send(err)
         res.status(200).send(inventory)
+    })
+}
+
+/**
+ * Unregisters the inventory record corresponding to the provided device serial number. Removing
+ * all associated Device, Location, and Holder records.
+ * 
+ * Returns true on success; otherwise status 500 along with the error is returned on any failure.
+ */
+exports.unregisterDevice = async function(req, res) {
+    const serialNumber = req.params.serialNumber
+    const opts = {
+        serialNumber: serialNumber
+    }
+    inventoryService.unregisterDevice(opts, (err, result) => {
+        if(err) return res.status(500).send(err)
+        res.status(200).send(result)
     })
 }
 

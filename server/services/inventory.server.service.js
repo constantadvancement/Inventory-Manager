@@ -11,8 +11,6 @@ const models = require('../models')
  * Gets all registered inventory. Each inventory record will be the combined reference between
  * the Device, Location, and Holder models. 
  * 
- * Note: only the most recent location will be reported for each device (not its entire location history)
- * 
  * Returns a list of each registered inventory record on success.
  */
 exports.getInventory = async function(opts, callback) {
@@ -56,11 +54,37 @@ exports.getInventory = async function(opts, callback) {
             })
         }
 
-        console.log(inventoryList)
-
         callback(null, inventoryList)
     } catch (error) {
         callback(error, null)
+    }
+}
+
+/**
+ * unregisters the inventory record corresponding to the provided device serial number. Removing
+ * all associated Device, Location, and Holder records.
+ * 
+ * Returns true on success.
+ */
+exports.unregisterDevice = async function(opts, callback) {
+    if(!opts.serialNumber) return callback('Requires \'serialNumber\' as an opts parameter')
+
+    try {
+        // Deletes the device (and all associated records) that belong to the provided serial number
+        const result = await models.Device.destroy({ 
+            where: { serialNumber: opts.serialNumber },
+            nest: true, raw: true
+        })
+
+        if(result === 0) {
+            // Failure; no device was deleted
+            callback(null, false)
+        } else {
+            // Success; device was deleted
+            callback(null, true)
+        }
+    } catch (err) {
+        callback(err, null)
     }
 }
 

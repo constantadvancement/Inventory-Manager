@@ -14,7 +14,7 @@ struct UserModel: Codable {
     var apiKey: String
 }
 
-class User: ObservableObject {
+class UserObject: ObservableObject {
     @Published var user: UserModel?
     @Published var isLoggedIn: Bool
     
@@ -40,7 +40,9 @@ class User: ObservableObject {
         http.POST(url: "http://localhost:3000/local/user/login", body: data) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Server or client error authentication event
-                NotificationCenter.default.post(name: .authenticationError, object: nil)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .authenticationError, object: nil)
+                }
                 return
             }
             

@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('Locations', {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
 
-      timestamp: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW },
+      timestamp: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.fn('now') },
 
       street: { type: Sequelize.STRING, allowNull: true },
       city: { type: Sequelize.STRING, allowNull: true },
@@ -18,8 +18,8 @@ module.exports = {
 
       status: { type: Sequelize.STRING, allowNull: true },
 
-      createdAt: { allowNull: false, type: Sequelize.DATE },
-      updatedAt: { allowNull: false, type: Sequelize.DATE }
+      createdAt: { allowNull: false, type: Sequelize.DATE, defaultValue: Sequelize.fn('now') },
+      updatedAt: { allowNull: false, type: Sequelize.DATE, defaultValue: Sequelize.fn('now') }
     });
   },
 

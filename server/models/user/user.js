@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) => {
 
         email: { type: DataTypes.STRING, allowNull: false  },
         password: { type: DataTypes.STRING, allowNull: false  },
+
+        hasImage: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
         
         // User role: 1 - admin, 2 - standard
         role: { type: DataTypes.INTEGER, allowNull: false }, 

@@ -4,7 +4,7 @@
 const models = require('../models')
 
 /**
- * Verifies that the provided api key is valid
+ * Verifies that the provided user (specified by api key) is an admin
  */
 module.exports = async function(req, res, next) {
     const apiKey = req.params.apiKey
@@ -16,9 +16,12 @@ module.exports = async function(req, res, next) {
         })
         if(user === null) {
             // Error; no such api key found
-            return res.status(401).json({ msg: 'Unauthorized -- invalid api key' });
+            return res.status(401).json({ msg: 'Unauthorized -- invalid api key' })
+        } else if(user.role !== 1) {
+            // Error; user is not an admin
+            return res.status(401).json({ msg: 'Unauthorized -- admin permission required' })
         } else {
-            next();
+            next()
         }
     } catch (err) {
         res.status(500).send(err);
