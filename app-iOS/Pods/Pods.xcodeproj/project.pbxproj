@@ -39,20 +39,20 @@
 		4DA4519A4163FB7C43C6B1F16D735113 /* Pods-InventoryManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InventoryManager-acknowledgements.plist"; sourceTree = "<group>"; };
 		6519D1DDA6EB4B5EE3D38A3A0A7649DC /* ViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtensions.swift; path = Introspect/ViewExtensions.swift; sourceTree = "<group>"; };
 		696664EB0B46FE66294F7A83EF5E08A5 /* Pods-InventoryManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InventoryManager.debug.xcconfig"; sourceTree = "<group>"; };
-		69E80CF65E54D5F9878DC2FB4060818D /* Pods_InventoryManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_InventoryManager.framework; path = "Pods-InventoryManager.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E80CF65E54D5F9878DC2FB4060818D /* Pods_InventoryManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventoryManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		76D1BD17520353BBEFDFCC2B39963DB9 /* Pods-InventoryManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InventoryManager-Info.plist"; sourceTree = "<group>"; };
 		7FA8350B21394CC67B4C811628A647AB /* Introspect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.release.xcconfig; sourceTree = "<group>"; };
 		8642AA28CFA4B0B137E3325D9FC24B36 /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionViewController.swift; path = Introspect/UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
 		886F3B4F0789CA3B3D08046DD67AE67E /* Pods-InventoryManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InventoryManager.release.xcconfig"; sourceTree = "<group>"; };
 		8DC64F72498E4915FD1D2E1EAC400B83 /* Pods-InventoryManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InventoryManager-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A7133B45DB27B49E3F6A06E50B650D08 /* Introspect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Introspect-dummy.m"; sourceTree = "<group>"; };
 		AA993BD166EC2729E7B1FE8C6392880D /* Pods-InventoryManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-InventoryManager-umbrella.h"; sourceTree = "<group>"; };
 		B6FF9508D449DCF89D25D7F20F48AC6C /* Pods-InventoryManager-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InventoryManager-frameworks.sh"; sourceTree = "<group>"; };
 		C16A57B7BAC12B839B47B64EA86CB745 /* Introspect-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Introspect-Info.plist"; sourceTree = "<group>"; };
 		C6935A6B76A1F3ACA7781AE41385A149 /* Introspect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Introspect.modulemap; sourceTree = "<group>"; };
-		D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Introspect.framework; path = Introspect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A70003FD5E49B30CA83DAAFE03116B /* Introspect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Introspect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1119A951EC43052081C7A9A0544F754 /* Introspect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.debug.xcconfig; sourceTree = "<group>"; };
 		EE9F97B7DBE7B5E51378241115EFD843 /* Introspect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Introspect.swift; path = Introspect/Introspect.swift; sourceTree = "<group>"; };
 		F56CC6893701B4DCC3E36A55CAA7BC30 /* Pods-InventoryManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-InventoryManager-dummy.m"; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 				6519D1DDA6EB4B5EE3D38A3A0A7649DC /* ViewExtensions.swift */,
 				E74A7A19A59A269AF211D6D7D445E878 /* Support Files */,
 			);
-			name = Introspect;
 			path = Introspect;
 			sourceTree = "<group>";
 		};
@@ -242,7 +241,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -433,7 +432,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Introspect/Introspect-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Introspect/Introspect-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,7 +530,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Introspect/Introspect-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Introspect/Introspect-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

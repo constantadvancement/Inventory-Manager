@@ -8,9 +8,12 @@ module.exports = {
       email: { type: Sequelize.STRING, allowNull: false },
       password: { type: Sequelize.STRING, allowNull: false },
 
-      hasImage: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false },
+      name: { type: Sequelize.STRING, allowNull: false  }, 
+      phone: { type: Sequelize.STRING, allowNull: false  },
 
-      // User role: 1 - admin, 2 - standard
+      imageSource: { type: Sequelize.STRING, allowNull: true },
+
+      // User role: 0 - standard, 1 - admin
       role: { type: Sequelize.INTEGER, allowNull: false },
 
       apiKey: { type: Sequelize.STRING, allowNull: false },
@@ -21,6 +24,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Users')
   }
 };

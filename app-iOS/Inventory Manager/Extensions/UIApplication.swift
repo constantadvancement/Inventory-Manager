@@ -16,6 +16,15 @@ extension UIApplication {
         tapGesture.delegate = self
         window.addGestureRecognizer(tapGesture)
     }
+    
+    func removeTapGestureRecognizer() {
+        guard let window = windows.first else { return }
+        let tapGesture = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapGesture.requiresExclusiveTouchType = false
+        tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self
+        window.removeGestureRecognizer(tapGesture)
+    }
 }
 
 extension UIApplication: UIGestureRecognizerDelegate {

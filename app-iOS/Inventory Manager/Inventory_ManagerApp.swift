@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct Inventory_ManagerApp: App {
     
-    @StateObject var user = User()
-    
+    @StateObject var userObject = UserObject()
+    @StateObject var inventoryObject = InventoryObject()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(user)
+                .environmentObject(userObject)
+                .environmentObject(inventoryObject)
                 .onAppear {
                     // App configuration
                     UIApplication.shared.addTapGestureRecognizer()

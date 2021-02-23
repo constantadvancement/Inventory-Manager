@@ -22,6 +22,7 @@ exports.getInventory = async function(opts, callback) {
         // Gets a list of all registered devices
         const devices = await models.Device.findAll({ 
             attributes: { exclude: ['createdAt', 'updatedAt'] },
+            order: [[ 'createdAt', 'ASC' ]],
             nest: true, raw: true 
         })
 

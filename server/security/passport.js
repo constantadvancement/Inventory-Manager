@@ -14,6 +14,8 @@ module.exports = function initializePassport(passport) {
         usernameField: 'email', session: false
     }, async (email, password, done) => {
         try {
+            console.log("Authorizing local user login request...")
+
             const user = await User.findOne({
                 where: { email: email }
             })

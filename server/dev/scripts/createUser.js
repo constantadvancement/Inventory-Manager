@@ -6,11 +6,13 @@ const bcrypt = require('bcryptjs')
 const user = require('../../models').User
 
 const defaultUser = {
+    name: 'Ryan Mackin',
     email: 'test@email.com',
     password: bcrypt.hashSync('password', 10),
-    image: false,
+    phone: '123-456-7890',
+    imageSource: null,
     role: 1,
-    apiKey: 'some_api_key___TODO_need_to_auto_generate_some_random_string'
+    apiKey: 'c2810191-72e6-423c-a60a-0e61423144af'
 }
 
 async function createUser() {

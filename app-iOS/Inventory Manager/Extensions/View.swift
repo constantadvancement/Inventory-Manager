@@ -15,6 +15,17 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
+    func nextResponder(_ responderChain: [Bool], index: Int) -> [Bool] {
+        var chain = responderChain
+        chain[index] = false
+        if index + 1 < responderChain.count {
+            chain[index + 1] = true
+        } else {
+            hideKeyboard()
+        }
+        return chain
+    }
+    
     // View Styles
     
     func applyHorizontalBorder(color: Color, alignment: Alignment) -> some View {
@@ -57,10 +68,8 @@ extension View {
             )
     }
     
-    
-    
     /**
-     This function is used to apply a list-like style to each row element of a custom list.
+     Applies a list-like style to each row element of a custom list.
      */
     func applyListRowStyle(separatorColor: Color) -> some View {
         self

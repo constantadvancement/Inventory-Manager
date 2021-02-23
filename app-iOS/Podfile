@@ -1,9 +1,9 @@
 platform :ios, '14.0'
 
 target 'InventoryManager' do
-  use_frameworks!
+	use_frameworks!
 
-  # Pods for InventoryManager
-  pod "Introspect"
+  	# Pods for InventoryManager
+  	pod 'Introspect'
 
 end

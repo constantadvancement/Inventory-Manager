@@ -6,16 +6,31 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct UserModel: Codable {
+struct User: Codable {
     var id: Int
+    
+    var name: String
     var email: String
+    var phone: String
+    
+    var imageData: String?
+    var uiImage: UIImage? {
+        guard let imageData = imageData else { return nil }
+        if let data = Data(base64Encoded: imageData) {
+            return UIImage(data: data)
+        } else {
+            return nil
+        }
+    }
+    
     var role: Int
     var apiKey: String
 }
 
 class UserObject: ObservableObject {
-    @Published var user: UserModel?
+    @Published var user: User?
     @Published var isLoggedIn: Bool
     
     init() {
@@ -23,50 +38,177 @@ class UserObject: ObservableObject {
         self.isLoggedIn = false
     }
     
-    // Attempts to login using the provided credentials
-    func login(email: String, password: String) {
-        var authentication = [String: String]()
-        authentication["email"] = email
-        authentication["password"] = password
+    // User Authentication Functions
+    
+    /**
+     Attempts to login using the provided credentials
+     */
+    func login(email: String, password: String, callback: @escaping (Bool?) -> Void) {
+        var body = [String: String]()
+        body["email"] = email
+        body["password"] = password
         
-        var data: Data?
+        var bodyData: Data?
         do {
-            data = try JSONSerialization.data(withJSONObject: authentication, options: .prettyPrinted)
+            bodyData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
         } catch {
-            data = nil
+            bodyData = nil
         }
         
         let http = HttpClient()
-        http.POST(url: "http://localhost:3000/local/user/login", body: data) { (err: Error?, data: Data?) in
+        http.POST(url: "\(String.developmentDevice)/local/user/login", body: bodyData) { (err: Error?, data: Data?) in
             guard data != nil else {
-                // Server or client error authentication event
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: .authenticationError, object: nil)
+                // Server or client error
+                DispatchQueue.main.async {[self] in
+                    self.user = nil
+                    self.isLoggedIn = false
                 }
-                return
+                return callback(nil)
             }
             
-            if let user = try? JSONDecoder().decode(UserModel.self, from: data!) {
+            if let user = try? JSONDecoder().decode(User.self, from: data!) {
                 // Authentication success
                 DispatchQueue.main.async { [self] in
                     self.user = user
                     self.isLoggedIn = true
                 }
+                return callback(true)
             } else {
                 // Authentication failiure
                 DispatchQueue.main.async { [self] in
                     self.user = nil
                     self.isLoggedIn = false
-                    // Authentication failure event
-                    NotificationCenter.default.post(name: .authenticationFailure, object: nil)
                 }
+                return callback(false)
             }
         }
     }
     
-    // Logout of the current user
+    /**
+     Logs out of the current user
+     */
     func logout() {
         self.user = nil
         self.isLoggedIn = false
+    }
+    
+    // Account Management Functions
+    
+    /**
+     Updates this user's password to the newly provided password if the given current password matches their existing password.
+     */
+    func changePassword(currentPassword: String, newPassword: String, callback: @escaping (Bool?) -> Void) {
+        guard let apiKey = self.user?.apiKey else { return }
+        
+        var body = [String: String]()
+        body["currentPassword"] = currentPassword
+        body["newPassword"] = newPassword
+        
+        var bodyData: Data?
+        do {
+            bodyData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        } catch {
+            bodyData = nil
+        }
+        
+        let http = HttpClient()
+        http.POST(url: "\(String.developmentDevice)/\(apiKey)/user/password/change", body: bodyData) { (err: Error?, data: Data?) in
+            guard data != nil else {
+                // Server or client error
+                return callback(nil)
+            }
+
+            if let result = try? JSONDecoder().decode(Bool.self, from: data!) {
+                // Success or failure status
+                return callback(result)
+            } else {
+                // Unknown error
+                return callback(nil)
+            }
+        }
+    }
+    
+    /**
+     Edits this user's account information, including their name, email, and phone attributes.
+     */
+    func editAccount(name: String, email: String, phone: String, callback: @escaping (Bool?) -> Void) {
+        guard let apiKey = self.user?.apiKey else { return }
+        
+        var body = [String: String]()
+        body["name"] = name
+        body["email"] = email
+        body["phone"] = phone
+        
+        var bodyData: Data?
+        do {
+            bodyData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        } catch {
+            bodyData = nil
+        }
+        
+        // Server update
+        let http = HttpClient()
+        http.POST(url: "\(String.developmentDevice)/\(apiKey)/user/account/edit", body: bodyData) { (err: Error?, data: Data?) in
+            guard data != nil else {
+                // Server or client error
+                return callback(nil)
+            }
+
+            if let result = try? JSONDecoder().decode(Bool.self, from: data!) {
+                if result {
+                    // Success status
+                    DispatchQueue.main.async { [self] in
+                        // Local update
+                        self.user?.name = name
+                        self.user?.email = email
+                        self.user?.phone = phone
+                        self.objectWillChange.send()
+                    }
+                    return callback(result)
+                } else {
+                    // Failure status
+                    return callback(result)
+                }
+            } else {
+                // Unknown error
+                return callback(nil)
+            }
+        }
+    }
+    
+    /**
+     Updates or creates this user's image on the server
+     */
+    func setImage(uiImage: UIImage, callback: @escaping (Bool?) -> Void) {
+        guard let apiKey = self.user?.apiKey else { return }
+        
+        // Local update
+        DispatchQueue.main.async { [self] in
+            guard let data = uiImage.jpegData(compressionQuality: 0) else { return callback(false) }
+            self.user?.imageData = data.base64EncodedString(options: NSData.Base64EncodingOptions())
+            self.objectWillChange.send()
+        }
+        
+        // Server update
+        let http = HttpClient()
+        http.POSTImage(url: "\(String.developmentDevice)/\(apiKey)/user/image/set", uiImage: uiImage, imageName: "\(apiKey).png") { (err: Error?, data: Data?) in
+            guard data != nil else {
+                // Server or client error
+                return callback(nil)
+            }
+
+            if let result = try? JSONDecoder().decode(Bool.self, from: data!) {
+                if result {
+                    // Success status
+                    return callback(result)
+                } else {
+                    // Failure status
+                    return callback(result)
+                }
+            } else {
+                // Unknown error
+                return callback(nil)
+            }
+        }
     }
 }
