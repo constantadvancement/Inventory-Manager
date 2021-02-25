@@ -1,8 +1,5 @@
 node_modules/
 
-# server/public/userImages/*
-# !server/public/userImages/.gitkeep
-
 .env
 
 .DS_Store
