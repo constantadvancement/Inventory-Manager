@@ -1,5 +1,7 @@
-server/node_modules/*
-server/public/userImages/*
+node_modules/
+
+!server/public/userImages/*
+!server/public/userImages/.gitkeep
 
 .env
 
