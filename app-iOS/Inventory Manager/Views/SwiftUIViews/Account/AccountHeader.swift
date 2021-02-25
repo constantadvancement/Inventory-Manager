@@ -16,7 +16,7 @@ struct AccountHeader: View {
                 Image(systemName: "chevron.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 15)
+                    .frame(height: 18)
                     .foregroundColor(Color.primaryHighlight)
             }
             .frame(width: 30, height: 30)

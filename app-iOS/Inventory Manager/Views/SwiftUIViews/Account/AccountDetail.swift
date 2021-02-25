@@ -11,8 +11,7 @@ struct AccountDetail: View {
     
     @EnvironmentObject var userObject: UserObject
     
-    @State private var showingChangePasswordView = false
-    @State private var showingEditAccountView = false
+    @State private var showingManagementView = false
     
     var body: some View {
         VStack {
@@ -25,21 +24,21 @@ struct AccountDetail: View {
                     Spacer()
                     
                     Button(action: {
-                        self.showingEditAccountView.toggle()
+                        self.showingManagementView.toggle()
                     }) {
                         HStack {
                             Text("Edit")
                                 .font(.subheadline)
                                 .foregroundColor(Color.secondaryText)
-                            Image(systemName: "pencil")
-                                .foregroundColor(Color.secondaryText)
+//                            Image(systemName: "pencil")
+//                                .foregroundColor(Color.secondaryText)
                         }
                     }
-                    .fullScreenCover(isPresented: $showingEditAccountView) {
-                        EditAccountView()
+                    .fullScreenCover(isPresented: $showingManagementView) {
+                        ManagementView()
                     }
-                    .onReceive(NotificationCenter.default.publisher(for: .closeEditAccountView)) { _ in
-                        self.showingEditAccountView = false
+                    .onReceive(NotificationCenter.default.publisher(for: .closeManagementView)) { _ in
+                        self.showingManagementView = false
                     }
                 }
                 .padding(.bottom)
@@ -85,7 +84,7 @@ struct AccountDetail: View {
                 HStack(alignment: .top) {
                     Text("Password").fontWeight(.semibold)
                         .frame(width: 150, alignment: .leading)
-                    Text("********")
+                    Text("**********")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .fixedSize(horizontal: false, vertical: true)
@@ -107,8 +106,8 @@ struct AccountDetail: View {
                         Text("Copy")
                             .font(.subheadline)
                             .foregroundColor(Color.secondaryText)
-                        Image(systemName: "doc.on.doc")
-                            .foregroundColor(Color.secondaryText)
+//                        Image(systemName: "doc.on.doc")
+//                            .foregroundColor(Color.secondaryText)
                     }
                 }
                 .padding(.bottom)

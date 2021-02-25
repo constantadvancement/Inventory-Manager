@@ -10,6 +10,5 @@ import Foundation
 extension NSNotification.Name {
     static let closeDetailView = NSNotification.Name("closeDetailView")
     static let closeAccountView = NSNotification.Name("closeAccountView")
-    static let closeChangePasswordView = NSNotification.Name("closeChangePasswordView")
-    static let closeEditAccountView = NSNotification.Name("closeEditAccountView")
+    static let closeManagementView = NSNotification.Name("closeManagementView")
 }

@@ -20,20 +20,17 @@ struct DetailHeader: View {
                 Image(systemName: "chevron.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 15)
+                    .frame(height: 18)
                     .foregroundColor(Color.primaryHighlight)
             }
             .frame(width: 30, height: 30)
-
-            Spacer()
             
             Text(inventory.holder.name)
                 .foregroundColor(Color.primaryText)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.leading, -30)
                 .padding(.trailing, -30)
                 .font(.headline)
-            
-            Spacer()
             
             Button(action: {
                 self.showingHistoryView.toggle()

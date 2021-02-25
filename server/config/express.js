@@ -22,7 +22,6 @@ module.exports = () => {
     // app.use(upload.array())
     // app.use(express.static('public'));
 
-
     // Passport authentication
     app.use(passport.initialize())
 

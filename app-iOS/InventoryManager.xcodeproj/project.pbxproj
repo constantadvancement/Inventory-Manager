@@ -11,13 +11,9 @@
 		2D06560725E414450061EBCB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06560625E414450061EBCB /* Publisher.swift */; };
 		2D06560A25E44E2B0061EBCB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06560925E44E2B0061EBCB /* CustomTextField.swift */; };
 		2D06560D25E44E3E0061EBCB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D06560C25E44E3E0061EBCB /* Launch Screen.storyboard */; };
-		2D06561B25E52B260061EBCB /* EditAccountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06561A25E52B260061EBCB /* EditAccountTextField.swift */; };
-		2D06561F25E52B3D0061EBCB /* ChangePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06561E25E52B3D0061EBCB /* ChangePasswordTextField.swift */; };
-		2D06562225E52B490061EBCB /* ChangePasswordSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06562125E52B490061EBCB /* ChangePasswordSecureField.swift */; };
 		2D2666F02590FC1800D30434 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666EF2590FC1800D30434 /* DashboardView.swift */; };
 		2D2666F32590FC3D00D30434 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666F22590FC3D00D30434 /* AccountView.swift */; };
 		2D2666F725911F1E00D30434 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666F625911F1E00D30434 /* SearchBar.swift */; };
-		2D354EF125C8480200319520 /* BasicSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354EF025C8480200319520 /* BasicSecureField.swift */; };
 		2D48332E2584071B0048B16D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48332D2584071B0048B16D /* Device.swift */; };
 		2D4833312584072D0048B16D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4833302584072D0048B16D /* Location.swift */; };
 		2D4833342584075A0048B16D /* Holder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4833332584075A0048B16D /* Holder.swift */; };
@@ -38,6 +34,11 @@
 		2D896D152583D65C00FE05B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D896D142583D65C00FE05B1 /* ContentView.swift */; };
 		2D896D172583D65C00FE05B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D896D162583D65C00FE05B1 /* Assets.xcassets */; };
 		2D896D1A2583D65C00FE05B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D896D192583D65C00FE05B1 /* Preview Assets.xcassets */; };
+		2D9323B425E7D9DE001EFF2B /* UpdateInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323B325E7D9DE001EFF2B /* UpdateInformationView.swift */; };
+		2D9323B725E7D9E9001EFF2B /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323B625E7D9E9001EFF2B /* UpdatePasswordView.swift */; };
+		2D9323BA25E7DA00001EFF2B /* ManagementSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323B925E7DA00001EFF2B /* ManagementSecureField.swift */; };
+		2D9323BE25E7DB1D001EFF2B /* ManagementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */; };
+		2D9323C525E7F6DE001EFF2B /* ManagementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */; };
 		2D93FA6A259D0656003CE005 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA69259D0656003CE005 /* View.swift */; };
 		2D93FA6D259E1150003CE005 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA6C259E1150003CE005 /* UIApplication.swift */; };
 		2D93FA71259E1E1D003CE005 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA70259E1E1D003CE005 /* MapView.swift */; };
@@ -49,9 +50,7 @@
 		2DDF69CD2583D9FF0037C3FB /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */; };
 		2DF1049A25C0904200216EF2 /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1049925C0904200216EF2 /* PullToRefresh.swift */; };
 		2DF104A025C091F300216EF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1049F25C091F300216EF2 /* String.swift */; };
-		2DF104B125C3263C00216EF2 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF104B025C3263C00216EF2 /* EditAccountView.swift */; };
-		2DF104B525C32E3F00216EF2 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF104B425C32E3F00216EF2 /* ChangePasswordView.swift */; };
-		2DF104F125C83C8800216EF2 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF104F025C83C8800216EF2 /* BasicTextField.swift */; };
+		2DF104B125C3263C00216EF2 /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF104B025C3263C00216EF2 /* ManagementView.swift */; };
 		2DF4089225B71962002657E9 /* HistoryFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4089125B71962002657E9 /* HistoryFilters.swift */; };
 		2DF4089525B71F0A002657E9 /* InventoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4089425B71F0A002657E9 /* InventoryObject.swift */; };
 		2DF4089C25B73959002657E9 /* AccountImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4089B25B73959002657E9 /* AccountImage.swift */; };
@@ -70,13 +69,9 @@
 		2D06560625E414450061EBCB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		2D06560925E44E2B0061EBCB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2D06560C25E44E3E0061EBCB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		2D06561A25E52B260061EBCB /* EditAccountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditAccountTextField.swift; path = ../../../../../../../../Documents/EditAccountTextField.swift; sourceTree = "<group>"; };
-		2D06561E25E52B3D0061EBCB /* ChangePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangePasswordTextField.swift; path = ../../../../../../../../Documents/ChangePasswordTextField.swift; sourceTree = "<group>"; };
-		2D06562125E52B490061EBCB /* ChangePasswordSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangePasswordSecureField.swift; path = ../../../../../../../../Documents/ChangePasswordSecureField.swift; sourceTree = "<group>"; };
 		2D2666EF2590FC1800D30434 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		2D2666F22590FC3D00D30434 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		2D2666F625911F1E00D30434 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		2D354EF025C8480200319520 /* BasicSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSecureField.swift; sourceTree = "<group>"; };
 		2D48332D2584071B0048B16D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2D4833302584072D0048B16D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2D4833332584075A0048B16D /* Holder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holder.swift; sourceTree = "<group>"; };
@@ -99,6 +94,11 @@
 		2D896D162583D65C00FE05B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D896D192583D65C00FE05B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2D896D1B2583D65C00FE05B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D9323B325E7D9DE001EFF2B /* UpdateInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInformationView.swift; sourceTree = "<group>"; };
+		2D9323B625E7D9E9001EFF2B /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		2D9323B925E7DA00001EFF2B /* ManagementSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementSecureField.swift; sourceTree = "<group>"; };
+		2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementHeader.swift; sourceTree = "<group>"; };
+		2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementTextField.swift; sourceTree = "<group>"; };
 		2D93FA69259D0656003CE005 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2D93FA6C259E1150003CE005 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		2D93FA70259E1E1D003CE005 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -110,9 +110,7 @@
 		2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		2DF1049925C0904200216EF2 /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 		2DF1049F25C091F300216EF2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2DF104B025C3263C00216EF2 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
-		2DF104B425C32E3F00216EF2 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
-		2DF104F025C83C8800216EF2 /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		2DF104B025C3263C00216EF2 /* ManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
 		2DF4089125B71962002657E9 /* HistoryFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFilters.swift; sourceTree = "<group>"; };
 		2DF4089425B71F0A002657E9 /* InventoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryObject.swift; sourceTree = "<group>"; };
 		2DF4089B25B73959002657E9 /* AccountImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountImage.swift; sourceTree = "<group>"; };
@@ -162,22 +160,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2D06561825E52ADB0061EBCB /* Edit */ = {
+		2D06561825E52ADB0061EBCB /* Management */ = {
 			isa = PBXGroup;
 			children = (
-				2DF104B025C3263C00216EF2 /* EditAccountView.swift */,
-				2D06561A25E52B260061EBCB /* EditAccountTextField.swift */,
+				2DF104B025C3263C00216EF2 /* ManagementView.swift */,
+				2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */,
+				2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */,
+				2D9323B925E7DA00001EFF2B /* ManagementSecureField.swift */,
+				2D9323B325E7D9DE001EFF2B /* UpdateInformationView.swift */,
+				2D9323B625E7D9E9001EFF2B /* UpdatePasswordView.swift */,
 			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
-		2D06561925E52AE20061EBCB /* Password */ = {
-			isa = PBXGroup;
-			children = (
-				2D06561E25E52B3D0061EBCB /* ChangePasswordTextField.swift */,
-				2D06562125E52B490061EBCB /* ChangePasswordSecureField.swift */,
-			);
-			path = Password;
+			path = Management;
 			sourceTree = "<group>";
 		};
 		2D4832D025924666006F8DA2 /* Helpers */ = {
@@ -186,8 +179,6 @@
 				2D2666F625911F1E00D30434 /* SearchBar.swift */,
 				2D93FA70259E1E1D003CE005 /* MapView.swift */,
 				2DF1049925C0904200216EF2 /* PullToRefresh.swift */,
-				2DF104F025C83C8800216EF2 /* BasicTextField.swift */,
-				2D354EF025C8480200319520 /* BasicSecureField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -269,8 +260,6 @@
 		2D93FA79259E5E4A003CE005 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				2D06561825E52ADB0061EBCB /* Edit */,
-				2D06561925E52AE20061EBCB /* Password */,
 				2D2666F22590FC3D00D30434 /* AccountView.swift */,
 				2D720C9C25A8B9E300BF8C4C /* AccountHeader.swift */,
 				2DF4089B25B73959002657E9 /* AccountImage.swift */,
@@ -337,7 +326,7 @@
 				2DAFCB1E25927C520075A561 /* Detail */,
 				2D720C8225A4E8F100BF8C4C /* History */,
 				2D93FA79259E5E4A003CE005 /* Account */,
-				2DF104A925C325FB00216EF2 /* Management */,
+				2D06561825E52ADB0061EBCB /* Management */,
 				2D4832D025924666006F8DA2 /* Helpers */,
 			);
 			path = SwiftUIViews;
@@ -350,14 +339,6 @@
 				2D06560325E40FA10061EBCB /* KeyboardResponder.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		2DF104A925C325FB00216EF2 /* Management */ = {
-			isa = PBXGroup;
-			children = (
-				2DF104B425C32E3F00216EF2 /* ChangePasswordView.swift */,
-			);
-			path = Management;
 			sourceTree = "<group>";
 		};
 		F77F4104BA5E3BA8C3B76D26 /* Frameworks */ = {
@@ -482,6 +463,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9323B725E7D9E9001EFF2B /* UpdatePasswordView.swift in Sources */,
+				2D9323BE25E7DB1D001EFF2B /* ManagementHeader.swift in Sources */,
 				2D720CBA25AE095800BF8C4C /* LandingTextField.swift in Sources */,
 				2D2666F725911F1E00D30434 /* SearchBar.swift in Sources */,
 				2D720C8E25A60A2200BF8C4C /* DeleteAlert.swift in Sources */,
@@ -490,9 +473,7 @@
 				2D2666F02590FC1800D30434 /* DashboardView.swift in Sources */,
 				2D720CCC25B0E0F700BF8C4C /* LogoutButton.swift in Sources */,
 				2D720C8925A4ECA900BF8C4C /* HistoryList.swift in Sources */,
-				2D354EF125C8480200319520 /* BasicSecureField.swift in Sources */,
 				2D720CC025AF5BF500BF8C4C /* ResponderTextField.swift in Sources */,
-				2DF104F125C83C8800216EF2 /* BasicTextField.swift in Sources */,
 				2D720C7B25A4B9F100BF8C4C /* NSNotification.Name.swift in Sources */,
 				2D720CA125A8BC2800BF8C4C /* HistoryRow.swift in Sources */,
 				2DDF69CD2583D9FF0037C3FB /* HttpClient.swift in Sources */,
@@ -507,23 +488,21 @@
 				2D9EF50C2593985D00DD17D3 /* Color.swift in Sources */,
 				2D720C8525A4E91800BF8C4C /* HistoryHeader.swift in Sources */,
 				2D06560425E40FA10061EBCB /* KeyboardResponder.swift in Sources */,
-				2DF104B525C32E3F00216EF2 /* ChangePasswordView.swift in Sources */,
 				2D720CBD25AE096900BF8C4C /* LandingSecureField.swift in Sources */,
 				2DF73A9F2587E7C800F09AD3 /* InventoryList.swift in Sources */,
 				2D4833312584072D0048B16D /* Location.swift in Sources */,
+				2D9323BA25E7DA00001EFF2B /* ManagementSecureField.swift in Sources */,
 				2D93FA7C25A36EFE003CE005 /* DetailHeader.swift in Sources */,
 				2DF1049A25C0904200216EF2 /* PullToRefresh.swift in Sources */,
 				2D93FA8825A3B291003CE005 /* DeleteButton.swift in Sources */,
-				2DF104B125C3263C00216EF2 /* EditAccountView.swift in Sources */,
-				2D06561B25E52B260061EBCB /* EditAccountTextField.swift in Sources */,
-				2D06562225E52B490061EBCB /* ChangePasswordSecureField.swift in Sources */,
+				2DF104B125C3263C00216EF2 /* ManagementView.swift in Sources */,
 				2D720CA525ACC1B000BF8C4C /* LandingView.swift in Sources */,
 				2D93FA6A259D0656003CE005 /* View.swift in Sources */,
+				2D9323C525E7F6DE001EFF2B /* ManagementTextField.swift in Sources */,
 				2D93FA71259E1E1D003CE005 /* MapView.swift in Sources */,
 				2D93FA76259E4AB4003CE005 /* InventoryDetail.swift in Sources */,
 				2D06560725E414450061EBCB /* Publisher.swift in Sources */,
 				2D93FA8425A3AC0D003CE005 /* DashboardHeader.swift in Sources */,
-				2D06561F25E52B3D0061EBCB /* ChangePasswordTextField.swift in Sources */,
 				2DF104A025C091F300216EF2 /* String.swift in Sources */,
 				2D48332E2584071B0048B16D /* Device.swift in Sources */,
 				2DFEAA0925B89A240049664C /* AccountDetail.swift in Sources */,
@@ -531,6 +510,7 @@
 				2DF4089225B71962002657E9 /* HistoryFilters.swift in Sources */,
 				2DFEAA1725B9ACCA0049664C /* ImagePicker.swift in Sources */,
 				2D4833342584075A0048B16D /* Holder.swift in Sources */,
+				2D9323B425E7D9DE001EFF2B /* UpdateInformationView.swift in Sources */,
 				2DF73AA32587E9BE00F09AD3 /* DetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

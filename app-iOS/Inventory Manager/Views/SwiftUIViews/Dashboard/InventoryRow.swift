@@ -32,7 +32,7 @@ struct InventoryRow: View {
                 Image(systemName: "chevron.right")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 15)
+                    .frame(height: 18)
                     .foregroundColor(Color.primaryHighlight)
             }
         }

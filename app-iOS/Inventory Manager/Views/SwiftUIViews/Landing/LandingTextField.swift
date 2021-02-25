@@ -45,6 +45,9 @@ struct LandingTextField: View {
                 }
             }
         )
+        .introspectTextField { (textfield: UITextField) in
+            textfield.keyboardType = .emailAddress
+        }
     }
 }
 
