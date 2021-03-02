@@ -192,10 +192,6 @@ exports.verifyPasswordResetToken = async function(opts, callback) {
 
 }
 
-
-
-
-
 // Helper Functions
 
 /**

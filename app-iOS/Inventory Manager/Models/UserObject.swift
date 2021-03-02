@@ -56,7 +56,7 @@ class UserObject: ObservableObject {
         }
         
         let http = HttpClient()
-        http.POST(url: "\(String.developmentDevice)/local/user/login", body: bodyData) { (err: Error?, data: Data?) in
+        http.POST(url: "\(String.production)/local/user/login", body: bodyData) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Server or client error
                 DispatchQueue.main.async {[self] in
@@ -112,7 +112,7 @@ class UserObject: ObservableObject {
         }
         
         let http = HttpClient()
-        http.POST(url: "\(String.developmentDevice)/\(apiKey)/user/password/change", body: bodyData) { (err: Error?, data: Data?) in
+        http.POST(url: "\(String.production)/\(apiKey)/user/password/change", body: bodyData) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Server or client error
                 return callback(nil)
@@ -148,7 +148,7 @@ class UserObject: ObservableObject {
         
         // Server update
         let http = HttpClient()
-        http.POST(url: "\(String.developmentDevice)/\(apiKey)/user/account/edit", body: bodyData) { (err: Error?, data: Data?) in
+        http.POST(url: "\(String.production)/\(apiKey)/user/account/edit", body: bodyData) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Server or client error
                 return callback(nil)
@@ -191,7 +191,7 @@ class UserObject: ObservableObject {
         
         // Server update
         let http = HttpClient()
-        http.POSTImage(url: "\(String.developmentDevice)/\(apiKey)/user/image/set", uiImage: uiImage, imageName: "\(apiKey).png") { (err: Error?, data: Data?) in
+        http.POSTImage(url: "\(String.production)/\(apiKey)/user/image/set", uiImage: uiImage, imageName: "\(apiKey).png") { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Server or client error
                 return callback(nil)

@@ -35,11 +35,9 @@ class InventoryObject: ObservableObject {
      */
     func fetchInventory(apiKey: String?) {
         guard let apiKey = apiKey else { return }
-        
-//        self.isLoading = true
-        
+
         let http = HttpClient()
-        http.GET(url: "\(String.developmentDevice)/\(apiKey)/inventory") { (err: Error?, data: Data?) in
+        http.GET(url: "\(String.production)/\(apiKey)/inventory") { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
@@ -54,9 +52,6 @@ class InventoryObject: ObservableObject {
                     self.inventoryList = data
                     self.isLoading = false
                 }
-            } else {
-                // TODO; failed to decode... stop spinner and display an error message...
-                print("Failed to decode...")
             }
         }
     }
@@ -69,7 +64,7 @@ class InventoryObject: ObservableObject {
         
         // Server update
         let http = HttpClient()
-        http.POST(url: "\(String.developmentDevice)/\(apiKey)/unregister/device/\(serialNumber)", body: nil) { (err: Error?, data: Data?) in
+        http.POST(url: "\(String.production)/\(apiKey)/unregister/device/\(serialNumber)", body: nil) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
@@ -84,9 +79,6 @@ class InventoryObject: ObservableObject {
                         self.inventoryList = inventoryList
                     }
                 }
-            } else {
-                // TODO; failed to decode... stop spinner and display an error message...
-                print("Failed to decode...")
             }
         }
     }

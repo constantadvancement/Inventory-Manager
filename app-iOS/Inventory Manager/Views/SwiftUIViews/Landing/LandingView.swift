@@ -67,13 +67,13 @@ struct LandingView: View {
                         }
                         .disabled(processing)
                         
-                        Button(action: {
-                            print("TODO -- Implement password reset...")
-                        }) {
-                            Text("Forgot Password?")
-                                .font(.subheadline)
-                                .foregroundColor(Color.secondaryText)
-                        }
+//                        Button(action: {
+//                            print("TODO -- Implement password reset...")
+//                        }) {
+//                            Text("Forgot Password?")
+//                                .font(.subheadline)
+//                                .foregroundColor(Color.secondaryText)
+//                        }
                         
                         VStack {
                             if !requestMessage.isEmpty {

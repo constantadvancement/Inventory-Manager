@@ -1,30 +1,78 @@
 'use strict'
 
+// TODO -- having some issues making this script work...
+
+const prompt = require('prompt')
 const bcrypt = require('bcryptjs')
+const crypto = require('crypto')
 
 // Models
 const user = require('../../models').User
 
-const defaultUser = {
-    name: 'Ryan Mackin',
-    email: 'test@email.com',
-    password: bcrypt.hashSync('password', 10),
-    phone: '123-456-7890',
-    imageSource: null,
-    role: 1,
-    apiKey: 'c2810191-72e6-423c-a60a-0e61423144af'
-}
+prompt.start()
+prompt.get(
+    [
+        {
+            name: 'name',
+            description: 'Please enter your full name'
+        },
+        {
+            name: 'email',
+            description: 'Please enter your email address'
+        },
+        {
+            name: 'phone',
+            description: 'Please enter your phone number'
+        }
+    ], async function (err, result) {
+        if (err) return console.log('An error occurred, please try again!')
 
-async function createUser() {
+        const newUser = {
+            name: result.name,
+            email: result.email,
+            password: bcrypt.hashSync('caIsAw3some', 10),
+            phone: result.phone,
+            imageSource: null,
+            role: 1,
+            apiKey: crypto.randomBytes(16).toString('hex')
+        }
+
+        try {
+             // Verifies that this new user is unique (by email)
+            if(await user.findOne({
+                where: { email: newUser.email }
+            }) === null) {
+
+                // Ensures that this new user's api key is unique
+                while(await user.findOne({
+                    where: { apiKey: newUser.apiKey }
+                }) !== null ) {
+                    newUser.apiKey = crypto.randomBytes(16).toString('hex')
+                }
+
+                if(await createUser(newUser)) {
+                    return console.log('Success, user created.')
+                } else {
+                    return console.log('Failure, an error occurred while attempting to create this user.')
+                }
+            } else {
+                return console.log('Failure, a user with the specified email already exists!')
+            }
+        } catch (err) {
+            console.log(err)
+            return console.log('An error occurred, please try again!')
+        }
+})
+
+async function createUser(newUser) {
     try {
-        if(await user.create(defaultUser)) {
-            return console.log("Success, user created.")
+        if(await user.create(newUser)) {
+            return true
         } else {
-            return console.log("Failure, user was not created.")
+            return false
         }
     } catch (err) {
         console.log(err)
+        return false
     }
 }
-
-createUser()
