@@ -8,18 +8,18 @@
 import Foundation
 
 extension String {
-    // String Constants
     
     // Endpoints
+    
     static let developmentLocal = "http://localhost:3000"
-    static let developmentDevice = "http://192.168.1.240:3000"
-//    "http://192.168.0.37:3000"
+    static let developmentDevice = "http://10.0.0.240:3000"
     static let production = ""
     
     // Coordinate space names
+    
     static let pullToRefresh = "pullToRefresh"
     
-    // String Helpers
+    // String validators
     
     func validateEmail() -> Bool {
         let emailRegEx = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"

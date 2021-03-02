@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ManagementView: View {
     
-    @State private var toggle: Bool = true
+    @State private var type: ManagementType = .information
     
     var body: some View {
         VStack(spacing: 0) {
-            ManagementHeader(toggle: $toggle)
+            ManagementHeader(type: $type)
                 .padding()
                 .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
             
@@ -22,15 +22,11 @@ struct ManagementView: View {
                     AccountImage(imageOnly: true)
                         .padding(.bottom)
                     
-                    ZStack {
-                        if toggle {
-                            UpdateInformationView()
-                        } else {
-                            UpdatePasswordView()
-                        }
+                    if type == .information {
+                        UpdateInformationView()
+                    } else {
+                        UpdatePasswordView()
                     }
-                    .transition(.slide)
-                    .animation(.easeInOut)
                 }
                 .padding()
             }

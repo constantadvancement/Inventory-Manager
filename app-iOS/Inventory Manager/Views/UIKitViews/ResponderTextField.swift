@@ -22,7 +22,6 @@ struct ResponderTextField: UIViewRepresentable {
         }
         
         func textFieldDidChangeSelection(_ textField: UITextField) {
-//            text = textField.text ?? ""
             DispatchQueue.main.async { [self] in
                 text = textField.text ?? ""
             }

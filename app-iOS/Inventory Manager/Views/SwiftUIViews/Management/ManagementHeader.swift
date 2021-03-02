@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ManagementHeader: View {
     
-    @Binding var toggle: Bool
+    @Binding var type: ManagementType
     
     var body: some View {
         HStack {
@@ -32,9 +32,9 @@ struct ManagementHeader: View {
                 .font(.headline)
             
             Button(action: {
-                self.toggle.toggle()
+                self.type.toggle()
             }) {
-                if toggle {
+                if type == .information {
                     Image(systemName: "lock")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -55,6 +55,6 @@ struct ManagementHeader: View {
 
 struct ManagementHeader_Previews: PreviewProvider {
     static var previews: some View {
-        ManagementHeader(toggle: .constant(true))
+        ManagementHeader(type: .constant(.information))
     }
 }

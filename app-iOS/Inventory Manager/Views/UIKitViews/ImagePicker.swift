@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct ImagePicker: UIViewControllerRepresentable {
     
@@ -17,16 +18,18 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let uiImage = info[.editedImage] as? UIImage {
-                parent.image = uiImage
-            }
+//            if let uiImage = info[.editedImage] as? UIImage {
+//                parent.image = uiImage
+//            }
 
             parent.presentationMode.wrappedValue.dismiss()
         }
+        
+        
     }
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var image: UIImage?
+//    @Binding var image: UIImage?
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -37,14 +40,13 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         // Image picker configuration
         picker.allowsEditing = true
-//        picker.sourceType = .savedPhotosAlbum
+        
+        picker.isNavigationBarHidden = true
         
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-
-    }
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) { }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

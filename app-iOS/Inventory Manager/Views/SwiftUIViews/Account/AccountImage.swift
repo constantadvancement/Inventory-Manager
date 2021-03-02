@@ -14,7 +14,6 @@ struct AccountImage: View {
     @State var imageOnly: Bool
     
     @State private var showingImagePicker = false
-    @State private var selectedImage: UIImage?
     
     var body: some View {
         VStack {
@@ -70,15 +69,12 @@ struct AccountImage: View {
                 }
             }
         }
-        .sheet(isPresented: $showingImagePicker, onDismiss: setImage) {
-            ImagePicker(image: $selectedImage)
-        }
-    }
-    
-    private func setImage() {
-        guard let uiImage = selectedImage else { return }
-        userObject.setImage(uiImage: uiImage) { (result) in
-            return
+        .sheet(isPresented: $showingImagePicker) {
+            PhotoPicker() { (image: UIImage) in
+                userObject.setImage(uiImage: image) { (result) in
+                    return
+                }
+            }
         }
     }
 }

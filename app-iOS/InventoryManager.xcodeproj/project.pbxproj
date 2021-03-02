@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D06560425E40FA10061EBCB /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06560325E40FA10061EBCB /* KeyboardResponder.swift */; };
-		2D06560725E414450061EBCB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06560625E414450061EBCB /* Publisher.swift */; };
 		2D06560A25E44E2B0061EBCB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06560925E44E2B0061EBCB /* CustomTextField.swift */; };
-		2D06560D25E44E3E0061EBCB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D06560C25E44E3E0061EBCB /* Launch Screen.storyboard */; };
 		2D2666F02590FC1800D30434 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666EF2590FC1800D30434 /* DashboardView.swift */; };
 		2D2666F32590FC3D00D30434 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666F22590FC3D00D30434 /* AccountView.swift */; };
 		2D2666F725911F1E00D30434 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2666F625911F1E00D30434 /* SearchBar.swift */; };
@@ -39,6 +36,9 @@
 		2D9323BA25E7DA00001EFF2B /* ManagementSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323B925E7DA00001EFF2B /* ManagementSecureField.swift */; };
 		2D9323BE25E7DB1D001EFF2B /* ManagementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */; };
 		2D9323C525E7F6DE001EFF2B /* ManagementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */; };
+		2D9323CE25E815FC001EFF2B /* TextSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323CD25E815FC001EFF2B /* TextSelector.swift */; };
+		2D9323D625E93E68001EFF2B /* ManagementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323D525E93E68001EFF2B /* ManagementType.swift */; };
+		2D9323DE25E97766001EFF2B /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323DD25E97766001EFF2B /* PhotoPicker.swift */; };
 		2D93FA6A259D0656003CE005 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA69259D0656003CE005 /* View.swift */; };
 		2D93FA6D259E1150003CE005 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA6C259E1150003CE005 /* UIApplication.swift */; };
 		2D93FA71259E1E1D003CE005 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA70259E1E1D003CE005 /* MapView.swift */; };
@@ -65,10 +65,7 @@
 /* Begin PBXFileReference section */
 		003FE96F45483936A725115F /* Pods-InventoryManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManager.debug.xcconfig"; path = "Target Support Files/Pods-InventoryManager/Pods-InventoryManager.debug.xcconfig"; sourceTree = "<group>"; };
 		096746FCC4D1FFD0E5C7232A /* Pods-InventoryManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManager.release.xcconfig"; path = "Target Support Files/Pods-InventoryManager/Pods-InventoryManager.release.xcconfig"; sourceTree = "<group>"; };
-		2D06560325E40FA10061EBCB /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
-		2D06560625E414450061EBCB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		2D06560925E44E2B0061EBCB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		2D06560C25E44E3E0061EBCB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2D2666EF2590FC1800D30434 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		2D2666F22590FC3D00D30434 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		2D2666F625911F1E00D30434 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -99,6 +96,9 @@
 		2D9323B925E7DA00001EFF2B /* ManagementSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementSecureField.swift; sourceTree = "<group>"; };
 		2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementHeader.swift; sourceTree = "<group>"; };
 		2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementTextField.swift; sourceTree = "<group>"; };
+		2D9323CD25E815FC001EFF2B /* TextSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSelector.swift; sourceTree = "<group>"; };
+		2D9323D525E93E68001EFF2B /* ManagementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementType.swift; sourceTree = "<group>"; };
+		2D9323DD25E97766001EFF2B /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		2D93FA69259D0656003CE005 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2D93FA6C259E1150003CE005 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		2D93FA70259E1E1D003CE005 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -141,14 +141,6 @@
 				096746FCC4D1FFD0E5C7232A /* Pods-InventoryManager.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		2D06560F25E44E710061EBCB /* LaunchScreen */ = {
-			isa = PBXGroup;
-			children = (
-				2D06560C25E44E3E0061EBCB /* Launch Screen.storyboard */,
-			);
-			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		2D06561325E528E70061EBCB /* Views */ = {
@@ -228,10 +220,10 @@
 			children = (
 				2D896D122583D65C00FE05B1 /* Inventory_ManagerApp.swift */,
 				2D9EF50A2593984E00DD17D3 /* Extensions */,
+				2D9323D425E93E56001EFF2B /* Enums */,
 				2DDF69C42583D6CD0037C3FB /* Models */,
 				2DDF69C72583D6FF0037C3FB /* Services */,
 				2D06561325E528E70061EBCB /* Views */,
-				2D06560F25E44E710061EBCB /* LaunchScreen */,
 				2D896D162583D65C00FE05B1 /* Assets.xcassets */,
 				2D896D1B2583D65C00FE05B1 /* Info.plist */,
 				2D896D182583D65C00FE05B1 /* Preview Content */,
@@ -252,9 +244,19 @@
 			children = (
 				2D06560925E44E2B0061EBCB /* CustomTextField.swift */,
 				2D720CBF25AF5BF500BF8C4C /* ResponderTextField.swift */,
+				2D9323CD25E815FC001EFF2B /* TextSelector.swift */,
 				2DFEAA1625B9ACCA0049664C /* ImagePicker.swift */,
+				2D9323DD25E97766001EFF2B /* PhotoPicker.swift */,
 			);
 			path = UIKitViews;
+			sourceTree = "<group>";
+		};
+		2D9323D425E93E56001EFF2B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2D9323D525E93E68001EFF2B /* ManagementType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		2D93FA79259E5E4A003CE005 /* Account */ = {
@@ -277,7 +279,6 @@
 				2D93FA69259D0656003CE005 /* View.swift */,
 				2D93FA6C259E1150003CE005 /* UIApplication.swift */,
 				2D720C7A25A4B9F100BF8C4C /* NSNotification.Name.swift */,
-				2D06560625E414450061EBCB /* Publisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */,
-				2D06560325E40FA10061EBCB /* KeyboardResponder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -408,7 +408,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D06560D25E44E3E0061EBCB /* Launch Screen.storyboard in Resources */,
 				2D896D1A2583D65C00FE05B1 /* Preview Assets.xcassets in Resources */,
 				2D896D172583D65C00FE05B1 /* Assets.xcassets in Resources */,
 			);
@@ -480,6 +479,7 @@
 				2DF73A9C2587E78800F09AD3 /* InventoryRow.swift in Sources */,
 				2D93FA6D259E1150003CE005 /* UIApplication.swift in Sources */,
 				2D06560A25E44E2B0061EBCB /* CustomTextField.swift in Sources */,
+				2D9323CE25E815FC001EFF2B /* TextSelector.swift in Sources */,
 				2D720C8025A4DF2200BF8C4C /* HistoryView.swift in Sources */,
 				2D896D132583D65C00FE05B1 /* Inventory_ManagerApp.swift in Sources */,
 				2DF4089C25B73959002657E9 /* AccountImage.swift in Sources */,
@@ -487,7 +487,6 @@
 				2D2666F32590FC3D00D30434 /* AccountView.swift in Sources */,
 				2D9EF50C2593985D00DD17D3 /* Color.swift in Sources */,
 				2D720C8525A4E91800BF8C4C /* HistoryHeader.swift in Sources */,
-				2D06560425E40FA10061EBCB /* KeyboardResponder.swift in Sources */,
 				2D720CBD25AE096900BF8C4C /* LandingSecureField.swift in Sources */,
 				2DF73A9F2587E7C800F09AD3 /* InventoryList.swift in Sources */,
 				2D4833312584072D0048B16D /* Location.swift in Sources */,
@@ -501,7 +500,6 @@
 				2D9323C525E7F6DE001EFF2B /* ManagementTextField.swift in Sources */,
 				2D93FA71259E1E1D003CE005 /* MapView.swift in Sources */,
 				2D93FA76259E4AB4003CE005 /* InventoryDetail.swift in Sources */,
-				2D06560725E414450061EBCB /* Publisher.swift in Sources */,
 				2D93FA8425A3AC0D003CE005 /* DashboardHeader.swift in Sources */,
 				2DF104A025C091F300216EF2 /* String.swift in Sources */,
 				2D48332E2584071B0048B16D /* Device.swift in Sources */,
@@ -511,7 +509,9 @@
 				2DFEAA1725B9ACCA0049664C /* ImagePicker.swift in Sources */,
 				2D4833342584075A0048B16D /* Holder.swift in Sources */,
 				2D9323B425E7D9DE001EFF2B /* UpdateInformationView.swift in Sources */,
+				2D9323D625E93E68001EFF2B /* ManagementType.swift in Sources */,
 				2DF73AA32587E9BE00F09AD3 /* DetailView.swift in Sources */,
+				2D9323DE25E97766001EFF2B /* PhotoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -624,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

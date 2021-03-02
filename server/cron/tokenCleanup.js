@@ -18,7 +18,7 @@ exports.passwordResetTokenCleanup = function() {
         let removed = 0
         try {
             // Gets all password reset tokens that are expired
-            const passwordResetTokens = await models.PasswordResetTokens.findAll({
+            const passwordResetTokens = await models.PasswordResetToken.findAll({
                 where: { expiresAt: { [Op.lte]: moment().toDate() } }
             })
     

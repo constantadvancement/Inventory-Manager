@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  AccountDetail.swift
 //  InventoryManager
 //
 //  Created by Ryan Mackin on 1/20/21.
@@ -30,8 +30,6 @@ struct AccountDetail: View {
                             Text("Edit")
                                 .font(.subheadline)
                                 .foregroundColor(Color.secondaryText)
-//                            Image(systemName: "pencil")
-//                                .foregroundColor(Color.secondaryText)
                         }
                     }
                     .fullScreenCover(isPresented: $showingManagementView) {
@@ -106,57 +104,18 @@ struct AccountDetail: View {
                         Text("Copy")
                             .font(.subheadline)
                             .foregroundColor(Color.secondaryText)
-//                        Image(systemName: "doc.on.doc")
-//                            .foregroundColor(Color.secondaryText)
                     }
                 }
                 .padding(.bottom)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
-                
+                                
                 Text(userObject.user?.apiKey ?? "")
+//                    .onLongPressGesture {
+//                        print("Hello World!")
+//                    }
             }
             .padding(.bottom)
-            
-            // Account Management
-//            VStack(alignment: .leading, spacing: 8) {
-//                Text("Account Management")
-//                    .font(.title3)
-//                    .padding(.bottom)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
-//                
-//                Button(action: {
-//                    self.showingChangePasswordView.toggle()
-//                }) {
-//                    HStack {
-//                        Text("Change Password").foregroundColor(Color.primaryText)
-//                        
-//                        Spacer()
-//                        
-//                        Image(systemName: "chevron.right").foregroundColor(Color.secondaryText)
-//                    }
-//                }
-//                .fullScreenCover(isPresented: $showingChangePasswordView) {
-//                    ChangePasswordView()
-//                }
-//                .onReceive(NotificationCenter.default.publisher(for: .closeChangePasswordView)) { _ in
-//                    self.showingChangePasswordView = false
-//                }
-//            }
-//            .padding(.bottom)
-            
-            // Account Security
-//            VStack(alignment: .leading, spacing: 8) {
-//                Text("Account Security")
-//                    .font(.title3)
-//                    .padding(.bottom)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
-//
-//                Text("TODO...")
-//            }
-//            .padding(.bottom)
         }
     }
 }
