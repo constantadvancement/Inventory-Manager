@@ -24,7 +24,7 @@ struct DetailView: View {
                 // Header
                 DetailHeader(inventory: inventory)
                     .padding()
-                    .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                    .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
                 
                 // Body
                 MapView(coordinate: inventory.locations[0].coordinate)
@@ -35,7 +35,7 @@ struct DetailView: View {
                             .foregroundColor(Color.secondaryText),
                         alignment: .topLeading
                     )
-                    .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                    .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
 
                 ScrollView {
                     InventoryDetail(inventory: inventory).padding()

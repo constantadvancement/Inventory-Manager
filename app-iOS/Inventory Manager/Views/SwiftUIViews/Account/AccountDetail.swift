@@ -41,7 +41,7 @@ struct AccountDetail: View {
                 }
                 .padding(.bottom)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
+                .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
                 
                 HStack(alignment: .top) {
                     Text("Name").fontWeight(.semibold)
@@ -78,15 +78,6 @@ struct AccountDetail: View {
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(Color.primaryText)
-                
-                HStack(alignment: .top) {
-                    Text("Password").fontWeight(.semibold)
-                        .frame(width: 150, alignment: .leading)
-                    Text("**********")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .foregroundColor(Color.primaryText)
             }
             .padding(.bottom)
             
@@ -108,12 +99,9 @@ struct AccountDetail: View {
                 }
                 .padding(.bottom)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
+                .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
                                 
                 Text(userObject.user?.apiKey ?? "")
-//                    .onLongPressGesture {
-//                        print("Hello World!")
-//                    }
             }
             .padding(.bottom)
         }

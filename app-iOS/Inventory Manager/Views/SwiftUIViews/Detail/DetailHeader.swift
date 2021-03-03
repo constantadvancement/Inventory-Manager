@@ -45,6 +45,9 @@ struct DetailHeader: View {
             .sheet(isPresented: $showingHistoryView) {
                 HistoryView(locationHistory: inventory.locations)
             }
+            .onReceive(NotificationCenter.default.publisher(for: .closeHistoryView)) { _ in
+                self.showingHistoryView = false
+            }
         }
     }
 }

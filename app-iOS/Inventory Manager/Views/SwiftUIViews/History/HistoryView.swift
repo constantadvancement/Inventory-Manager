@@ -15,13 +15,17 @@ struct HistoryView: View {
         VStack(spacing: 0) {
             HistoryHeader(locationHistory: locationHistory)
                 .padding()
-                .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
+                .background(Color.primaryBackground)
+                .onLongPressGesture {
+                    NotificationCenter.default.post(name: .closeHistoryView, object: nil)
+                }
             
             HistoryList(locationHistory: locationHistory)
             
 //            HistoryFilters()
 //                .padding()
-//                .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .top)
+//                .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
         }
         .background(Color.primaryBackground.ignoresSafeArea())
     }

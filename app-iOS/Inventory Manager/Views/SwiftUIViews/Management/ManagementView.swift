@@ -15,7 +15,7 @@ struct ManagementView: View {
         VStack(spacing: 0) {
             ManagementHeader(type: $type)
                 .padding()
-                .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
             
             ScrollView {
                 VStack {

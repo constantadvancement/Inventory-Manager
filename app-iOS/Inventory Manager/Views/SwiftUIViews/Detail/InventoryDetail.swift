@@ -19,11 +19,17 @@ struct InventoryDetail: View {
                     .font(.title3)
                     .padding(.bottom)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
+                    .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
                 
                 InventoryDetailEntry(header: "Name", text: inventory.holder.name)
-                InventoryDetailEntry(header: "Email", text: inventory.holder.email)
-                InventoryDetailEntry(header: "Phone", text: inventory.holder.phone)
+                InventoryDetailEntryAction(header: "Email", text: inventory.holder.email) {
+                    guard let url = URL(string: "mailto:\(inventory.holder.email)") else { return }
+                    UIApplication.shared.open(url)
+                }
+                InventoryDetailEntryAction(header: "Phone", text: inventory.holder.phone) {
+                    guard let url = URL(string: "tel://\(inventory.holder.phone)") else { return }
+                    UIApplication.shared.open(url)
+                }
             }
             .padding(.bottom)
             
@@ -33,7 +39,7 @@ struct InventoryDetail: View {
                     .font(.title3)
                     .padding(.bottom)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
+                    .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
 
                 InventoryDetailEntry(header: "Model Name", text: inventory.device.modelName)
                 InventoryDetailEntry(header: "Model Identifier", text: inventory.device.modelIdentifier)
@@ -49,7 +55,7 @@ struct InventoryDetail: View {
                     .font(.title3)
                     .padding(.bottom)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .bottom)
+                    .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
 
                 InventoryDetailEntry(header: "Address", text: inventory.locations[0].address)
                 InventoryDetailEntry(header: "Timestamp", text: inventory.locations[0].timestamp)
@@ -71,6 +77,29 @@ private struct InventoryDetailEntry: View {
                 .frame(width: 150, alignment: .leading)
             Text(text)
                 .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .foregroundColor(Color.primaryText)
+    }
+}
+
+private struct InventoryDetailEntryAction: View {
+    
+    @State var header: String
+    @State var text: String
+    
+    var action: () -> Void
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            Text(header).fontWeight(.semibold)
+                .frame(width: 150, alignment: .leading)
+            Button(action: {
+                action()
+            }) {
+                Text(text)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .fixedSize(horizontal: false, vertical: true)
         .foregroundColor(Color.primaryText)

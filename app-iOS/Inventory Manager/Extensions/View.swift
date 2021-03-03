@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+    
     /**
      This function is used to hide any opened first responder, for this application this will apply to the keyboard.
      */
@@ -33,7 +34,8 @@ extension View {
             .overlay(
                 Rectangle()
                     .frame(height: 2)
-                    .foregroundColor(color),
+                    .foregroundColor(color)
+                    .ignoresSafeArea(),
                 alignment: alignment
             )
     }

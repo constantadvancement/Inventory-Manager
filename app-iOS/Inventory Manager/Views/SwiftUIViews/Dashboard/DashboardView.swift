@@ -18,7 +18,7 @@ struct DashboardView: View {
         VStack(spacing: 0) {
             DashboardHeader(searchText: $searchText)
                 .padding()
-                .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
             
             if inventoryObject.isLoading {
                 ProgressView()

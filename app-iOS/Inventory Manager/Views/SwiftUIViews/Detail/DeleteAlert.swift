@@ -62,7 +62,7 @@ struct DeleteAlert: View {
                                 .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude, alignment: .center)
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .frame(maxWidth: .infinity, maxHeight: 40)                    
                     .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .top)
                     .applyVerticalBorder(color: Color.primaryBackground, thickness: 1, alignment: .center)
 

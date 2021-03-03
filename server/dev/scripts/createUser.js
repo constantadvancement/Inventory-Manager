@@ -37,31 +37,33 @@ prompt.get(
             apiKey: crypto.randomBytes(16).toString('hex')
         }
 
-        try {
-             // Verifies that this new user is unique (by email)
-            if(await user.findOne({
-                where: { email: newUser.email }
-            }) === null) {
+        console.log(newUser)
 
-                // Ensures that this new user's api key is unique
-                while(await user.findOne({
-                    where: { apiKey: newUser.apiKey }
-                }) !== null ) {
-                    newUser.apiKey = crypto.randomBytes(16).toString('hex')
-                }
+        // try {
+        //      // Verifies that this new user is unique (by email)
+        //     if(await user.findOne({
+        //         where: { email: newUser.email }
+        //     }) === null) {
 
-                if(await createUser(newUser)) {
-                    return console.log('Success, user created.')
-                } else {
-                    return console.log('Failure, an error occurred while attempting to create this user.')
-                }
-            } else {
-                return console.log('Failure, a user with the specified email already exists!')
-            }
-        } catch (err) {
-            console.log(err)
-            return console.log('An error occurred, please try again!')
-        }
+        //         // Ensures that this new user's api key is unique
+        //         while(await user.findOne({
+        //             where: { apiKey: newUser.apiKey }
+        //         }) !== null ) {
+        //             newUser.apiKey = crypto.randomBytes(16).toString('hex')
+        //         }
+
+        //         if(await createUser(newUser)) {
+        //             return console.log('Success, user created.')
+        //         } else {
+        //             return console.log('Failure, an error occurred while attempting to create this user.')
+        //         }
+        //     } else {
+        //         return console.log('Failure, a user with the specified email already exists!')
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        //     return console.log('An error occurred, please try again!')
+        // }
 })
 
 async function createUser(newUser) {

@@ -12,7 +12,7 @@ struct AccountView: View {
         VStack(spacing: 0) {
             AccountHeader()
                 .padding()
-                .applyHorizontalBorder(color: Color.tertiaryBackground, alignment: .bottom)
+                .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
             
             GeometryReader { geometry in
                 ScrollView {
