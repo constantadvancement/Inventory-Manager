@@ -14,14 +14,11 @@ enum ManagementType {
 
 extension ManagementType {
     mutating func toggle() {
-        switch self {
-        case .information:
+        if self == .information {
             self = .password
             return
-        case .password:
+        } else if self == .password {
             self = .information
-            return
-        default:
             return
         }
     }

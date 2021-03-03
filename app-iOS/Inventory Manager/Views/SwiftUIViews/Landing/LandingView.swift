@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct LandingView: View {
     
     @EnvironmentObject var userObject: UserObject
-    
-//    @ObservedObject var keyboardResponder = KeyboardResponder()
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -55,6 +54,7 @@ struct LandingView: View {
                         }
                         
                         Button(action: {
+                            hideKeyboard()
                             loginRequest()
                         }) {
                             Text("Login")
@@ -97,11 +97,37 @@ struct LandingView: View {
             }
             .background(LinearGradient(gradient: Gradient(colors: [.primaryBackground, .secondaryBackground, .primaryBackground]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
         }
+        .onAppear(perform: authenticate)
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+
+        // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                DispatchQueue.main.async {
+                    if success {
+                        // authenticated successfully
+                        print("success!")
+                    } else {
+                        // there was a problem
+                        print("failure")
+                    }
+                }
+            }
+        } else {
+            // no biometrics
+            print("no biometrics")
+        }
     }
     
     func loginRequest() {
-        hideKeyboard()
-        
         if email.isEmpty && password.isEmpty {
             requestMessage = "Please enter an email and password."
         } else if email.isEmpty {
