@@ -37,7 +37,7 @@
 		2D9323BE25E7DB1D001EFF2B /* ManagementHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */; };
 		2D9323C525E7F6DE001EFF2B /* ManagementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */; };
 		2D9323CE25E815FC001EFF2B /* TextSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323CD25E815FC001EFF2B /* TextSelector.swift */; };
-		2D9323D625E93E68001EFF2B /* ManagementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323D525E93E68001EFF2B /* ManagementType.swift */; };
+		2D9323D625E93E68001EFF2B /* AccountManagementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323D525E93E68001EFF2B /* AccountManagementType.swift */; };
 		2D9323DE25E97766001EFF2B /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9323DD25E97766001EFF2B /* PhotoPicker.swift */; };
 		2D93FA6A259D0656003CE005 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA69259D0656003CE005 /* View.swift */; };
 		2D93FA6D259E1150003CE005 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93FA6C259E1150003CE005 /* UIApplication.swift */; };
@@ -49,6 +49,7 @@
 		2D9EF50C2593985D00DD17D3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EF50B2593985D00DD17D3 /* Color.swift */; };
 		2DDF69CD2583D9FF0037C3FB /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */; };
 		2DED4CA225EFCB6100118776 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED4CA125EFCB6100118776 /* Border.swift */; };
+		2DED4CA525F1194300118776 /* FacialRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED4CA425F1194300118776 /* FacialRecognition.swift */; };
 		2DF1049A25C0904200216EF2 /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1049925C0904200216EF2 /* PullToRefresh.swift */; };
 		2DF104A025C091F300216EF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1049F25C091F300216EF2 /* String.swift */; };
 		2DF104B125C3263C00216EF2 /* ManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF104B025C3263C00216EF2 /* ManagementView.swift */; };
@@ -98,7 +99,7 @@
 		2D9323BD25E7DB1D001EFF2B /* ManagementHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementHeader.swift; sourceTree = "<group>"; };
 		2D9323C425E7F6DE001EFF2B /* ManagementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementTextField.swift; sourceTree = "<group>"; };
 		2D9323CD25E815FC001EFF2B /* TextSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSelector.swift; sourceTree = "<group>"; };
-		2D9323D525E93E68001EFF2B /* ManagementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementType.swift; sourceTree = "<group>"; };
+		2D9323D525E93E68001EFF2B /* AccountManagementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementType.swift; sourceTree = "<group>"; };
 		2D9323DD25E97766001EFF2B /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		2D93FA69259D0656003CE005 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2D93FA6C259E1150003CE005 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		2D9EF50B2593985D00DD17D3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		2DED4CA125EFCB6100118776 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		2DED4CA425F1194300118776 /* FacialRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognition.swift; sourceTree = "<group>"; };
 		2DF1049925C0904200216EF2 /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 		2DF1049F25C091F300216EF2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2DF104B025C3263C00216EF2 /* ManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementView.swift; sourceTree = "<group>"; };
@@ -256,7 +258,7 @@
 		2D9323D425E93E56001EFF2B /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				2D9323D525E93E68001EFF2B /* ManagementType.swift */,
+				2D9323D525E93E68001EFF2B /* AccountManagementType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -340,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				2DDF69CC2583D9FF0037C3FB /* HttpClient.swift */,
+				2DED4CA425F1194300118776 /* FacialRecognition.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				2D720C8525A4E91800BF8C4C /* HistoryHeader.swift in Sources */,
 				2D720CBD25AE096900BF8C4C /* LandingSecureField.swift in Sources */,
 				2DF73A9F2587E7C800F09AD3 /* InventoryList.swift in Sources */,
+				2DED4CA525F1194300118776 /* FacialRecognition.swift in Sources */,
 				2D4833312584072D0048B16D /* Location.swift in Sources */,
 				2D9323BA25E7DA00001EFF2B /* ManagementSecureField.swift in Sources */,
 				2D93FA7C25A36EFE003CE005 /* DetailHeader.swift in Sources */,
@@ -521,7 +525,7 @@
 				2DFEAA1725B9ACCA0049664C /* ImagePicker.swift in Sources */,
 				2D4833342584075A0048B16D /* Holder.swift in Sources */,
 				2D9323B425E7D9DE001EFF2B /* UpdateInformationView.swift in Sources */,
-				2D9323D625E93E68001EFF2B /* ManagementType.swift in Sources */,
+				2D9323D625E93E68001EFF2B /* AccountManagementType.swift in Sources */,
 				2DF73AA32587E9BE00F09AD3 /* DetailView.swift in Sources */,
 				2D9323DE25E97766001EFF2B /* PhotoPicker.swift in Sources */,
 			);

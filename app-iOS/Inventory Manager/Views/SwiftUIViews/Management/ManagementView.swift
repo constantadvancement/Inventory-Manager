@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ManagementView: View {
     
-    @State private var type: ManagementType = .information
+    @State private var type: AccountManagementType = .information
     
     var body: some View {
         VStack(spacing: 0) {

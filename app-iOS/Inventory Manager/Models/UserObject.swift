@@ -27,15 +27,19 @@ struct User: Codable {
     
     var role: Int
     var apiKey: String
+    
+    var trustedDeviceId: String?
 }
 
 class UserObject: ObservableObject {
     @Published var user: User?
     @Published var isLoggedIn: Bool
+    @Published var bioAuthentication: Bool
     
     init() {
         self.user = nil
         self.isLoggedIn = false
+        self.bioAuthentication = false
     }
     
     // User Authentication Functions
@@ -47,6 +51,9 @@ class UserObject: ObservableObject {
         var body = [String: String]()
         body["email"] = email
         body["password"] = password
+        if let uuid = UIDevice.current.identifierForVendor?.uuidString, bioAuthentication {
+            body["deviceUuid"] = uuid
+        }
         
         var bodyData: Data?
         do {
@@ -85,13 +92,56 @@ class UserObject: ObservableObject {
     }
     
     /**
+     Attempts to login using the trusted device ID (via biometric authentication)
+     */
+    func login(deviceUuid: String, callback: @escaping (Bool?) -> Void) {
+        var body = [String: String]()
+        body["deviceUuid"] = deviceUuid
+        
+        var bodyData: Data?
+        do {
+            bodyData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        } catch {
+            bodyData = nil
+        }
+        
+        let http = HttpClient()
+        http.POST(url: "\(String.production)/local/user/login/faceId", body: bodyData) { (err: Error?, data: Data?) in
+            guard data != nil else {
+                // Server or client error
+                DispatchQueue.main.async {[self] in
+                    self.user = nil
+                    self.isLoggedIn = false
+                }
+                return callback(nil)
+            }
+            
+            if let user = try? JSONDecoder().decode(User.self, from: data!) {
+                // Authentication success
+                DispatchQueue.main.async { [self] in
+                    self.user = user
+                    self.isLoggedIn = true
+                }
+                return callback(true)
+            } else {
+                // Authentication failiure
+                DispatchQueue.main.async { [self] in
+                    self.user = nil
+                    self.isLoggedIn = false
+                }
+                return callback(false)
+            }
+        }
+    }
+    
+    /**
      Logs out of the current user
      */
     func logout() {
         self.user = nil
         self.isLoggedIn = false
     }
-    
+
     // Account Management Functions
     
     /**
@@ -211,4 +261,5 @@ class UserObject: ObservableObject {
             }
         }
     }
+    
 }

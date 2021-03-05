@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ManagementHeader: View {
     
-    @Binding var type: ManagementType
+    @Binding var type: AccountManagementType
     
     var body: some View {
         HStack {

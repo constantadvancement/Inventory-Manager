@@ -1,5 +1,5 @@
 //
-//  ManagementType.swift
+//  AccountManagementType.swift
 //  InventoryManager
 //
 //  Created by Ryan Mackin on 2/26/21.

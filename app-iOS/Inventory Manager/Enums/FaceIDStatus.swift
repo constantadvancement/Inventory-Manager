@@ -8,6 +8,8 @@
 import Foundation
 
 enum FaceIDStatus {
-    case register
+    case success
     case failure
+    case newDevice
+    case none
 }
