@@ -16,11 +16,11 @@ module.exports = async function(req, res, next) {
         })
         if(user === null) {
             // Error; no such api key found
-            return res.status(401).json({ msg: 'Unauthorized -- invalid api key' });
+            return res.status(401).json({ msg: 'Unauthorized -- invalid api key' })
         } else {
-            next();
+            next()
         }
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).send(err)
     }
 }

@@ -1,13 +1,11 @@
 'use strict'
 
-// TODO -- having some issues making this script work...
-
 const prompt = require('prompt')
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
 
 // Models
-const user = require('../../models').User
+const models = require('../../models')
 
 prompt.start()
 prompt.get(
@@ -34,19 +32,23 @@ prompt.get(
             phone: result.phone,
             imageSource: null,
             role: 1,
-            apiKey: crypto.randomBytes(16).toString('hex')
+            apiKey: crypto.randomBytes(16).toString('hex'),
+            trustedDeviceId: null
         }
 
-        console.log(newUser)
+        console.log(`INSERT INTO Users (email, password, name, phone, role, apiKey) VALUES ('${newUser.email}', '${newUser.password}', '${newUser.name}', '${newUser.phone}', ${newUser.role}, '${newUser.apiKey}');`)
+
+        // TODO --- Having issues getting the below to work...
+        // Seems to be related to MySQL user privileges
 
         // try {
         //      // Verifies that this new user is unique (by email)
-        //     if(await user.findOne({
+        //     if(await models.User.findOne({
         //         where: { email: newUser.email }
         //     }) === null) {
 
         //         // Ensures that this new user's api key is unique
-        //         while(await user.findOne({
+        //         while(await models.User.findOne({
         //             where: { apiKey: newUser.apiKey }
         //         }) !== null ) {
         //             newUser.apiKey = crypto.randomBytes(16).toString('hex')
@@ -68,7 +70,7 @@ prompt.get(
 
 async function createUser(newUser) {
     try {
-        if(await user.create(newUser)) {
+        if(await models.User.create(newUser)) {
             return true
         } else {
             return false

@@ -2,7 +2,7 @@
 
 const userService = require('../services/user.server.service')
 
-// Local Authentication
+// Authentication
 
 /**
  * Called on local login success. Returns the authenticated user.
@@ -13,6 +13,23 @@ exports.localLoginSuccess = async function(req, res) {
         email: email
     }
     userService.loginSuccess(opts, (err, user) => {
+        if(err) return res.status(500).send(err)
+        res.status(200).send(user)
+    })
+}
+
+/**
+ * Called on local login success (from a new device with facial recognition set up). 
+ * Returns the authenticated user.
+ */
+exports.newDeviceLocalLoginSuccess = async function(req, res) {
+    const email = req.params.email
+    const deviceUuid = req.params.deviceUuid
+    const opts = {
+        email: email,
+        deviceUuid: deviceUuid
+    }
+    userService.newDeviceLocalLoginSuccess(opts, (err, user) => {
         if(err) return res.status(500).send(err)
         res.status(200).send(user)
     })

@@ -44,13 +44,13 @@ module.exports = function initializePassport(passport) {
 
     passport.deserializeUser(async (id, done) => {
         try {
-        const user = await User.findOne({
-            where: { id: id }
-        })
+            const user = await User.findOne({
+                where: { id: id }
+            })
 
-        return done(null, user);
+            return done(null, user);
         } catch (err) {
-        done(err, null)
+            done(err, null)
         }
     })
 }

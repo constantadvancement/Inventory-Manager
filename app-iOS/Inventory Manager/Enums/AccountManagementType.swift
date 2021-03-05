@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum ManagementType {
+enum AccountManagementType {
     case information
     case password
 }
 
-extension ManagementType {
+extension AccountManagementType {
     mutating func toggle() {
         if self == .information {
             self = .password

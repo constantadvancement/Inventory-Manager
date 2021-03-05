@@ -8,7 +8,7 @@ const moment = require('moment')
 // Models
 const models = require('../models')
 
-// Local Authentication
+// Authentication
 
 /**
  * Called on local login success. Returns the authenticated user.
@@ -22,6 +22,45 @@ exports.loginSuccess = async function(opts, callback) {
             where: { email: opts.email },
             attributes: { exclude: ['createdAt', 'updatedAt'] },
             nest: true, raw: true
+        })
+
+        if(user) {
+            if(user.imageSource) {
+                // Return user; include image
+                user.imageData = fs.readFileSync(path.join(__dirname, '../public/userImages/', user.imageSource), 'base64')
+                delete user.imageSource
+                callback(null, user)
+            } else {
+                // Return user; exclude image (none exist)
+                user.imageData = null
+                delete user.imageSource
+                callback(null, user)
+            }
+        } else {
+            throw Error('No such user found.')
+        }
+    } catch (err) {
+        callback(err, null)
+    }
+}
+
+/**
+ * Called on local login success (from a new device with facial recognition set up). 
+ * Returns the authenticated user.
+ */
+exports.newDeviceLocalLoginSuccess = async function(opts, callback) {
+    if(!opts.email) return callback('Requires \'email\' as an opts parameter')
+    if(!opts.deviceUuid) return callback('Requires \'deviceUuid\' as an opts parameter')
+
+    try {
+        // Finds the authenticated user that this email belongs to
+        const user = await models.User.findOne({
+            where: { email: opts.email },
+            attributes: { exclude: ['createdAt', 'updatedAt'] }
+        })
+
+        await user.update({
+            trustedDeviceUuid: opts.deviceUuid
         })
 
         if(user) {
@@ -145,6 +184,20 @@ exports.setUserImage = async function(opts, callback) {
         callback(err, null)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Password Reset (Forgot Password)
 
