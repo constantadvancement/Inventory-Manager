@@ -35,7 +35,7 @@ struct DeleteAlert: View {
                     }
                     .padding()
                     
-                    HStack {
+                    HStack(spacing: 0) {
                         // Cancel Button
                         Button(action: {
                             withAnimation(Animation.linear.speed(2.0)) {
@@ -47,6 +47,7 @@ struct DeleteAlert: View {
                                 .foregroundColor(Color.primaryHighlight)
                                 .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude, alignment: .center)
                         }
+                        .border(width: 1, edges: [.trailing], color: Color.primaryBackground)
                         
                         // Delete Button
                         Button(action: {
@@ -61,10 +62,10 @@ struct DeleteAlert: View {
                                 .foregroundColor(Color.red)
                                 .frame(maxWidth: .greatestFiniteMagnitude, maxHeight: .greatestFiniteMagnitude, alignment: .center)
                         }
+                        .border(width: 1, edges: [.leading], color: Color.primaryBackground)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 40)                    
-                    .applyHorizontalBorder(color: Color.primaryBackground, thickness: 1, alignment: .top)
-                    .applyVerticalBorder(color: Color.primaryBackground, thickness: 1, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .border(width: 2, edges: [.top], color: Color.primaryBackground)
 
                 }
                 .background(Color.secondaryBackground)

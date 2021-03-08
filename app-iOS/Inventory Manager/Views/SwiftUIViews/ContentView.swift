@@ -24,10 +24,10 @@ struct ContentView: View {
         }
         .onAppear(perform: biometricAuthentication)
         .alert(isPresented: $faceIDFailure) {
-            Alert(title: Text("Face ID"), message: Text("An error occurred, please login using your account's credentials!"), dismissButton: .default(Text("Okay")))
+            Alert(title: Text("Face ID authentication error."), message: Text("An error occurred, please log in manually."), dismissButton: .default(Text("Okay")))
         }
         .alert(isPresented: $faceIDNewDevice) {
-            Alert(title: Text("Face ID"), message: Text("Log in using your account's credentials to finish setting up Face ID for this device!"), dismissButton: .default(Text("Okay")))
+            Alert(title: Text("Connect Face ID to your account."), message: Text("Log in manually to finish setting up Face ID authentication for this app."), dismissButton: .default(Text("Okay")))
         }
     }
     

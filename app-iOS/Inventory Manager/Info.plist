@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Constant Advancement</string>
+	<string>Inventory Manager</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>NSFaceIDUsageDescription</key>
-	<string>CA Inventory Manager authentication with FaceID.</string>
+	<string>Inventory Manager authentication with Face ID.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to select your profile image.</string>
 	<key>UIApplicationSceneManifest</key>

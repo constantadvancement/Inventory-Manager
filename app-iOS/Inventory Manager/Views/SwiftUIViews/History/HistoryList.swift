@@ -16,7 +16,7 @@ struct HistoryList: View {
             LazyVStack(spacing: 0) {
                 ForEach(locationHistory, id: \.timestamp) { location in
                     HistoryRow(location: location)
-                        .applyListRowStyle(separatorColor: Color.primaryBackground)
+                        .listRowStyle(separatorColor: Color.primaryBackground)
                 }
             }
         }

@@ -27,8 +27,6 @@ struct User: Codable {
     
     var role: Int
     var apiKey: String
-    
-    var trustedDeviceId: String?
 }
 
 class UserObject: ObservableObject {

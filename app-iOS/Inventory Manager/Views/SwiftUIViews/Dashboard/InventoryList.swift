@@ -22,7 +22,7 @@ struct InventoryList: View {
             LazyVStack(spacing: 0) {
                 ForEach(filteredInventoryList, id: \.device.serialNumber) { inventory in
                     InventoryRow(inventory: inventory)
-                        .applyListRowStyle(separatorColor: Color.primaryBackground)
+                        .listRowStyle(separatorColor: Color.primaryBackground)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
