@@ -12,15 +12,11 @@ class Device {
     
     private init() {}
     
-    // Singleton data
-    
     var modelName: String?
     var modelIdentifier: String?
     var modelNumber: String?
     var serialNumber: String?
     var hardwareUUID: String?
-    
-    // Singleton functions
     
     func getInfo() -> Data? {
         var info = [String: String]()

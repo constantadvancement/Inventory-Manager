@@ -22,12 +22,12 @@ class FinishViewController: NSViewController {
         statusField.stringValue = "Performing setup events..."
         exitButton.isEnabled = false
         
-        var tasks = [writeLaunchdPlist, writeApplicationBundle, createUser, registerDevice]
+        var tasks = [verifyApiKey, writeLaunchdPlist, writeApplicationBundle, createUser, registerDevice]
         
         // Removes the create user task if createUser is false (toggeable value)
         let user = User.shared
         if !user.createUser {
-            tasks.remove(at: 2)
+            tasks.remove(at: 3)
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -54,7 +54,7 @@ class FinishViewController: NSViewController {
                 } else {
                     statusField.stringValue = "Setup failed, please exit and try again!"
                     statusField.textColor = NSColor.systemRed
-                    alertField.stringValue = "If setup issues persist please ensure that this device has not previously been registered and/or ensure that the CA Inventory Manager web server is online."
+                    alertField.stringValue = "If setup issues persist please check the following: ensure that the provided API key is correct, check that this device has not previously been registered, and/or ensure that the CA Inventory Manager web server is online."
                     exitButton.isEnabled = true
                 }
             }
@@ -62,6 +62,40 @@ class FinishViewController: NSViewController {
     }
     
     // Setup Events
+    
+    // Task 0 - Verify api key
+    
+    func verifyApiKey(completionHandler: @escaping (Bool) -> ()) {
+        // Ensures that an api key value exists
+        guard let apiKey = ApiKey.shared.apiKey else {
+            print("Error: no api key found")
+            return completionHandler(false)
+        }
+        
+        let http = HttpClient()
+        http.GET(url: "\(Endpoints.production)/\(apiKey)/verification") { (err: Error?, data: Data?) in
+            guard data != nil else {
+                // Failure; a server or client error occurred
+                print("Server or client error has occurred!")
+                return completionHandler(false)
+            }
+            
+            if let result = String(data: data!, encoding: .utf8)?.toBool {
+                if result {
+                    // Success; server returned true
+                    return completionHandler(true)
+                } else {
+                    // Failure; server returned false
+                    print("Failure! Invalid api key.")
+                    return completionHandler(false)
+                }
+            } else {
+                // Failure; server returned any unexpected value
+                print("Failure! Invalid api key.")
+                return completionHandler(false)
+            }
+        }
+    }
     
     // Task 1 - Launchd setup
     
@@ -152,8 +186,10 @@ class FinishViewController: NSViewController {
     // Task 3 - Register this device with the CA Inventory Manager web server
     
     func registerDevice(completionHandler: @escaping (Bool) -> ()) {
+        let apiKey = ApiKey.shared.apiKey!
+        
         let http = HttpClient()
-        http.POST(url: "\(Endpoints.development)/register/device", body: deviceRegistration()) { (err: Error?, data: Data?) in
+        http.POST(url: "\(Endpoints.production)/\(apiKey)/register/device", body: deviceRegistration()) { (err: Error?, data: Data?) in
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")

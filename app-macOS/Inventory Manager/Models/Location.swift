@@ -13,8 +13,6 @@ class Location {
     
     private init() {}
     
-    // Singleton data
-    
     var timestamp: String?
     
     var coordinate: CLLocationCoordinate2D?
@@ -26,8 +24,6 @@ class Location {
     var state: String?
     var zip: String?
     var country: String?
-    
-    // Singleton functions
     
     func getInfo() -> Data? {
         var info = [String: String]()

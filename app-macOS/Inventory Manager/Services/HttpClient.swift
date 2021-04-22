@@ -34,7 +34,23 @@ class HttpClient {
         }.resume()
     }
     
-    func GET(url: String, body: Data?, _ callback: @escaping (Error?, Data?) -> ()) {
-        // TODO http get implementation
+    func GET(url: String, _ callback: @escaping (Error?, Data?) -> ()) {
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data: Data?, response: URLResponse?, err: Error?) in
+            guard err == nil, data != nil else {
+                // Client error
+                return callback(err, nil)
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                // Server error
+                return callback(nil, nil)
+            }
+
+            return callback(nil, data)
+        }.resume()
     }
 }

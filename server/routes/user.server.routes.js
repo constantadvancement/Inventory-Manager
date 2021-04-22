@@ -3,7 +3,7 @@
 const path = require('path')
 const passport = require('passport')
 
-const userController = require('../controllers/user.server.controller')
+const controller = require('../controllers/user.server.controller')
 
 // Security middleware 
 const apiKeyAuth = require('../security/apiKeyAuth')
@@ -27,9 +27,9 @@ module.exports = (app) => {
     // app.post('/user/apiKey/reset')
 
     // User account management
-    app.post('/:apiKey/user/password/change', apiKeyAuth, userController.changePassword)
-    app.post('/:apiKey/user/account/edit', apiKeyAuth, userController.editAccount)
-    app.post('/:apiKey/user/image/set', apiKeyAuth, upload.single('userImage'), userController.setUserImage) 
+    app.post('/:apiKey/user/password/change', apiKeyAuth, controller.changePassword)
+    app.post('/:apiKey/user/account/edit', apiKeyAuth, controller.editAccount)
+    app.post('/:apiKey/user/image/set', apiKeyAuth, upload.single('userImage'), controller.setUserImage) 
 
     // Password reset (forgot password)
     // TODO
@@ -47,7 +47,7 @@ module.exports = (app) => {
         const email = res.locals.email
         res.status(200).redirect('/local/user/login/' + email + '/success')
     })
-    app.get('/local/user/login/:email/success', userController.localLoginSuccess)
-    app.get('/local/user/login/:email/success/:deviceUuid', userController.newDeviceLocalLoginSuccess)
-    app.get('/local/user/login/failure', userController.localLoginFailure) 
+    app.get('/local/user/login/:email/success', controller.localLoginSuccess)
+    app.get('/local/user/login/:email/success/:deviceUuid', controller.newDeviceLocalLoginSuccess)
+    app.get('/local/user/login/failure', controller.localLoginFailure) 
 }

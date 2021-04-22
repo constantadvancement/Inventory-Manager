@@ -12,8 +12,6 @@ class User {
     
     private init() {}
     
-    // Singleton data
-    
     // Default setting to create a new user set to true (can be toggled)
     var createUser: Bool = true
     

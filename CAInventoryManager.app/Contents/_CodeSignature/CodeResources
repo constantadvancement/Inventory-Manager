@@ -4,69 +4,73 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		1unGul/FAE34h0Jt4japjQuiBfI=
+		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		zXd3QuMRRRu6xRIpsOCL2cPR3TQ=
+		QTZBLjOnvd0CPL0/NVa2uydrPqA=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/7g5-sM-m7M-view-pcb-iC-rPR.nib</key>
 		<data>
-		TjOtwaie4CbcZaqrnOm6lrjINWA=
+		A+Vo1GWDVKHjF6V8ZHPcmlp5WGI=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/7xF-2Z-dCy-view-qfV-Og-DZs.nib</key>
 		<data>
-		4XPrFC88GQmgEWFChOyRVEEeGdo=
+		+DnBmc5c61rbEB0uShgFpliqgZw=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/FinishViewController.nib</key>
 		<data>
-		Iim6r4oZSYsW9YJWBkJupG5lz20=
+		gpFzOR9L6S7C5EzoODHhbKqIt6U=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/HomeViewController.nib</key>
 		<data>
-		HJRUFDGvcN9Zgo7RByEUmlLHDNQ=
+		Gl7rD7xjAFFk9GBQJQJTk+FAMpA=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		skSseUh9em6jXU+w4zL6q81+rHM=
+		PvJKmz+iPZ5WeSlrngIZ3JH2gcE=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/LocationViewController.nib</key>
 		<data>
-		mV4X7oPzSdVXer2pxz+V7ua1M4g=
+		8XULlIywJZ6zo0usAoDtSYRrOS8=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<data>
-		fH1HAd0Qx8inTefi/vW8FoNQbPo=
+		Co8Aq7ouP0OQna93bsG5KcWyyoA=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/MainWindow.nib</key>
 		<data>
-		8b9BF/yNTDwvb8i5gKCdSW9CND8=
+		uSjIqVg8QgnfhyyjiKm2aoxuDBg=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/OpR-mq-HIg-view-Vg1-sX-aND.nib</key>
 		<data>
-		z3TZIFGNWezr4CQY6KHFyPI9bw4=
+		Tyl5rx1xoujWktfTsL2qLnzdKCk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/PopoverViewController.nib</key>
 		<data>
-		37fYEKwUWCBHSrzLDkDQCknAOh4=
+		w0wA+W4T+fOnazyb7E8XX4jbgrE=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/SystemViewController.nib</key>
 		<data>
-		Eb1HP8MTX29GWU8F49VH9JEnsCQ=
+		sdPVd/Ld7A9z/u6ZJuptZGbunzI=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/UserViewController.nib</key>
 		<data>
-		mM52k4YMVYsOdEvbQ6Vx9FvilhA=
+		LRJ/ldFkjcoCWY3zy5+MvoiMQOk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-m2S-Jp-Qdl.nib</key>
 		<data>
-		7TpEY6XA6ffNHexjj233OInhpLU=
+		moBWQ5OI4q+YkOeS6K0B+5wYHtI=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/mPh-iq-Suv-view-q0w-Re-BsD.nib</key>
 		<data>
-		gR3flS1+FsV24y96dEJLJkLPM00=
+		zWJ4k8FqGPm0NoXkwQ7sbOl79H4=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/otX-fS-PbR-view-z0Z-gY-vbN.nib</key>
 		<data>
-		gFgnYUT/7pg+MP1c6fVfVXYgVWY=
+		5vh/fgvn2uOXaZ2Pi5qn1FxcSFo=
 		</data>
 		<key>Resources/com.CAInventoryManager.plist</key>
 		<data>
@@ -75,116 +79,123 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zNBdlU8vnZY0D6LmsMVZlAEM81ePuGz1LqI82pW3YCk=
+			</data>
+		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8BKtJkjENswczg+L3uDHx+pYqjRyRAqEGfUDbU9TjpA=
+			1X9huXXodZT4gcuXKobangHseu583SIQc0fPtH6xIPo=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/7g5-sM-m7M-view-pcb-iC-rPR.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LBrwAq2njoFYgcEmH7q8Jzw12COg1/6VDVJb6SZeMs0=
+			3Jna0z3OZawCli/J8u44VsEg/Ae7/6kqktc378u8jUw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/7xF-2Z-dCy-view-qfV-Og-DZs.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rUHomOVuwepKNKXKqcUiyu/yZl9/46cm0VKyoxwFD8s=
+			SoXMNLlTXVDaJRMEVJCizksckyLje5lvSG96xXvK4Tc=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/FinishViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E5nnK/QeZcflURqS9PzGHuq2hFKe80AZQngDWDfTwi8=
+			G30VqqVKmDOacDC1fIY0DgpKW1DQrgV2Xfas3IeWan0=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/HomeViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HYmv7ODifuQSWMv/eI49FgwR66oapzrjaZcjUPAE6P8=
+			A3p4wJeoaMBKr2EGI86yNQVzLBc29h4UW7lVj585iXc=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wm71V1E30ebJi1A+ddePkWALp4jwiF5Lpf1Q4UQqDQ4=
+			ro7UC8roeT3Dg/6sw+TTTzTErQZJtrtdJchpKmspz04=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/LocationViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RuervyS7Z7TXsBw1tYYG96TRCmiA5QYuHHLzC61pfLg=
+			ylwnQgn+kqdHDl/SdSyLxHfM3QQ2Y4mpHN7Bu0M2XvE=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L3eDwkYc+BtoOd101THqkPV/DMobyOsdYN9s2vkg40Q=
+			EftMpS1NJYxaZxWkct5gcU6V39Bv76E30oMFMif4h1I=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/MainWindow.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eGw/HbGoMz3PrvXj5QQLZmG2GGYMPXYBKUWenONKds4=
+			CBNLfdGLmynJYM8vIU93XZxX0Il1R6MFsUjMNT6/O5w=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/OpR-mq-HIg-view-Vg1-sX-aND.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GmiD/L3u3xlA5+tvW5ux18kw5PGFpxyGjjidwEWWqio=
+			uJnVGZj4Ku4F4uCZdmEeaHU4ZfJB2gOAMJGMZESRYx8=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/PopoverViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yQUBWKpWXFAEIoN+lquuZ7z2cNZ7W8jd2AryNwCLhvE=
+			wk9XbV7WCoOWO61FnNsxgS0I9oFkqizrxpslRJ1eyYk=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/SystemViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			w7XSepnBks5PyswrzrG63wlmTp2Iww6mqIAJZYXEyrY=
+			8ylkgh+2Y4oZQRtaSHsl99mbyavD37NiXqFGP+XEW94=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/UserViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mrqO4jjGV1hIyvBMNiNjTYP9wfGfwpNB9V7huCp4S/Q=
+			PHrAJygyLl29+42kVKTSVWGXLLFbSAWMN6Z2PegPwyw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-m2S-Jp-Qdl.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AwSgYK9M5VoYXo2Yfi7s+WOkrRGazviMJBKvRG54Gqk=
+			7Pu4GoWvepSQfdgihgC39LnMr7o5lpx3H+HBjRdY1iw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/mPh-iq-Suv-view-q0w-Re-BsD.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AOS5pakaYIz08R2AwOGlT7xX8nPnBJVwt4YZqOdD6ho=
+			xsnMZyn2nr1Yj6yezdC0EsYGy2sYw7k32Ivz7PC0zLg=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/otX-fS-PbR-view-z0Z-gY-vbN.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UI1JieQbNoeZQxksWbPg61z8JVCGD51erxPLM6OAYmw=
+			rb/GQ4z8T4BwcKlNeAy/EbTMBCJfrjGtZgwB7DnoKT8=
 			</data>
 		</dict>
 		<key>Resources/com.CAInventoryManager.plist</key>

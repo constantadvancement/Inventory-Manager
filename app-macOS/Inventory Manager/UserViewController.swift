@@ -14,6 +14,10 @@ class UserViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var emailField: NSTextField!
     @IBOutlet var phoneField: NSTextField!
     @IBOutlet var passwordField: NSTextField!
+    
+    @IBOutlet var fullNameLabel: NSTextField!
+    @IBOutlet var emailLabel: NSTextField!
+    @IBOutlet var phoneLabel: NSTextField!
     @IBOutlet var passwordLabel: NSTextField!
     
     @IBOutlet var createUserCheckbox: NSButton!
@@ -26,12 +30,6 @@ class UserViewController: NSViewController, NSTextFieldDelegate {
         // Applies basic view styles
         setStyles()
         
-        // Prevents text fields from being auto focused when the view first loads
-        fullNameField.refusesFirstResponder = true
-        passwordField.refusesFirstResponder = true
-        emailField.refusesFirstResponder = true
-        phoneField.refusesFirstResponder = true
-        
         let user = User.shared
         
         // Full name
@@ -39,14 +37,32 @@ class UserViewController: NSViewController, NSTextFieldDelegate {
             fullNameField.stringValue = fullName
         }
         
+        if fullNameField.stringValue.isEmpty {
+            fullNameLabel.textColor = .systemRed
+        } else {
+            fullNameLabel.textColor = .white
+        }
+        
         // Email
         if let email = user.email {
             emailField.stringValue = email
         }
         
+        if emailField.stringValue.isEmpty {
+            emailLabel.textColor = .systemRed
+        } else {
+            emailLabel.textColor = .white
+        }
+        
         // Phone Number
         if let phone = user.phone {
             phoneField.stringValue = phone
+        }
+        
+        if phoneField.stringValue.isEmpty {
+            phoneLabel.textColor = .systemRed
+        } else {
+            phoneLabel.textColor = .white
         }
         
         // Password
@@ -55,6 +71,12 @@ class UserViewController: NSViewController, NSTextFieldDelegate {
         } else {
             passwordField.stringValue = defaultPassword
             user.password = defaultPassword
+        }
+        
+        if passwordField.stringValue.isEmpty {
+            passwordLabel.textColor = .systemRed
+        } else {
+            passwordLabel.textColor = .white
         }
         
         // Create user (toggleable setting)
@@ -101,6 +123,31 @@ class UserViewController: NSViewController, NSTextFieldDelegate {
         user.email = email
         user.phone = phone
         user.password = password
+        
+        // Updates required text field label colors
+        if fullName.isEmpty {
+            fullNameLabel.textColor = .systemRed
+        } else {
+            fullNameLabel.textColor = .white
+        }
+        
+        if email.isEmpty {
+            emailLabel.textColor = .systemRed
+        } else {
+            emailLabel.textColor = .white
+        }
+        
+        if phone.isEmpty {
+            phoneLabel.textColor = .systemRed
+        } else {
+            phoneLabel.textColor = .white
+        }
+        
+        if password.isEmpty {
+            passwordLabel.textColor = .systemRed
+        } else {
+            passwordLabel.textColor = .white
+        }
         
         // Enables/disables the continue button depending on the state of each text field and the checkbox
         if user.createUser {

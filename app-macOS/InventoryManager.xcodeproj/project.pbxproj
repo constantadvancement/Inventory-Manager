@@ -24,6 +24,7 @@
 		2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5A25543BF400FA5F8A /* LocationService.swift */; };
 		2D69FC5E25544C6400FA5F8A /* Notification.extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */; };
 		2D8BBB942549C99300B521FA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BBB932549C99300B521FA /* Location.swift */; };
+		2DDB627A262DCFEF002D8B07 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB6279262DCFEF002D8B07 /* ApiKey.swift */; };
 		2DFAC206256C2085005BCB24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFAC205256C2085005BCB24 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		2D69FC5A25543BF400FA5F8A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		2D69FC5D25544C6400FA5F8A /* Notification.extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.extensions.swift; sourceTree = "<group>"; };
 		2D8BBB932549C99300B521FA /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2DDB6279262DCFEF002D8B07 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		2DFAC205256C2085005BCB24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				2D2A11462549A72000E7F57D /* Device.swift */,
 				2D8BBB932549C99300B521FA /* Location.swift */,
 				2DFAC205256C2085005BCB24 /* User.swift */,
+				2DDB6279262DCFEF002D8B07 /* ApiKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				2D69FC5825506AAF00FA5F8A /* String.extensions.swift in Sources */,
 				2D1FF0D7257FE37500C1112B /* Endpoints.swift in Sources */,
 				2DFAC206256C2085005BCB24 /* User.swift in Sources */,
+				2DDB627A262DCFEF002D8B07 /* ApiKey.swift in Sources */,
 				2D69FC5B25543BF400FA5F8A /* LocationService.swift in Sources */,
 				2D5AD1F2253F3F13006125F7 /* WindowController.swift in Sources */,
 				2D5AD1CE253F0DC3006125F7 /* AppDelegate.swift in Sources */,
@@ -385,7 +389,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = STANUUV688;
+				DEVELOPMENT_TEAM = 9J33ECT4E4;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Inventory Manager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -406,7 +411,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = STANUUV688;
+				DEVELOPMENT_TEAM = 9J33ECT4E4;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Inventory Manager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

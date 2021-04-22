@@ -38,6 +38,13 @@ exports.unregisterDevice = async function(req, res) {
 /* --------------- macOS app controllers --------------- */
 
 /**
+ * Returns success; approving this api key. The "ApiKeyAuth" middleware handles verification.
+ */
+exports.verifyApiKey = async function(req, res) {
+    res.status(200).send(true)
+}
+
+/**
  * Registers a new CA device. Saving this device's system information, location information, 
  * and "holder" (the owner) to the database.
  * 

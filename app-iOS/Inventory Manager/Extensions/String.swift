@@ -12,7 +12,8 @@ extension String {
     // Endpoints
     
     static let development = "http://localhost:3000"
-    static let production = "http://35.230.187.10:3000"
+    static let production = "http://localhost:3000"
+//        "http://35.230.187.10:3000"
     
     // Coordinate space names
     

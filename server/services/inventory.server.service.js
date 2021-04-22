@@ -55,6 +55,7 @@ exports.getInventory = async function(opts, callback) {
             })
         }
 
+        console.log(inventoryList)
         callback(null, inventoryList)
     } catch (error) {
         callback(error, null)

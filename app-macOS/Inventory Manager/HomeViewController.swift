@@ -7,11 +7,12 @@
 
 import Cocoa
 
-class HomeViewController: NSViewController {
+class HomeViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var imageView: NSImageView!
     @IBOutlet var helpButton: NSButton!
-    
-    var locationService: LocationService?
+    @IBOutlet var continueButton: NSButton!
+    @IBOutlet var apiKeyField: NSTextField!
+    @IBOutlet var apiKeyLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,26 @@ class HomeViewController: NSViewController {
         // Help button click action
         let recognizer = NSClickGestureRecognizer(target: self, action: #selector(helpButtonPopover))
         helpButton.addGestureRecognizer(recognizer)
+        
+        let apiKey = ApiKey.shared
+        
+        // Api key
+        if let key = apiKey.apiKey {
+            apiKeyField.stringValue = key
+        }
+        
+        if apiKeyField.stringValue.isEmpty {
+            apiKeyLabel.textColor = .systemRed
+        } else {
+            apiKeyLabel.textColor = .white
+        }
+        
+        // Enables/disables the continue button depending on the state of the api key text field
+        if !apiKeyField.stringValue.isEmpty {
+            continueButton.isEnabled = true
+        } else {
+            continueButton.isEnabled = false
+        }
     }
     
     @objc func helpButtonPopover() {
@@ -31,6 +52,28 @@ class HomeViewController: NSViewController {
         popoverView.contentViewController = controller
         popoverView.behavior = .transient
         popoverView.show(relativeTo: helpButton.bounds, of: helpButton, preferredEdge: .minY)
+    }
+    
+    // Text field delegate methods
+    
+    func controlTextDidChange(_ obj: Notification) {
+        // Saves api key data to the ApiKey model
+        let apiKey = ApiKey.shared
+        apiKey.apiKey = apiKeyField.stringValue
+
+        // Updates required text field label colors
+        if apiKeyField.stringValue.isEmpty {
+            apiKeyLabel.textColor = .systemRed
+        } else {
+            apiKeyLabel.textColor = .white
+        }
+
+        // Enables/disables the continue button depending on the state of the api key text field
+        if !apiKeyField.stringValue.isEmpty {
+            continueButton.isEnabled = true
+        } else {
+            continueButton.isEnabled = false
+        }
     }
     
     // Navigation button actions
@@ -63,5 +106,7 @@ class HomeViewController: NSViewController {
         imageView.layer?.borderColor = NSColor.darkGray.cgColor
         imageView.layer?.cornerRadius = imageView.frame.width / 2
         imageView.layer?.backgroundColor = NSColor.white.cgColor
+        
+        apiKeyField.backgroundColor = NSColor.darkGray
     }
 }

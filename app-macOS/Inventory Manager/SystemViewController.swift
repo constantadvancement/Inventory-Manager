@@ -9,24 +9,24 @@ import Cocoa
 
 class SystemViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var continueButton: NSButton!
+    
     @IBOutlet var modelNameField: NSTextField!
     @IBOutlet var modelIdentifierField: NSTextField!
     @IBOutlet var modelNumberField: NSTextField!
     @IBOutlet var serialNumberField: NSTextField!
     @IBOutlet var hardwareUUIDField: NSTextField!
     
+    @IBOutlet var modelNameLabel: NSTextField!
+    @IBOutlet var modelIdentifierLabel: NSTextField!
+    @IBOutlet var modelNumberLabel: NSTextField!
+    @IBOutlet var serialNumberLabel: NSTextField!
+    @IBOutlet var hardwareUUIDLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Applies basic view styles
         setStyles()
-        
-        // Prevents text fields from being auto focused when the view first loads
-        modelNameField.refusesFirstResponder = true
-        modelIdentifierField.refusesFirstResponder = true
-        modelNumberField.refusesFirstResponder = true
-        serialNumberField.refusesFirstResponder = true
-        hardwareUUIDField.refusesFirstResponder = true
 
         let device = Device.shared
         
@@ -38,12 +38,24 @@ class SystemViewController: NSViewController, NSTextFieldDelegate {
             device.modelName = modelName
         }
         
+        if modelNameField.stringValue.isEmpty {
+            modelNameLabel.textColor = .systemRed
+        } else {
+            modelNameLabel.textColor = .white
+        }
+        
         // Model identifier
         if let modelIdentifier = device.modelIdentifier {
             modelIdentifierField.stringValue = modelIdentifier
         } else if let modelIdentifier = getModelIdentifier() {
             modelIdentifierField.stringValue = modelIdentifier
             device.modelIdentifier = modelIdentifier
+        }
+        
+        if modelIdentifierField.stringValue.isEmpty {
+            modelIdentifierLabel.textColor = .systemRed
+        } else {
+            modelIdentifierLabel.textColor = .white
         }
         
         // Model number
@@ -54,6 +66,12 @@ class SystemViewController: NSViewController, NSTextFieldDelegate {
             device.modelNumber = modelNumber
         }
         
+        if modelNumberField.stringValue.isEmpty {
+            modelNumberLabel.textColor = .systemRed
+        } else {
+            modelNumberLabel.textColor = .white
+        }
+        
         // Serial number
         if let serialNumber = device.serialNumber {
             serialNumberField.stringValue = serialNumber
@@ -62,12 +80,24 @@ class SystemViewController: NSViewController, NSTextFieldDelegate {
             device.serialNumber = serialNumber
         }
         
+        if serialNumberField.stringValue.isEmpty {
+            serialNumberLabel.textColor = .systemRed
+        } else {
+            serialNumberLabel.textColor = .white
+        }
+        
         // Hardware UUID
         if let hardwareUUID = device.hardwareUUID {
             hardwareUUIDField.stringValue = hardwareUUID
         } else if let hardwareUUID = getHardwareUUID() {
             hardwareUUIDField.stringValue = hardwareUUID
             device.hardwareUUID = hardwareUUID
+        }
+        
+        if hardwareUUIDField.stringValue.isEmpty {
+            hardwareUUIDLabel.textColor = .systemRed
+        } else {
+            hardwareUUIDLabel.textColor = .white
         }
         
         // Enables/disables the continue button depending on the state of the Device model
@@ -179,6 +209,37 @@ class SystemViewController: NSViewController, NSTextFieldDelegate {
         device.modelNumber = modelNumber
         device.serialNumber = serialNumber
         device.hardwareUUID = hardwareUUID
+        
+        // Updates required text field label colors
+        if modelName.isEmpty {
+            modelNameLabel.textColor = .systemRed
+        } else {
+            modelNameLabel.textColor = .white
+        }
+        
+        if modelIdentifier.isEmpty {
+            modelIdentifierLabel.textColor = .systemRed
+        } else {
+            modelIdentifierLabel.textColor = .white
+        }
+        
+        if modelNumber.isEmpty {
+            modelNumberLabel.textColor = .systemRed
+        } else {
+            modelNumberLabel.textColor = .white
+        }
+        
+        if serialNumber.isEmpty {
+            serialNumberLabel.textColor = .systemRed
+        } else {
+            serialNumberLabel.textColor = .white
+        }
+        
+        if hardwareUUID.isEmpty {
+            hardwareUUIDLabel.textColor = .systemRed
+        } else {
+            hardwareUUIDLabel.textColor = .white
+        }
         
         // Enables/disables the continue button depending on the state of each text field
         if !modelName.isEmpty && !modelIdentifier.isEmpty && !modelNumber.isEmpty && !serialNumber.isEmpty && !hardwareUUID.isEmpty {

@@ -41,6 +41,7 @@ class InventoryObject: ObservableObject {
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
+                self.isLoading = false
                 
                 // TODO; handle this.... stop spinner and display an error message...
                 // An error occured while processing your request... Please ensure that <app name> is updated or our servers may be down.
@@ -52,6 +53,10 @@ class InventoryObject: ObservableObject {
                     self.inventoryList = data
                     self.isLoading = false
                 }
+            } else {
+                print("An unknown error has occurred.")
+                self.inventoryList = []
+                self.isLoading = false
             }
         }
     }
