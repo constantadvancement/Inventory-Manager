@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InventoryDetail: View {
     
+    @EnvironmentObject var inventoryObject: InventoryObject
+    
     @State var inventory: Inventory
     
     var body: some View {
@@ -57,9 +59,9 @@ struct InventoryDetail: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .border(width: 1, edges: [.bottom], color: Color.primaryBackground)
 
-                InventoryDetailEntry(header: "Address", text: inventory.locations[0].address)
-                InventoryDetailEntry(header: "Timestamp", text: inventory.locations[0].timestamp)
-                InventoryDetailEntry(header: "Status", text: inventory.locations[0].status)
+                InventoryDetailEntry(header: "Address", text: inventoryObject.lastValidLocation(locations: inventory.locations).address)
+                InventoryDetailEntry(header: "Timestamp", text: inventoryObject.lastValidLocation(locations: inventory.locations).timestamp)
+                InventoryDetailEntry(header: "Status", text: inventoryObject.lastValidLocation(locations: inventory.locations).status)
             }
         }
         .foregroundColor(Color.primaryText)

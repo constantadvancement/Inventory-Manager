@@ -41,7 +41,10 @@ class InventoryObject: ObservableObject {
             guard data != nil else {
                 // Failure; a server or client error occurred
                 print("Server or client error has occurred!")
-                self.isLoading = false
+                DispatchQueue.main.async { [self] in
+                    self.inventoryList = []
+                    self.isLoading = false
+                }
                 
                 // TODO; handle this.... stop spinner and display an error message...
                 // An error occured while processing your request... Please ensure that <app name> is updated or our servers may be down.
@@ -55,8 +58,10 @@ class InventoryObject: ObservableObject {
                 }
             } else {
                 print("An unknown error has occurred.")
-                self.inventoryList = []
-                self.isLoading = false
+                DispatchQueue.main.async { [self] in
+                    self.inventoryList = []
+                    self.isLoading = false
+                }
             }
         }
     }
@@ -86,6 +91,19 @@ class InventoryObject: ObservableObject {
                 }
             }
         }
+    }
+    
+    /**
+     Returns the last valid location object from the provided array of locations. If all locations are invalid the last reported invalid location is returned instead (edge case, as there should always be at least one valid location via the initial device setup using the macOS app). 
+     */
+    func lastValidLocation(locations: [Location]) -> Location {
+        for location in locations {
+            if location.city != nil, location.street != nil, location.state != nil, location.zip != nil, location.country != nil, location.latitude != nil, location.longitude != nil {
+                return location
+            }
+        }
+        
+        return locations[0]
     }
 }
 

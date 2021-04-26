@@ -22,9 +22,9 @@ struct DetailView: View {
                 .padding()
                 .border(width: 2, edges: [.bottom], color: Color.tertiaryBackground)
         
-            MapView(coordinate: inventory.locations[0].coordinate)
+            MapView(coordinate: inventoryObject.lastValidLocation(locations: inventory.locations).coordinate)
                 .overlay(
-                    Text("Last reported location")
+                    Text("Last reported authorized location")
                         .padding(10)
                         .font(.subheadline)
                         .foregroundColor(Color.secondaryText),
